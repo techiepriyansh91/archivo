@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "411952032579",
+    "project_id": "archivo-dev",
+    "storage_bucket": "archivo-dev.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:411952032579:android:e1692a0d999ca0d4cf9df6",
+        "android_client_info": {
+          "package_name": "com.example.archivo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCOnTSKgOut0UBJp2x3NI1c_MDEna_bpRs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

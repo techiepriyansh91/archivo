@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../auth/presentation/cubit/auth_cubit.dart';
 import '../../domain/entities/note.dart';
 import '../cubit/notes_cubit.dart';
 import '../cubit/notes_state.dart';
@@ -49,6 +50,11 @@ class _NotesListPageState extends State<NotesListPage> {
             tooltip: _showArchived ? 'Show notes' : 'Show archive',
             icon: Icon(_showArchived ? Icons.notes : Icons.archive_outlined),
             onPressed: _toggleArchivedView,
+          ),
+          IconButton(
+            tooltip: 'Sign out',
+            icon: const Icon(Icons.logout),
+            onPressed: () => context.read<AuthCubit>().signOut(),
           ),
         ],
       ),

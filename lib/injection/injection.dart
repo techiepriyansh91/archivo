@@ -1,10 +1,12 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_it/get_it.dart';
 import 'package:uuid/uuid.dart';
 
 import '../core/database/app_database.dart';
 import '../core/utils/clock.dart';
-import '../features/auth/data/local_stub_auth_repository.dart';
+import '../features/auth/data/firebase_auth_repository.dart';
 import '../features/auth/domain/repositories/auth_repository.dart';
+import '../features/auth/presentation/cubit/auth_cubit.dart';
 import '../features/notes/data/notes_repository_impl.dart';
 import '../features/notes/domain/repositories/notes_repository.dart';
 import '../features/notes/domain/usecases/archive_note.dart';
@@ -25,9 +27,13 @@ Future<void> configureDependencies() async {
     ..registerLazySingleton<Clock>(() => const SystemClock())
     ..registerLazySingleton<Uuid>(() => const Uuid());
 
-  // Auth — local stub for now; swapped for FirebaseAuthRepository once
-  // `flutterfire configure` is run. This is the only line that changes.
-  getIt.registerLazySingleton<AuthRepository>(LocalStubAuthRepository.new);
+  // Auth — Firebase (archivo-dev). Email/password works out of the box; Google
+  // sign-in also needs the Android SHA-1 registered in the Firebase console.
+  getIt
+    ..registerLazySingleton<FirebaseAuth>(() => FirebaseAuth.instance)
+    ..registerLazySingleton<AuthRepository>(
+      () => FirebaseAuthRepository(getIt<FirebaseAuth>()),
+    );
 
   // Notes data
   getIt
@@ -59,4 +65,7 @@ Future<void> configureDependencies() async {
       archiveNote: getIt(),
     ),
   );
+
+  // Auth presentation — single app-lifetime cubit driving the auth gate.
+  getIt.registerLazySingleton(() => AuthCubit(getIt()));
 }
