@@ -5,11 +5,17 @@ import 'package:drift/native.dart';
 import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
 
+import '../../features/notes/data/notes_dao.dart';
+
 part 'app_database.g.dart';
 
 /// Notes table. Sync metadata columns (`updatedAt`, `deletedAt`, `syncStatus`,
 /// `remoteRev`, `baseJson`) are present from day one — retrofitting them later is
 /// the #1 thing that wrecks offline-first projects. See docs/PLAN.md §3.1.
+///
+/// The generated row class is named `NoteRow` so it doesn't clash with the
+/// domain `Note` entity when both are imported in the data layer.
+@DataClassName('NoteRow')
 class Notes extends Table {
   /// Client-generated uuid v4 — offline create must not wait on a server.
   TextColumn get id => text()();
@@ -44,7 +50,7 @@ class Notes extends Table {
   Set<Column> get primaryKey => {id};
 }
 
-@DriftDatabase(tables: [Notes])
+@DriftDatabase(tables: [Notes], daos: [NotesDao])
 class AppDatabase extends _$AppDatabase {
   /// Pass an executor (e.g. [NativeDatabase.memory]) for tests; defaults to an
   /// on-disk database in the app documents directory.

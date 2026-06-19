@@ -2,8 +2,9 @@ import 'package:equatable/equatable.dart';
 
 /// Base type for all recoverable errors surfaced to the domain/presentation
 /// layers. Data-layer exceptions are caught at the repository boundary and
-/// mapped to a [Failure] so use cases never see raw Drift/Firebase types.
-abstract class Failure extends Equatable {
+/// rethrown as a [Failure] so use cases/cubits never see raw Drift/Firebase
+/// types. Cubits catch [Failure] and map it to an error state.
+abstract class Failure extends Equatable implements Exception {
   const Failure(this.message);
 
   final String message;

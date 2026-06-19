@@ -3,7 +3,7 @@
 part of 'app_database.dart';
 
 // ignore_for_file: type=lint
-class $NotesTable extends Notes with TableInfo<$NotesTable, Note> {
+class $NotesTable extends Notes with TableInfo<$NotesTable, NoteRow> {
   @override
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
@@ -165,7 +165,7 @@ class $NotesTable extends Notes with TableInfo<$NotesTable, Note> {
   static const String $name = 'notes';
   @override
   VerificationContext validateIntegrity(
-    Insertable<Note> instance, {
+    Insertable<NoteRow> instance, {
     bool isInserting = false,
   }) {
     final context = VerificationContext();
@@ -254,9 +254,9 @@ class $NotesTable extends Notes with TableInfo<$NotesTable, Note> {
   @override
   Set<GeneratedColumn> get $primaryKey => {id};
   @override
-  Note map(Map<String, dynamic> data, {String? tablePrefix}) {
+  NoteRow map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return Note(
+    return NoteRow(
       id: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}id'],
@@ -314,7 +314,7 @@ class $NotesTable extends Notes with TableInfo<$NotesTable, Note> {
   }
 }
 
-class Note extends DataClass implements Insertable<Note> {
+class NoteRow extends DataClass implements Insertable<NoteRow> {
   /// Client-generated uuid v4 — offline create must not wait on a server.
   final String id;
 
@@ -342,7 +342,7 @@ class Note extends DataClass implements Insertable<Note> {
 
   /// Last-synced snapshot (JSON) for the 3-way merge in §4.3. Notes only.
   final String? baseJson;
-  const Note({
+  const NoteRow({
     required this.id,
     required this.userId,
     required this.title,
@@ -407,12 +407,12 @@ class Note extends DataClass implements Insertable<Note> {
     );
   }
 
-  factory Note.fromJson(
+  factory NoteRow.fromJson(
     Map<String, dynamic> json, {
     ValueSerializer? serializer,
   }) {
     serializer ??= driftRuntimeOptions.defaultSerializer;
-    return Note(
+    return NoteRow(
       id: serializer.fromJson<String>(json['id']),
       userId: serializer.fromJson<String>(json['userId']),
       title: serializer.fromJson<String>(json['title']),
@@ -446,7 +446,7 @@ class Note extends DataClass implements Insertable<Note> {
     };
   }
 
-  Note copyWith({
+  NoteRow copyWith({
     String? id,
     String? userId,
     String? title,
@@ -459,7 +459,7 @@ class Note extends DataClass implements Insertable<Note> {
     int? syncStatus,
     Value<String?> remoteRev = const Value.absent(),
     Value<String?> baseJson = const Value.absent(),
-  }) => Note(
+  }) => NoteRow(
     id: id ?? this.id,
     userId: userId ?? this.userId,
     title: title ?? this.title,
@@ -473,8 +473,8 @@ class Note extends DataClass implements Insertable<Note> {
     remoteRev: remoteRev.present ? remoteRev.value : this.remoteRev,
     baseJson: baseJson.present ? baseJson.value : this.baseJson,
   );
-  Note copyWithCompanion(NotesCompanion data) {
-    return Note(
+  NoteRow copyWithCompanion(NotesCompanion data) {
+    return NoteRow(
       id: data.id.present ? data.id.value : this.id,
       userId: data.userId.present ? data.userId.value : this.userId,
       title: data.title.present ? data.title.value : this.title,
@@ -500,7 +500,7 @@ class Note extends DataClass implements Insertable<Note> {
 
   @override
   String toString() {
-    return (StringBuffer('Note(')
+    return (StringBuffer('NoteRow(')
           ..write('id: $id, ')
           ..write('userId: $userId, ')
           ..write('title: $title, ')
@@ -535,7 +535,7 @@ class Note extends DataClass implements Insertable<Note> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      (other is Note &&
+      (other is NoteRow &&
           other.id == this.id &&
           other.userId == this.userId &&
           other.title == this.title &&
@@ -550,7 +550,7 @@ class Note extends DataClass implements Insertable<Note> {
           other.baseJson == this.baseJson);
 }
 
-class NotesCompanion extends UpdateCompanion<Note> {
+class NotesCompanion extends UpdateCompanion<NoteRow> {
   final Value<String> id;
   final Value<String> userId;
   final Value<String> title;
@@ -596,7 +596,7 @@ class NotesCompanion extends UpdateCompanion<Note> {
   }) : id = Value(id),
        userId = Value(userId),
        updatedAt = Value(updatedAt);
-  static Insertable<Note> custom({
+  static Insertable<NoteRow> custom({
     Expression<String>? id,
     Expression<String>? userId,
     Expression<String>? title,
@@ -730,6 +730,7 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   _$AppDatabase(QueryExecutor e) : super(e);
   $AppDatabaseManager get managers => $AppDatabaseManager(this);
   late final $NotesTable notes = $NotesTable(this);
+  late final NotesDao notesDao = NotesDao(this as AppDatabase);
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
@@ -968,14 +969,14 @@ class $$NotesTableTableManager
         RootTableManager<
           _$AppDatabase,
           $NotesTable,
-          Note,
+          NoteRow,
           $$NotesTableFilterComposer,
           $$NotesTableOrderingComposer,
           $$NotesTableAnnotationComposer,
           $$NotesTableCreateCompanionBuilder,
           $$NotesTableUpdateCompanionBuilder,
-          (Note, BaseReferences<_$AppDatabase, $NotesTable, Note>),
-          Note,
+          (NoteRow, BaseReferences<_$AppDatabase, $NotesTable, NoteRow>),
+          NoteRow,
           PrefetchHooks Function()
         > {
   $$NotesTableTableManager(_$AppDatabase db, $NotesTable table)
@@ -1061,14 +1062,14 @@ typedef $$NotesTableProcessedTableManager =
     ProcessedTableManager<
       _$AppDatabase,
       $NotesTable,
-      Note,
+      NoteRow,
       $$NotesTableFilterComposer,
       $$NotesTableOrderingComposer,
       $$NotesTableAnnotationComposer,
       $$NotesTableCreateCompanionBuilder,
       $$NotesTableUpdateCompanionBuilder,
-      (Note, BaseReferences<_$AppDatabase, $NotesTable, Note>),
-      Note,
+      (NoteRow, BaseReferences<_$AppDatabase, $NotesTable, NoteRow>),
+      NoteRow,
       PrefetchHooks Function()
     >;
 
