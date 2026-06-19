@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'core/config/app_config.dart';
 import 'features/auth/presentation/cubit/auth_cubit.dart';
 import 'features/auth/presentation/widgets/auth_gate.dart';
 import 'injection/injection.dart';
 
 class ArchivoApp extends StatelessWidget {
-  const ArchivoApp({super.key});
+  const ArchivoApp({required this.config, super.key});
+
+  final AppConfig config;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +18,7 @@ class ArchivoApp extends StatelessWidget {
     return BlocProvider<AuthCubit>(
       create: (_) => getIt<AuthCubit>(),
       child: MaterialApp(
-        title: 'archivo',
+        title: config.appName,
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           useMaterial3: true,

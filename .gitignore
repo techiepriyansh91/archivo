@@ -43,3 +43,11 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# Android release signing — never commit keystores or their passwords.
+/android/key.properties
+**/*.jks
+**/*.keystore
+
+# Play Store service-account credentials (CI injects via secrets).
+play-service-account.json

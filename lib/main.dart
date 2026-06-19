@@ -1,13 +1,7 @@
-import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/material.dart';
+import 'bootstrap.dart';
+import 'core/config/app_config.dart';
 
-import 'app.dart';
-import 'firebase_options.dart';
-import 'injection/injection.dart';
-
-Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  await configureDependencies();
-  runApp(const ArchivoApp());
-}
+// Default entrypoint for a bare `flutter run` — uses the dev flavor. Prefer the
+// explicit per-flavor entrypoints (main_dev / main_staging / main_prod) with the
+// matching `--flavor`. Release builds always go through main_prod.dart.
+Future<void> main() => bootstrap(AppConfig.dev);
