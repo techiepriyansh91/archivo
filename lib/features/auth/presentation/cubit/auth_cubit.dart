@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer' as developer;
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -12,7 +13,20 @@ import 'auth_state.dart';
 /// sign-in/register/google operations only toggle submitting/error.
 class AuthCubit extends Cubit<AuthState> {
   AuthCubit(this._repository) : super(const AuthState.initial()) {
-    _sub = _repository.authStateChanges().listen(_onUserChanged);
+    _sub = _repository.authStateChanges().listen(
+      _onUserChanged,
+      onError: (Object e, StackTrace st) {
+        developer.log(
+          'auth stream error',
+          error: e,
+          stackTrace: st,
+          name: 'AuthCubit',
+        );
+        // Treat a stream failure as "no signed-in user" so the gate resolves
+        // to the login screen instead of hanging on the splash.
+        emit(state.copyWith(clearUser: true, resolved: true, clearError: true));
+      },
+    );
   }
 
   final AuthRepository _repository;
@@ -47,7 +61,13 @@ class AuthCubit extends Cubit<AuthState> {
     try {
       await action();
       emit(state.copyWith(isSubmitting: false));
-    } catch (e) {
+    } catch (e, st) {
+      developer.log(
+        'auth operation failed',
+        error: e,
+        stackTrace: st,
+        name: 'AuthCubit',
+      );
       emit(
         state.copyWith(
           isSubmitting: false,

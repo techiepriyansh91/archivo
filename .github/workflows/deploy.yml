@@ -1,15 +1,15 @@
 name: Deploy (Android → Play internal)
 
 # Builds a signed prod App Bundle and uploads it to the Play internal track.
-# Runs on pushes to main, or manually. Requires these repo secrets:
+# Manual-only for now (Actions tab → "Run workflow"). Once the secrets below and
+# the Firebase/Play setup are in place, add an `on: push` trigger to auto-deploy.
+# Requires these repo secrets:
 #   ANDROID_KEYSTORE_BASE64      base64 of the upload keystore (.jks)
 #   ANDROID_KEYSTORE_PASSWORD    store password
 #   ANDROID_KEY_PASSWORD         key password
 #   ANDROID_KEY_ALIAS            key alias (e.g. upload)
 #   PLAY_SERVICE_ACCOUNT_JSON    Play API service-account JSON (full contents)
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 jobs:
