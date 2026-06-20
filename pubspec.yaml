@@ -55,6 +55,7 @@ dependencies:
   lucide_icons: ^0.257.0
   local_auth: ^2.3.0
   shared_preferences: ^2.3.3
+  flutter_native_splash: ^2.4.1
 
 dev_dependencies:
   flutter_test:
@@ -71,6 +72,21 @@ dev_dependencies:
   mocktail: ^1.0.5
   bloc_test: ^10.0.0
   flutter_launcher_icons: ^0.14.3
+
+flutter_native_splash:
+  color: "#303094"
+  image: assets/icon/archivo_icon_withoutbackground.png
+  color_dark: "#303094"
+  image_dark: assets/icon/archivo_icon_withoutbackground.png
+  android_12:
+    image: assets/icon/archivo_icon_withoutbackground.png
+    icon_background_color: "#303094"
+    color: "#303094"
+    image_dark: assets/icon/archivo_icon_withoutbackground.png
+    icon_background_color_dark: "#303094"
+    color_dark: "#303094"
+  android: true
+  ios: true
 
 flutter_launcher_icons:
   android: "ic_launcher"
