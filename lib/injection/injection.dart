@@ -1,8 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
+import 'package:local_auth/local_auth.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:uuid/uuid.dart';
 
 import '../core/database/app_database.dart';
+import '../core/services/vault_lock_service.dart';
 import '../core/utils/clock.dart';
 import '../features/auth/data/firebase_auth_repository.dart';
 import '../features/auth/domain/repositories/auth_repository.dart';
@@ -16,19 +20,30 @@ import '../features/notes/domain/usecases/update_note.dart';
 import '../features/notes/domain/usecases/watch_notes.dart';
 import '../features/notes/presentation/cubit/notes_cubit.dart';
 
-/// Service locator. Slice 1 registers dependencies manually; migrate to
-/// `injectable` codegen once the graph grows (see docs/PLAN.md §1).
 final GetIt getIt = GetIt.instance;
 
-Future<void> configureDependencies() async {
-  // Core
+Future<void> configureDependencies({required SharedPreferences prefs}) async {
+  // Core infrastructure
   getIt
+    ..registerLazySingleton<SharedPreferences>(() => prefs)
+    ..registerLazySingleton<FlutterSecureStorage>(
+      () => const FlutterSecureStorage(),
+    )
+    ..registerLazySingleton<LocalAuthentication>(() => LocalAuthentication())
     ..registerLazySingleton<AppDatabase>(AppDatabase.new)
     ..registerLazySingleton<Clock>(() => const SystemClock())
     ..registerLazySingleton<Uuid>(() => const Uuid());
 
-  // Auth — Firebase (archivo-dev). Email/password works out of the box; Google
-  // sign-in also needs the Android SHA-1 registered in the Firebase console.
+  // Vault lock
+  getIt.registerLazySingleton<VaultLockService>(
+    () => VaultLockService(
+      prefs: getIt(),
+      secureStorage: getIt(),
+      localAuth: getIt(),
+    ),
+  );
+
+  // Auth
   getIt
     ..registerLazySingleton<FirebaseAuth>(() => FirebaseAuth.instance)
     ..registerLazySingleton<AuthRepository>(
@@ -66,6 +81,6 @@ Future<void> configureDependencies() async {
     ),
   );
 
-  // Auth presentation — single app-lifetime cubit driving the auth gate.
+  // Auth presentation — singleton drives the auth gate
   getIt.registerLazySingleton(() => AuthCubit(getIt()));
 }

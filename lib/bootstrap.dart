@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'app.dart';
 import 'core/config/app_config.dart';
@@ -9,8 +10,6 @@ import 'firebase_options_staging.dart' as staging_options;
 import 'injection/injection.dart';
 
 /// Shared startup path for every flavor entrypoint (`main_<flavor>.dart`).
-/// Each flavor initializes Firebase against its own project — dev/staging/prod
-/// are completely isolated environments (auth, Firestore, Storage).
 Future<void> bootstrap(AppConfig config) async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -21,6 +20,9 @@ Future<void> bootstrap(AppConfig config) async {
   };
 
   await Firebase.initializeApp(options: firebaseOptions);
-  await configureDependencies();
+
+  final prefs = await SharedPreferences.getInstance();
+  await configureDependencies(prefs: prefs);
+
   runApp(ArchivoApp(config: config));
 }

@@ -5,23 +5,24 @@ import 'package:lucide_icons/lucide_icons.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../cubit/auth_cubit.dart';
 import '../cubit/auth_state.dart';
-import 'sign_up_page.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class SignUpPage extends StatefulWidget {
+  const SignUpPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<SignUpPage> createState() => _SignUpPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _SignUpPageState extends State<SignUpPage> {
   final _formKey = GlobalKey<FormState>();
+  final _name = TextEditingController();
   final _email = TextEditingController();
   final _password = TextEditingController();
   bool _obscure = true;
 
   @override
   void dispose() {
+    _name.dispose();
     _email.dispose();
     _password.dispose();
     super.dispose();
@@ -29,7 +30,7 @@ class _LoginPageState extends State<LoginPage> {
 
   void _submit() {
     if (!_formKey.currentState!.validate()) return;
-    context.read<AuthCubit>().signInWithEmail(
+    context.read<AuthCubit>().register(
           _email.text.trim(),
           _password.text,
         );
@@ -46,20 +47,24 @@ class _LoginPageState extends State<LoginPage> {
           final busy = state.isSubmitting;
           return Column(
             children: [
-              // Indigo header (~35% of screen)
+              // Indigo header
               Container(
                 width: double.infinity,
                 color: AppColors.primaryContainer,
                 padding: const EdgeInsets.fromLTRB(24, 64, 24, 32),
                 child: Column(
                   children: [
-                    // App icon squircle
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(20),
-                      child: Image.asset(
-                        'assets/icon/app_icon.png',
-                        width: 72,
-                        height: 72,
+                    Container(
+                      width: 72,
+                      height: 72,
+                      decoration: BoxDecoration(
+                        color: Colors.white.withValues(alpha: 0.15),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: const Icon(
+                        LucideIcons.folderLock,
+                        color: Colors.white,
+                        size: 36,
                       ),
                     ),
                     const SizedBox(height: 16),
@@ -74,7 +79,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      'Your secure knowledge vault.',
+                      'Secure knowledge architecture.',
                       style: TextStyle(
                         color: Colors.white.withValues(alpha: 0.75),
                         fontSize: 13,
@@ -84,7 +89,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
 
-              // White card body
+              // Form body
               Expanded(
                 child: SingleChildScrollView(
                   padding: const EdgeInsets.fromLTRB(24, 28, 24, 24),
@@ -94,23 +99,47 @@ class _LoginPageState extends State<LoginPage> {
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
                         Text(
-                          'Welcome Back',
+                          'Create Vault Account',
                           style: tt.headlineSmall?.copyWith(
                             fontWeight: FontWeight.w700,
                           ),
                         ),
                         const SizedBox(height: 6),
                         Text(
-                          'Please enter your credentials to access your archive.',
+                          'Initialize your encrypted environment.',
                           style: tt.bodyMedium?.copyWith(
                             color: AppColors.onSurfaceVariant,
                           ),
                         ),
                         const SizedBox(height: 24),
 
+                        // Full name
+                        Text(
+                          'Full Name',
+                          style: tt.labelLarge?.copyWith(
+                            color: AppColors.onSurface,
+                          ),
+                        ),
+                        const SizedBox(height: 6),
+                        TextFormField(
+                          controller: _name,
+                          enabled: !busy,
+                          textInputAction: TextInputAction.next,
+                          textCapitalization: TextCapitalization.words,
+                          decoration: const InputDecoration(
+                            hintText: 'Enter your full name',
+                            prefixIcon: Icon(LucideIcons.user, size: 18),
+                          ),
+                          validator: (v) =>
+                              (v == null || v.trim().isEmpty)
+                                  ? 'Enter your name'
+                                  : null,
+                        ),
+                        const SizedBox(height: 14),
+
                         // Email
                         Text(
-                          'Email',
+                          'Email Address',
                           style: tt.labelLarge?.copyWith(
                             color: AppColors.onSurface,
                           ),
@@ -122,8 +151,8 @@ class _LoginPageState extends State<LoginPage> {
                           keyboardType: TextInputType.emailAddress,
                           textInputAction: TextInputAction.next,
                           decoration: const InputDecoration(
-                            hintText: 'name@example.com',
-                            prefixIcon: Icon(LucideIcons.mail, size: 18),
+                            hintText: 'name@vault.com',
+                            prefixIcon: Icon(LucideIcons.atSign, size: 18),
                           ),
                           validator: (v) =>
                               (v == null || !v.contains('@'))
@@ -132,33 +161,12 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                         const SizedBox(height: 14),
 
-                        // Password
-                        Row(
-                          children: [
-                            Text(
-                              'Password',
-                              style: tt.labelLarge?.copyWith(
-                                color: AppColors.onSurface,
-                              ),
-                            ),
-                            const Spacer(),
-                            TextButton(
-                              onPressed: busy ? null : () {},
-                              style: TextButton.styleFrom(
-                                padding: EdgeInsets.zero,
-                                minimumSize: Size.zero,
-                                tapTargetSize:
-                                    MaterialTapTargetSize.shrinkWrap,
-                              ),
-                              child: Text(
-                                'Forgot?',
-                                style: tt.labelMedium?.copyWith(
-                                  color: AppColors.primary,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
-                            ),
-                          ],
+                        // Master Password
+                        Text(
+                          'Master Password',
+                          style: tt.labelLarge?.copyWith(
+                            color: AppColors.onSurface,
+                          ),
                         ),
                         const SizedBox(height: 6),
                         TextFormField(
@@ -168,7 +176,7 @@ class _LoginPageState extends State<LoginPage> {
                           textInputAction: TextInputAction.done,
                           onFieldSubmitted: (_) => busy ? null : _submit(),
                           decoration: InputDecoration(
-                            hintText: '••••••••',
+                            hintText: '••••••••••••',
                             prefixIcon:
                                 const Icon(LucideIcons.lock, size: 18),
                             suffixIcon: IconButton(
@@ -199,7 +207,7 @@ class _LoginPageState extends State<LoginPage> {
                         ],
                         const SizedBox(height: 20),
 
-                        // Sign In button
+                        // Create Account button
                         FilledButton(
                           onPressed: busy ? null : _submit,
                           child: busy
@@ -215,7 +223,7 @@ class _LoginPageState extends State<LoginPage> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(
-                                      'Sign In',
+                                      'Create Account',
                                       style: TextStyle(
                                         fontSize: 15,
                                         fontWeight: FontWeight.w600,
@@ -228,7 +236,7 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                         const SizedBox(height: 16),
 
-                        // OR divider
+                        // AUTHORIZED VIA divider
                         Row(
                           children: [
                             const Expanded(
@@ -239,7 +247,7 @@ class _LoginPageState extends State<LoginPage> {
                                 horizontal: 12,
                               ),
                               child: Text(
-                                'OR CONTINUE WITH',
+                                'AUTHORIZED VIA',
                                 style: tt.labelSmall?.copyWith(
                                   color: AppColors.onSurfaceVariant,
                                   letterSpacing: 1.0,
@@ -268,7 +276,6 @@ class _LoginPageState extends State<LoginPage> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              // Google G
                               Container(
                                 width: 22,
                                 height: 22,
@@ -289,7 +296,7 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                               const SizedBox(width: 10),
                               const Text(
-                                'Google',
+                                'Continue with Google',
                                 style: TextStyle(
                                   fontSize: 15,
                                   fontWeight: FontWeight.w500,
@@ -300,7 +307,6 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                         const SizedBox(height: 16),
 
-                        // Compliance
                         Text(
                           'By continuing, you agree to our Privacy Policy and Terms of Service.',
                           textAlign: TextAlign.center,
@@ -314,29 +320,22 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
 
-              // Sign up link
+              // Sign in link
               Padding(
                 padding: const EdgeInsets.fromLTRB(24, 0, 24, 24),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "Don't have an account? ",
+                      'Already have an account? ',
                       style: tt.bodyMedium?.copyWith(
                         color: AppColors.onSurfaceVariant,
                       ),
                     ),
                     GestureDetector(
-                      onTap: () => Navigator.of(context).push(
-                        MaterialPageRoute<void>(
-                          builder: (_) => BlocProvider.value(
-                            value: context.read<AuthCubit>(),
-                            child: const SignUpPage(),
-                          ),
-                        ),
-                      ),
+                      onTap: () => Navigator.of(context).pop(),
                       child: Text(
-                        'Sign Up',
+                        'Sign In',
                         style: tt.bodyMedium?.copyWith(
                           color: AppColors.primary,
                           fontWeight: FontWeight.w700,
