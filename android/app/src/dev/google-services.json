@@ -12,7 +12,12 @@
           "package_name": "com.example.archivo"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "411952032579-u3qasm46h46an31buunbn3jvk6hj11ks.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyCOnTSKgOut0UBJp2x3NI1c_MDEna_bpRs"
@@ -20,7 +25,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "411952032579-u3qasm46h46an31buunbn3jvk6hj11ks.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "411952032579-a73s83i9o0ccav4fho4qjj7uquq1de6g.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.archivo"
+              }
+            }
+          ]
         }
       }
     },
@@ -31,7 +48,12 @@
           "package_name": "com.priyanshu.archivo"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "411952032579-u3qasm46h46an31buunbn3jvk6hj11ks.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyCOnTSKgOut0UBJp2x3NI1c_MDEna_bpRs"
@@ -39,7 +61,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "411952032579-u3qasm46h46an31buunbn3jvk6hj11ks.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "411952032579-a73s83i9o0ccav4fho4qjj7uquq1de6g.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.archivo"
+              }
+            }
+          ]
         }
       }
     },
@@ -50,7 +84,12 @@
           "package_name": "com.priyanshu.archivo.dev"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "411952032579-u3qasm46h46an31buunbn3jvk6hj11ks.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyCOnTSKgOut0UBJp2x3NI1c_MDEna_bpRs"
@@ -58,7 +97,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "411952032579-u3qasm46h46an31buunbn3jvk6hj11ks.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "411952032579-a73s83i9o0ccav4fho4qjj7uquq1de6g.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.archivo"
+              }
+            }
+          ]
         }
       }
     }

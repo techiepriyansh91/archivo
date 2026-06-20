@@ -12,7 +12,12 @@
           "package_name": "com.priyanshu.archivo.staging"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "920760796043-t6v57odfshjl4oljcptp4ooc462idovb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyDcC9x7vj35NIWB2j8L6rD5PfNjoU4_hko"
@@ -20,7 +25,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "920760796043-t6v57odfshjl4oljcptp4ooc462idovb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
