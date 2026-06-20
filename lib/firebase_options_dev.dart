@@ -51,7 +51,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyCOnTSKgOut0UBJp2x3NI1c_MDEna_bpRs',
-    appId: '1:411952032579:android:e1692a0d999ca0d4cf9df6',
+    appId: '1:411952032579:android:1c32ee87637e4367cf9df6',
     messagingSenderId: '411952032579',
     projectId: 'archivo-dev',
     storageBucket: 'archivo-dev.firebasestorage.app',
@@ -63,6 +63,6 @@ class DefaultFirebaseOptions {
     messagingSenderId: '411952032579',
     projectId: 'archivo-dev',
     storageBucket: 'archivo-dev.firebasestorage.app',
-    iosBundleId: 'com.example.archivo',
+    iosBundleId: 'com.priyanshu.archivo.dev',
   );
 }

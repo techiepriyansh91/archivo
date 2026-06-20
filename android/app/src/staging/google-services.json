@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "REPLACE_WITH_STAGING_PROJECT_NUMBER",
+    "project_number": "920760796043",
     "project_id": "archivo-staging",
     "storage_bucket": "archivo-staging.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "REPLACE_WITH_STAGING_ANDROID_APP_ID",
+        "mobilesdk_app_id": "1:920760796043:android:3e73a39d3f2617ef65a58e",
         "android_client_info": {
           "package_name": "com.priyanshu.archivo.staging"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "REPLACE_WITH_STAGING_API_KEY"
+          "current_key": "AIzaSyDcC9x7vj35NIWB2j8L6rD5PfNjoU4_hko"
         }
       ],
       "services": {

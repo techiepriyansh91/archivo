@@ -4,17 +4,17 @@
       "android": {
         "dev": {
           "projectId": "archivo-dev",
-          "appId": "1:411952032579:android:e1692a0d999ca0d4cf9df6",
+          "appId": "1:411952032579:android:1c32ee87637e4367cf9df6",
           "fileOutput": "android/app/src/dev/google-services.json"
         },
         "staging": {
           "projectId": "archivo-staging",
-          "appId": "REPLACE_WITH_STAGING_ANDROID_APP_ID",
+          "appId": "1:920760796043:android:3e73a39d3f2617ef65a58e",
           "fileOutput": "android/app/src/staging/google-services.json"
         },
         "prod": {
           "projectId": "archivo-prod",
-          "appId": "REPLACE_WITH_PROD_ANDROID_APP_ID",
+          "appId": "1:867450785730:android:02ae9eead48af25bba105b",
           "fileOutput": "android/app/src/prod/google-services.json"
         }
       },
@@ -30,17 +30,21 @@
         "lib/firebase_options_dev.dart": {
           "projectId": "archivo-dev",
           "configurations": {
-            "android": "1:411952032579:android:e1692a0d999ca0d4cf9df6",
+            "android": "1:411952032579:android:1c32ee87637e4367cf9df6",
             "ios": "1:411952032579:ios:1617e688e210b5cfcf9df6"
           }
         },
         "lib/firebase_options_staging.dart": {
           "projectId": "archivo-staging",
-          "configurations": {}
+          "configurations": {
+            "android": "1:920760796043:android:3e73a39d3f2617ef65a58e"
+          }
         },
         "lib/firebase_options_prod.dart": {
           "projectId": "archivo-prod",
-          "configurations": {}
+          "configurations": {
+            "android": "1:867450785730:android:02ae9eead48af25bba105b"
+          }
         }
       }
     }

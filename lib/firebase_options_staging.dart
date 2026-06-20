@@ -1,8 +1,3 @@
-// TODO: replace by running:
-//   dart pub global activate flutterfire_cli
-//   flutterfire configure -p archivo-staging \
-//     --out lib/firebase_options_staging.dart \
-//     --android-package-name com.priyanshu.archivo.staging
 // ignore_for_file: type=lint
 import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
 import 'package:flutter/foundation.dart'
@@ -21,19 +16,19 @@ class DefaultFirebaseOptions {
     }
   }
 
-  // Placeholder — replace with real values from archivo-staging via flutterfire configure.
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'REPLACE_WITH_STAGING_API_KEY',
-    appId: 'REPLACE_WITH_STAGING_ANDROID_APP_ID',
-    messagingSenderId: 'REPLACE_WITH_STAGING_SENDER_ID',
+    apiKey: 'AIzaSyDcC9x7vj35NIWB2j8L6rD5PfNjoU4_hko',
+    appId: '1:920760796043:android:3e73a39d3f2617ef65a58e',
+    messagingSenderId: '920760796043',
     projectId: 'archivo-staging',
     storageBucket: 'archivo-staging.firebasestorage.app',
   );
 
+  // TODO: add iOS app to archivo-staging in Firebase Console, then update this.
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'REPLACE_WITH_STAGING_IOS_API_KEY',
+    apiKey: 'AIzaSyDcC9x7vj35NIWB2j8L6rD5PfNjoU4_hko',
     appId: 'REPLACE_WITH_STAGING_IOS_APP_ID',
-    messagingSenderId: 'REPLACE_WITH_STAGING_SENDER_ID',
+    messagingSenderId: '920760796043',
     projectId: 'archivo-staging',
     storageBucket: 'archivo-staging.firebasestorage.app',
     iosBundleId: 'com.priyanshu.archivo.staging',

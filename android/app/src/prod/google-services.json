@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "REPLACE_WITH_PROD_PROJECT_NUMBER",
+    "project_number": "867450785730",
     "project_id": "archivo-prod",
     "storage_bucket": "archivo-prod.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "REPLACE_WITH_PROD_ANDROID_APP_ID",
+        "mobilesdk_app_id": "1:867450785730:android:02ae9eead48af25bba105b",
         "android_client_info": {
           "package_name": "com.priyanshu.archivo"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "REPLACE_WITH_PROD_API_KEY"
+          "current_key": "AIzaSyANKNS2VBmWVLIr8knzDe4zldU84bE_xkQ"
         }
       ],
       "services": {

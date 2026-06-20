@@ -1,8 +1,3 @@
-// TODO: replace by running:
-//   dart pub global activate flutterfire_cli
-//   flutterfire configure -p archivo-prod \
-//     --out lib/firebase_options_prod.dart \
-//     --android-package-name com.priyanshu.archivo
 // ignore_for_file: type=lint
 import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
 import 'package:flutter/foundation.dart'
@@ -21,19 +16,19 @@ class DefaultFirebaseOptions {
     }
   }
 
-  // Placeholder — replace with real values from archivo-prod via flutterfire configure.
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'REPLACE_WITH_PROD_API_KEY',
-    appId: 'REPLACE_WITH_PROD_ANDROID_APP_ID',
-    messagingSenderId: 'REPLACE_WITH_PROD_SENDER_ID',
+    apiKey: 'AIzaSyANKNS2VBmWVLIr8knzDe4zldU84bE_xkQ',
+    appId: '1:867450785730:android:02ae9eead48af25bba105b',
+    messagingSenderId: '867450785730',
     projectId: 'archivo-prod',
     storageBucket: 'archivo-prod.firebasestorage.app',
   );
 
+  // TODO: add iOS app to archivo-prod in Firebase Console, then update this.
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'REPLACE_WITH_PROD_IOS_API_KEY',
+    apiKey: 'AIzaSyANKNS2VBmWVLIr8knzDe4zldU84bE_xkQ',
     appId: 'REPLACE_WITH_PROD_IOS_APP_ID',
-    messagingSenderId: 'REPLACE_WITH_PROD_SENDER_ID',
+    messagingSenderId: '867450785730',
     projectId: 'archivo-prod',
     storageBucket: 'archivo-prod.firebasestorage.app',
     iosBundleId: 'com.priyanshu.archivo',
