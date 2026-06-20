@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "920760796043-vvi3ml8sbvmfqa5ifpmnqasvo9tdekqe.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.priyanshu.archivo.staging",
+            "certificate_hash": "981e4716a091626477ceecf2d84cf70cac41de32"
+          }
+        },
+        {
           "client_id": "920760796043-t6v57odfshjl4oljcptp4ooc462idovb.apps.googleusercontent.com",
           "client_type": 3
         }
