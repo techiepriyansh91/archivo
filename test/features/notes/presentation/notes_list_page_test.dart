@@ -53,13 +53,13 @@ void main() {
     await tester.pumpWidget(harness());
     await tester.pumpAndSettle();
 
-    expect(find.textContaining('No notes yet'), findsOneWidget);
+    expect(find.textContaining('Your vault is empty'), findsOneWidget);
 
     await repo.createNote(title: 'My note', body: 'hello');
     await tester.pumpAndSettle();
 
     expect(find.text('My note'), findsOneWidget);
-    expect(find.textContaining('No notes yet'), findsNothing);
+    expect(find.textContaining('Your vault is empty'), findsNothing);
   });
 
   testWidgets('archiving a note removes it from the active list', (
@@ -74,6 +74,6 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text('Archive me'), findsNothing);
-    expect(find.textContaining('No notes yet'), findsOneWidget);
+    expect(find.textContaining('Your vault is empty'), findsOneWidget);
   });
 }
