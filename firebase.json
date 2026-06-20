@@ -1,1 +1,48 @@
-{"flutter":{"platforms":{"android":{"default":{"projectId":"archivo-dev","appId":"1:411952032579:android:e1692a0d999ca0d4cf9df6","fileOutput":"android/app/google-services.json"}},"ios":{"default":{"projectId":"archivo-dev","appId":"1:411952032579:ios:1617e688e210b5cfcf9df6","uploadDebugSymbols":false,"fileOutput":"ios/Runner/GoogleService-Info.plist"}},"dart":{"lib/firebase_options.dart":{"projectId":"archivo-dev","configurations":{"android":"1:411952032579:android:e1692a0d999ca0d4cf9df6","ios":"1:411952032579:ios:1617e688e210b5cfcf9df6"}}}}}}
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "dev": {
+          "projectId": "archivo-dev",
+          "appId": "1:411952032579:android:e1692a0d999ca0d4cf9df6",
+          "fileOutput": "android/app/src/dev/google-services.json"
+        },
+        "staging": {
+          "projectId": "archivo-staging",
+          "appId": "REPLACE_WITH_STAGING_ANDROID_APP_ID",
+          "fileOutput": "android/app/src/staging/google-services.json"
+        },
+        "prod": {
+          "projectId": "archivo-prod",
+          "appId": "REPLACE_WITH_PROD_ANDROID_APP_ID",
+          "fileOutput": "android/app/src/prod/google-services.json"
+        }
+      },
+      "ios": {
+        "dev": {
+          "projectId": "archivo-dev",
+          "appId": "1:411952032579:ios:1617e688e210b5cfcf9df6",
+          "uploadDebugSymbols": false,
+          "fileOutput": "ios/Runner/GoogleService-Info.plist"
+        }
+      },
+      "dart": {
+        "lib/firebase_options_dev.dart": {
+          "projectId": "archivo-dev",
+          "configurations": {
+            "android": "1:411952032579:android:e1692a0d999ca0d4cf9df6",
+            "ios": "1:411952032579:ios:1617e688e210b5cfcf9df6"
+          }
+        },
+        "lib/firebase_options_staging.dart": {
+          "projectId": "archivo-staging",
+          "configurations": {}
+        },
+        "lib/firebase_options_prod.dart": {
+          "projectId": "archivo-prod",
+          "configurations": {}
+        }
+      }
+    }
+  }
+}
