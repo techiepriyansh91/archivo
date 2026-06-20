@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Archivo - Secure Vault</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed-dim": "#e6c278",
+                    "on-primary-fixed": "#08006c",
+                    "on-tertiary-fixed": "#1b1c1a",
+                    "on-secondary-fixed-variant": "#5b4302",
+                    "surface-dim": "#dcd9e2",
+                    "secondary": "#755a1a",
+                    "surface-variant": "#e4e1ea",
+                    "inverse-primary": "#c1c1ff",
+                    "on-tertiary-fixed-variant": "#464744",
+                    "surface-container": "#f0ecf6",
+                    "secondary-container": "#fed88b",
+                    "on-error-container": "#93000a",
+                    "tertiary": "#282927",
+                    "on-tertiary": "#ffffff",
+                    "on-surface-variant": "#464652",
+                    "tertiary-fixed-dim": "#c7c7c3",
+                    "background": "#fcf8ff",
+                    "primary-fixed": "#e1dfff",
+                    "on-surface": "#1b1b21",
+                    "surface-container-highest": "#e4e1ea",
+                    "on-primary-fixed-variant": "#39399d",
+                    "on-secondary-fixed": "#261a00",
+                    "surface-bright": "#fcf8ff",
+                    "outline-variant": "#c7c5d4",
+                    "surface-container-lowest": "#ffffff",
+                    "inverse-on-surface": "#f3eff8",
+                    "error-container": "#ffdad6",
+                    "surface": "#fcf8ff",
+                    "outline": "#777683",
+                    "on-secondary-container": "#785d1d",
+                    "secondary-fixed": "#ffdf9f",
+                    "on-background": "#1b1b21",
+                    "on-primary-container": "#9fa1ff",
+                    "surface-container-high": "#eae7f0",
+                    "surface-container-low": "#f6f2fb",
+                    "on-primary": "#ffffff",
+                    "surface-tint": "#5153b6",
+                    "tertiary-fixed": "#e3e2df",
+                    "on-tertiary-container": "#aaaaa7",
+                    "primary-fixed-dim": "#c1c1ff",
+                    "inverse-surface": "#303037",
+                    "tertiary-container": "#3e3f3c",
+                    "error": "#ba1a1a",
+                    "on-secondary": "#ffffff",
+                    "primary-container": "#303094",
+                    "primary": "#17137f",
+                    "on-error": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "lg": "24px",
+                    "gutter": "16px",
+                    "xs": "4px",
+                    "base": "4px",
+                    "md": "16px",
+                    "sm": "8px",
+                    "xl": "32px",
+                    "margin-mobile": "20px"
+            },
+            "fontFamily": {
+                    "title-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "label-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "headline-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "title-lg": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "label-md": ["11px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "label-lg": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+
+        @keyframes fade-in-up {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse-gentle {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.02); opacity: 0.9; }
+        }
+
+        .animate-fade-in-up {
+            animation: fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .animate-pulse-gentle {
+            animation: pulse-gentle 4s ease-in-out infinite;
+        }
+
+        .splash-overlay {
+            background: linear-gradient(180deg, rgba(48, 48, 148, 0) 0%, rgba(23, 19, 127, 0.4) 100%);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased overflow-hidden">
+<!-- Splash Screen Main Canvas -->
+<!-- The Splash Screen is a Transactional/Success-like state, so TopAppBar and BottomNavBar are suppressed as per UI shell rules. -->
+<main class="relative h-screen w-full flex flex-col items-center justify-center bg-primary-container overflow-hidden">
+<!-- Subtle Atmospheric Gradient Layer -->
+<div class="absolute inset-0 splash-overlay pointer-events-none"></div>
+<!-- Content Container -->
+<div class="relative z-10 flex flex-col items-center justify-center space-y-md animate-fade-in-up">
+<!-- Branding Icon -->
+<div class="relative w-48 h-48 md:w-64 md:h-64 mb-gutter flex items-center justify-center animate-pulse-gentle">
+<!-- Large Scaled Archivo Icon -->
+<img alt="Archivo Logo" class="w-full h-full object-contain filter drop-shadow-xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJnOYzsBPN4ZD1ydcrYLYdnUiQTBJtuNb7kWJVy8d2s3TPbMl7A2rA-x1HCy_l_r3DLJHOzmUIscP5nUbzD-gXlb5lY0gPcs6-k7vxL4LK1N7LyLj6x7lsRbz5ZWT9GQdv4cJFppAf6ZGdLUgAgNMQ2wfKqR8dYghg5Hw2rNZtzcVC7GhVeoca_BGJSOQwgMeMQg_d49xEgSFf569iFj1ONB3ier1R271KJ_DN5mR3Q1gEB40xghr_FB_-S1v20qNy-zmytsNmc08"/>
+</div>
+<!-- Wordmark Section -->
+<div class="text-center">
+<h1 class="font-headline-lg text-headline-lg text-on-primary tracking-tight font-extrabold">
+                    Archivo
+                </h1>
+<!-- Semantic spacing for vertical rhythm -->
+<p class="mt-xs font-label-lg text-label-lg text-on-primary/60 uppercase tracking-[0.2em]">
+                    Secure Personal Vault
+                </p>
+</div>
+</div>
+<!-- Loading Indicator / Micro-interaction -->
+<div class="absolute bottom-16 flex flex-col items-center space-y-sm">
+<div class="w-12 h-[2px] bg-on-primary/20 rounded-full overflow-hidden">
+<div class="h-full bg-on-primary w-0 transition-all duration-[3000ms] ease-out" id="progress-bar"></div>
+</div>
+</div>
+<!-- Background Aesthetic Elements (Geometric Twists) -->
+<div class="absolute -top-24 -left-24 w-96 h-96 bg-primary/20 rounded-full blur-3xl pointer-events-none"></div>
+<div class="absolute -bottom-24 -right-24 w-96 h-96 bg-surface-tint/20 rounded-full blur-3xl pointer-events-none"></div>
+</main>
+<script>
+        // Micro-interaction: Progress bar simulation for splash transition
+        window.addEventListener('DOMContentLoaded', () => {
+            const progressBar = document.getElementById('progress-bar');
+            if (progressBar) {
+                // Trigger animation after a small delay
+                setTimeout(() => {
+                    progressBar.style.width = '100%';
+                }, 100);
+            }
+        });
+
+        // Subtle parallax or cursor effect could be added here for extra polish
+        document.addEventListener('mousemove', (e) => {
+            const x = (e.clientX / window.innerWidth) - 0.5;
+            const y = (e.clientY / window.innerHeight) - 0.5;
+            const logo = document.querySelector('img');
+            if (logo) {
+                logo.style.transform = `translate(${x * 20}px, ${y * 20}px)`;
+            }
+        });
+    </script>
+</body></html>

@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .waveform-bar {
+            transition: height 0.1s ease-in-out;
+        }
+        @keyframes pulse-ring {
+            0% { transform: scale(0.8); opacity: 0.5; }
+            100% { transform: scale(1.4); opacity: 0; }
+        }
+        .animate-pulse-ring {
+            animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        .spinner {
+            border: 2px solid rgba(0, 0, 0, 0.1);
+            border-left-color: #17137f;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        .sparkle {
+            animation: sparkle-anim 1.5s ease-in-out infinite;
+        }
+        @keyframes sparkle-anim {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.2); opacity: 0.7; }
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary": "#17137f",
+                      "on-primary": "#ffffff",
+                      "on-surface": "#1b1b21",
+                      "on-error": "#ffffff",
+                      "surface-container-highest": "#e4e1ea",
+                      "error": "#ba1a1a",
+                      "primary-container": "#303094",
+                      "surface-tint": "#5153b6",
+                      "on-primary-fixed": "#08006c",
+                      "on-tertiary-fixed-variant": "#464744",
+                      "on-secondary-fixed": "#261a00",
+                      "tertiary-fixed-dim": "#c7c7c3",
+                      "secondary-fixed-dim": "#e6c278",
+                      "on-secondary": "#ffffff",
+                      "on-primary-fixed-variant": "#39399d",
+                      "surface-container": "#f0ecf6",
+                      "surface": "#fcf8ff",
+                      "tertiary-fixed": "#e3e2df",
+                      "surface-container-low": "#f6f2fb",
+                      "primary-fixed": "#e1dfff",
+                      "inverse-on-surface": "#f3eff8",
+                      "primary-fixed-dim": "#c1c1ff",
+                      "surface-dim": "#dcd9e2",
+                      "outline-variant": "#c7c5d4",
+                      "surface-variant": "#e4e1ea",
+                      "on-secondary-container": "#785d1d",
+                      "surface-container-lowest": "#ffffff",
+                      "on-tertiary-container": "#aaaaa7",
+                      "on-surface-variant": "#464652",
+                      "on-secondary-fixed-variant": "#5b4302",
+                      "on-primary-container": "#9fa1ff",
+                      "on-error-container": "#93000a",
+                      "on-background": "#1b1b21",
+                      "error-container": "#ffdad6",
+                      "background": "#fcf8ff",
+                      "tertiary": "#282927",
+                      "surface-bright": "#fcf8ff",
+                      "on-tertiary-fixed": "#1b1c1a",
+                      "inverse-surface": "#303037",
+                      "secondary": "#755a1a",
+                      "outline": "#777683",
+                      "secondary-fixed": "#ffdf9f",
+                      "tertiary-container": "#3e3f3c",
+                      "surface-container-high": "#eae7f0",
+                      "secondary-container": "#fed88b",
+                      "inverse-primary": "#c1c1ff",
+                      "on-tertiary": "#ffffff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "xs": "4px",
+                      "md": "16px",
+                      "margin-mobile": "20px",
+                      "lg": "24px",
+                      "xl": "32px",
+                      "sm": "8px",
+                      "base": "4px",
+                      "gutter": "16px"
+              },
+              "fontFamily": {
+                      "title-lg": ["Inter"],
+                      "headline-sm": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "label-md": ["Inter"],
+                      "label-lg": ["Inter"],
+                      "body-md": ["Inter"],
+                      "body-lg": ["Inter"]
+              },
+              "fontSize": {
+                      "title-lg": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                      "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "label-md": ["11px", {"lineHeight": "16px", "fontWeight": "500"}],
+                      "label-lg": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body-md text-on-surface">
+<!-- Top App Bar -->
+<header class="bg-surface w-full top-0 sticky flex justify-between items-center px-margin-mobile py-md w-full max-w-full z-50">
+<div class="flex items-center gap-3 cursor-pointer active:scale-95 duration-150">
+<span class="material-symbols-outlined text-primary font-headline-sm text-headline-sm">security</span>
+<h1 class="font-headline-sm text-headline-sm font-bold tracking-tight text-primary">Archivo</h1>
+</div>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-container cursor-pointer active:scale-95 duration-150">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a person with a warm, approachable expression, set against a soft blurred office background. The lighting is natural and bright, matching a light-mode corporate aesthetic. High resolution and modern styling with deep blue accents in their attire to complement the Indigo brand colors." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcTChAP7kfgCF1dFV5oX7SfnRoMf1zxmqLeAHIFxjy86B40YQOdkiKT5JcF-88HMojFMq1WeqVJK6g0mIHmRCkHyKiIDHPePI4EjUND8aJOpBkmw2HkOICISKzqlimpqRGbADb_21UKqcHtFu9W-qGwIPIZYJ1c70ki1d4uVzoZD41U6epFfC8JXKwy2GwGEBCYVTl2eZAcsJ5jToGgpdEGEr0arBOP1Q5tHxj1OtR_ZJbqnoKWyRc_T5m5iDn8DPhfpUTYi4jZho"/>
+</div>
+</header>
+<main class="min-h-[calc(100vh-140px)] flex flex-col items-center justify-center px-margin-mobile pb-24">
+<!-- Transcription State (Hidden by default) -->
+<div class="hidden fixed inset-0 z-40 bg-surface/90 backdrop-blur-sm flex flex-col items-center justify-center transition-opacity duration-300" id="transcription-overlay">
+<div class="flex flex-col items-center gap-4">
+<div class="relative">
+<div class="spinner"></div>
+<span class="material-symbols-outlined absolute -top-2 -right-2 text-secondary sparkle text-xl" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+<p class="font-headline-sm text-headline-sm text-primary">Transcribing...</p>
+<p class="font-label-lg text-label-lg text-on-surface-variant max-w-[200px] text-center">Analyzing your voice note for semantic indexing</p>
+</div>
+</div>
+<!-- Recording Interface -->
+<div class="w-full max-w-md flex flex-col items-center gap-12" id="recording-interface">
+<!-- Metadata/Title -->
+<div class="text-center space-y-1">
+<p class="font-label-lg text-label-lg text-secondary-container uppercase tracking-widest bg-secondary px-3 py-1 rounded-full inline-block mb-2">New Entry</p>
+<h2 class="font-headline-lg text-headline-lg text-primary">Product Vision Sync</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">October 24, 2023 • Vault B</p>
+</div>
+<!-- Waveform Visualization -->
+<div class="w-full h-40 flex items-center justify-center gap-[3px] px-4 overflow-hidden" id="waveform-container">
+<!-- Generated by JS -->
+</div>
+<!-- Timer -->
+<div class="text-center">
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tighter tabular-nums" id="timer-display">03:42</h1>
+<p class="font-label-md text-label-md text-on-surface-variant mt-1">RECORDING LIVE</p>
+</div>
+<!-- Main Control -->
+<div class="relative flex items-center justify-center">
+<!-- Pulse Effect -->
+<div class="absolute w-24 h-24 bg-primary/10 rounded-full animate-pulse-ring"></div>
+<div class="absolute w-24 h-24 bg-primary/20 rounded-full animate-pulse-ring" style="animation-delay: 0.5s;"></div>
+<button class="relative z-10 w-24 h-24 bg-primary text-on-primary rounded-full flex items-center justify-center shadow-lg active:scale-95 transition-all duration-150 cursor-pointer" id="record-btn">
+<span class="material-symbols-outlined text-4xl" id="mic-icon" style="font-variation-settings: 'FILL' 1;">mic</span>
+<span class="material-symbols-outlined text-4xl hidden" id="stop-icon" style="font-variation-settings: 'FILL' 1;">stop</span>
+</button>
+</div>
+<!-- Secondary Actions -->
+<div class="flex items-center gap-8 pt-4">
+<button class="flex flex-col items-center gap-2 text-on-surface-variant hover:text-primary transition-colors">
+<div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined">pause</span>
+</div>
+<span class="font-label-lg text-label-lg">Pause</span>
+</button>
+<button class="flex flex-col items-center gap-2 text-on-surface-variant hover:text-primary transition-colors">
+<div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined">close</span>
+</div>
+<span class="font-label-lg text-label-lg">Discard</span>
+</button>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-3 pb-safe bg-surface/80 backdrop-blur-md shadow-[0_-4px_12px_rgba(0,0,0,0.08)]">
+<a class="flex flex-col items-center justify-center gap-1 text-on-surface-variant hover:text-primary px-4 py-1.5 active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-lg text-label-lg">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center gap-1 text-on-surface-variant hover:text-primary px-4 py-1.5 active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">folder_open</span>
+<span class="font-label-lg text-label-lg">Folders</span>
+</a>
+<a class="flex flex-col items-center justify-center gap-1 text-on-surface-variant hover:text-primary px-4 py-1.5 active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">account_tree</span>
+<span class="font-label-lg text-label-lg">Graph</span>
+</a>
+<a class="flex flex-col items-center justify-center gap-1 text-on-surface-variant hover:text-primary px-4 py-1.5 active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-lg text-label-lg">Settings</span>
+</a>
+</nav>
+<script>
+        const waveformContainer = document.getElementById('waveform-container');
+        const barCount = 45;
+        const bars = [];
+
+        // Create waveform bars
+        for (let i = 0; i < barCount; i++) {
+            const bar = document.createElement('div');
+            bar.className = 'waveform-bar w-1.5 bg-secondary-fixed-dim rounded-full transition-all duration-150';
+            // Random initial height for aesthetic
+            const initialHeight = Math.floor(Math.random() * 40) + 10;
+            bar.style.height = `${initialHeight}px`;
+            waveformContainer.appendChild(bar);
+            bars.push(bar);
+        }
+
+        // Animate waveform
+        let isRecording = true;
+        function updateWaveform() {
+            if (!isRecording) return;
+            bars.forEach(bar => {
+                const height = Math.floor(Math.random() * 80) + 10;
+                bar.style.height = `${height}px`;
+                // Center-weighted height
+                const index = bars.indexOf(bar);
+                const distanceFromCenter = Math.abs(index - (barCount / 2));
+                const factor = 1 - (distanceFromCenter / (barCount / 2));
+                bar.style.height = `${height * factor + 5}px`;
+                
+                // Color shift based on intensity
+                if (height > 60) {
+                    bar.style.backgroundColor = '#755a1a'; // secondary (Gold)
+                } else {
+                    bar.style.backgroundColor = '#fed88b'; // secondary-container
+                }
+            });
+            requestAnimationFrame(() => setTimeout(updateWaveform, 100));
+        }
+        updateWaveform();
+
+        // Timer Logic
+        let seconds = 222; // Starting at 03:42 as requested
+        const timerDisplay = document.getElementById('timer-display');
+        function updateTimer() {
+            if (!isRecording) return;
+            seconds++;
+            const mins = Math.floor(seconds / 60).toString().padStart(2, '0');
+            const secs = (seconds % 60).toString().padStart(2, '0');
+            timerDisplay.textContent = `${mins}:${secs}`;
+        }
+        setInterval(updateTimer, 1000);
+
+        // Record Button Interaction
+        const recordBtn = document.getElementById('record-btn');
+        const micIcon = document.getElementById('mic-icon');
+        const stopIcon = document.getElementById('stop-icon');
+        const overlay = document.getElementById('transcription-overlay');
+
+        recordBtn.addEventListener('click', () => {
+            isRecording = !isRecording;
+            if (!isRecording) {
+                micIcon.classList.add('hidden');
+                stopIcon.classList.remove('hidden');
+                
+                // Simulate "Transcribing" after a brief "stop" state
+                setTimeout(() => {
+                    overlay.classList.remove('hidden');
+                    overlay.classList.add('flex');
+                    
+                    // After 3 seconds, simulate completion or transition
+                    setTimeout(() => {
+                        window.location.reload(); // Reset for demo
+                    }, 4000);
+                }, 400);
+            }
+        });
+
+        // Background subtle noise/pattern for texture
+        document.body.style.backgroundImage = `radial-gradient(#17137f11 1px, transparent 1px)`;
+        document.body.style.backgroundSize = `24px 24px`;
+    </script>
+</body></html>

@@ -1,41 +1,37 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 import '../../../../core/services/vault_lock_service.dart';
 import '../../../../injection/injection.dart';
-import '../cubit/auth_cubit.dart';
-import '../cubit/auth_state.dart';
-import '../pages/login_page.dart';
 import '../../../onboarding/presentation/pages/onboarding_page.dart';
 import '../../../onboarding/presentation/pages/vault_setup_page.dart';
 import '../../../vault_lock/presentation/pages/lock_screen_page.dart';
 import '../../../shell/presentation/pages/main_shell_page.dart';
 
-/// Root routing widget. Keeps the native splash alive until Firebase resolves,
-/// then transitions to: Login → Onboarding → VaultSetup → Shell (or Lock).
-class AuthGate extends StatelessWidget {
+/// Removes the native splash on the first rendered frame, then routes
+/// through: onboarding → vault-setup → (lock screen if enabled) → shell.
+/// No network call, no account required.
+class AuthGate extends StatefulWidget {
   const AuthGate({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return BlocConsumer<AuthCubit, AuthState>(
-      // Remove native splash exactly once — when auth state first resolves.
-      listenWhen: (prev, curr) => !prev.resolved && curr.resolved,
-      listener: (context, state) => FlutterNativeSplash.remove(),
-      builder: (context, state) {
-        // Still waiting for Firebase — keep native splash, show nothing behind it.
-        if (!state.resolved) return const SizedBox.shrink();
-
-        if (!state.isAuthenticated) return const LoginPage();
-
-        return const _VaultRouter();
-      },
-    );
-  }
+  State<AuthGate> createState() => _AuthGateState();
 }
 
-/// Post-auth routing: onboarding → lock check → shell.
+class _AuthGateState extends State<AuthGate> {
+  @override
+  void initState() {
+    super.initState();
+    SchedulerBinding.instance.addPostFrameCallback(
+      (_) => FlutterNativeSplash.remove(),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) => const _VaultRouter();
+}
+
 class _VaultRouter extends StatefulWidget {
   const _VaultRouter();
 

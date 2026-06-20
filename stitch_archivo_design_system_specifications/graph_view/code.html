@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Archivo - Knowledge Graph</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-fixed-dim": "#e6c278",
+                      "on-primary-fixed": "#08006c",
+                      "on-tertiary-fixed": "#1b1c1a",
+                      "on-secondary-fixed-variant": "#5b4302",
+                      "surface-dim": "#dcd9e2",
+                      "secondary": "#755a1a",
+                      "surface-variant": "#e4e1ea",
+                      "inverse-primary": "#c1c1ff",
+                      "on-tertiary-fixed-variant": "#464744",
+                      "surface-container": "#f0ecf6",
+                      "secondary-container": "#fed88b",
+                      "on-error-container": "#93000a",
+                      "tertiary": "#282927",
+                      "on-tertiary": "#ffffff",
+                      "on-surface-variant": "#464652",
+                      "tertiary-fixed-dim": "#c7c7c3",
+                      "background": "#fcf8ff",
+                      "primary-fixed": "#e1dfff",
+                      "on-surface": "#1b1b21",
+                      "surface-container-highest": "#e4e1ea",
+                      "on-primary-fixed-variant": "#39399d",
+                      "on-secondary-fixed": "#261a00",
+                      "surface-bright": "#fcf8ff",
+                      "outline-variant": "#c7c5d4",
+                      "surface-container-lowest": "#ffffff",
+                      "inverse-on-surface": "#f3eff8",
+                      "error-container": "#ffdad6",
+                      "surface": "#fcf8ff",
+                      "outline": "#777683",
+                      "on-secondary-container": "#785d1d",
+                      "secondary-fixed": "#ffdf9f",
+                      "on-background": "#1b1b21",
+                      "on-primary-container": "#9fa1ff",
+                      "surface-container-high": "#eae7f0",
+                      "surface-container-low": "#f6f2fb",
+                      "on-primary": "#ffffff",
+                      "surface-tint": "#5153b6",
+                      "tertiary-fixed": "#e3e2df",
+                      "on-tertiary-container": "#aaaaa7",
+                      "primary-fixed-dim": "#c1c1ff",
+                      "inverse-surface": "#303037",
+                      "tertiary-container": "#3e3f3c",
+                      "error": "#ba1a1a",
+                      "on-secondary": "#ffffff",
+                      "primary-container": "#303094",
+                      "primary": "#17137f",
+                      "on-error": "#ffffff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "lg": "24px",
+                      "gutter": "16px",
+                      "xs": "4px",
+                      "base": "4px",
+                      "md": "16px",
+                      "sm": "8px",
+                      "xl": "32px",
+                      "margin-mobile": "20px"
+              },
+              "fontFamily": {
+                      "title-lg": ["Inter"],
+                      "label-md": ["Inter"],
+                      "label-lg": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "body-md": ["Inter"],
+                      "headline-sm": ["Inter"],
+                      "headline-lg": ["Inter"]
+              },
+              "fontSize": {
+                      "title-lg": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                      "label-md": ["11px", {"lineHeight": "16px", "fontWeight": "500"}],
+                      "label-lg": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        body {
+            background-color: #F7F6F2;
+            overflow: hidden;
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            user-select: none;
+        }
+        .graph-canvas {
+            touch-action: none;
+            cursor: grab;
+        }
+        .graph-canvas:active {
+            cursor: grabbing;
+        }
+        .node {
+            transition: r 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease;
+        }
+        .node:hover {
+            filter: brightness(1.1);
+            cursor: pointer;
+        }
+        .edge {
+            stroke-dasharray: 4;
+            animation: dash 20s linear infinite;
+        }
+        @keyframes dash {
+            to { stroke-dashoffset: -100; }
+        }
+        .blur-overlay {
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-[#F7F6F2] text-on-surface">
+<!-- Top Navigation Bar (Hidden on Mobile per Responsive Pivot rule, using Overlay instead) -->
+<header class="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-4 h-16 w-full transition-colors duration-200 bg-primary-container dark:bg-primary shadow-sm hidden md:flex">
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-primary-container dark:text-on-primary hover:bg-primary/10 p-2 rounded-full transition-colors">menu</button>
+<span class="font-headline-md text-headline-md font-bold text-on-primary-container dark:text-on-primary">Archivo</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="material-symbols-outlined text-on-primary-container dark:text-on-primary hover:bg-primary/10 p-2 rounded-full transition-colors">search</button>
+</div>
+</header>
+<!-- Floating Search/Filter Pill (Top Overlay) -->
+<div class="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-40px)] max-w-md">
+<div class="bg-surface/80 blur-overlay rounded-full px-4 py-2 shadow-lg flex items-center gap-3 border border-outline-variant/30">
+<span class="material-symbols-outlined text-primary" data-icon="hub">hub</span>
+<input class="bg-transparent border-none focus:ring-0 flex-1 font-body-md text-body-md text-on-surface placeholder-on-surface-variant/60" placeholder="Search the graph..." type="text"/>
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-high rounded-full p-1" data-icon="filter_list">filter_list</button>
+</div>
+</div>
+<!-- Main Graph Canvas -->
+<main class="w-full h-screen relative overflow-hidden flex items-center justify-center">
+<svg class="graph-canvas w-full h-full" id="graph" preserveaspectratio="xMidYMid slice" viewbox="0 0 1000 1000">
+<!-- Edges (Thin lines) -->
+<g id="edges-layer" stroke="#777683" stroke-opacity="0.3" stroke-width="0.5">
+<!-- Lines will be injected by JS for interaction -->
+</g>
+<!-- Nodes (Circles colored by type) -->
+<g id="nodes-layer">
+<!-- Nodes will be injected by JS -->
+</g>
+</svg>
+<!-- Legend (Bottom Left) -->
+<div class="absolute bottom-24 left-5 flex flex-col gap-2 p-4 bg-surface/40 blur-overlay rounded-2xl border border-outline-variant/20 hidden sm:flex">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-primary"></span>
+<span class="font-label-md text-label-md text-on-surface-variant">Core Concept</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-primary-container"></span>
+<span class="font-label-md text-label-md text-on-surface-variant">Supporting Note</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-secondary-container"></span>
+<span class="font-label-md text-label-md text-on-surface-variant">Media Asset</span>
+</div>
+</div>
+</main>
+<!-- Squircle FAB (Suppressed on Details, but appropriate for Graph main view) -->
+<button class="fixed bottom-28 right-6 w-14 h-14 bg-primary text-on-primary rounded-[28px] shadow-lg flex items-center justify-center hover:scale-105 active:scale-95 transition-all z-40">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add</span>
+</button>
+<!-- Bottom Navigation Bar (Persistent) -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center h-20 px-2 pb-safe bg-surface/80 dark:bg-inverse-surface/80 backdrop-blur-md shadow-lg border-t border-outline-variant dark:border-outline">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-transform active:scale-90 px-4 py-1" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-md text-label-md">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-transform active:scale-90 px-4 py-1" href="#">
+<span class="material-symbols-outlined" data-icon="folder">folder</span>
+<span class="font-label-md text-label-md">Folders</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-xl px-4 py-1 scale-95 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="hub">hub</span>
+<span class="font-label-md text-label-md">Graph</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-transform active:scale-90 px-4 py-1" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</nav>
+<script>
+        // Graph Generation & Logic
+        const svg = document.getElementById('graph');
+        const nodesLayer = document.getElementById('nodes-layer');
+        const edgesLayer = document.getElementById('edges-layer');
+
+        const types = [
+            { color: '#17137f', label: 'Primary' }, // Indigo
+            { color: '#303094', label: 'Light Indigo' }, // Light Indigo
+            { color: '#fed88b', label: 'Gold' } // Gold
+        ];
+
+        const nodeData = [];
+        const edgeData = [];
+        const nodeCount = 28;
+
+        // Create random nodes
+        for (let i = 0; i < nodeCount; i++) {
+            const connections = Math.floor(Math.random() * 5) + 1;
+            nodeData.push({
+                id: i,
+                x: 150 + Math.random() * 700,
+                y: 150 + Math.random() * 700,
+                radius: 8 + (connections * 4),
+                color: types[Math.floor(Math.random() * types.length)].color,
+                label: `Node ${i + 1}`,
+                connections: connections
+            });
+        }
+
+        // Create random edges
+        for (let i = 0; i < nodeData.length; i++) {
+            const targetCount = nodeData[i].connections;
+            for (let j = 0; j < targetCount; j++) {
+                const targetIdx = Math.floor(Math.random() * nodeData.length);
+                if (targetIdx !== i) {
+                    edgeData.push({
+                        source: nodeData[i],
+                        target: nodeData[targetIdx]
+                    });
+                }
+            }
+        }
+
+        // Render Edges
+        edgeData.forEach(edge => {
+            const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+            line.setAttribute("x1", edge.source.x);
+            line.setAttribute("y1", edge.source.y);
+            line.setAttribute("x2", edge.target.x);
+            line.setAttribute("y2", edge.target.y);
+            line.setAttribute("class", "edge");
+            edgesLayer.appendChild(line);
+        });
+
+        // Render Nodes
+        nodeData.forEach(node => {
+            const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
+            
+            const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+            circle.setAttribute("cx", node.x);
+            circle.setAttribute("cy", node.y);
+            circle.setAttribute("r", node.radius);
+            circle.setAttribute("fill", node.color);
+            circle.setAttribute("class", "node");
+            circle.style.cursor = "pointer";
+
+            // Glow effect for larger nodes
+            if (node.radius > 15) {
+                circle.setAttribute("filter", "drop-shadow(0 0 8px " + node.color + "66)");
+            }
+
+            const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+            text.setAttribute("x", node.x);
+            text.setAttribute("y", node.y + node.radius + 15);
+            text.setAttribute("text-anchor", "middle");
+            text.setAttribute("fill", "#1b1b21");
+            text.setAttribute("font-size", "11px");
+            text.setAttribute("font-weight", "500");
+            text.style.opacity = "0";
+            text.style.transition = "opacity 0.2s ease";
+            text.textContent = node.label;
+
+            g.appendChild(circle);
+            g.appendChild(text);
+            
+            g.addEventListener('mouseenter', () => {
+                text.style.opacity = "1";
+                circle.setAttribute("r", node.radius * 1.2);
+            });
+            g.addEventListener('mouseleave', () => {
+                text.style.opacity = "0";
+                circle.setAttribute("r", node.radius);
+            });
+
+            nodesLayer.appendChild(g);
+        });
+
+        // Pan and Zoom Interaction
+        let isDragging = false;
+        let startX, startY;
+        let viewBox = { x: 0, y: 0, w: 1000, h: 1000 };
+
+        svg.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            startX = e.clientX;
+            startY = e.clientY;
+        });
+
+        window.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            const dx = (e.clientX - startX) * (viewBox.w / svg.clientWidth);
+            const dy = (e.clientY - startY) * (viewBox.h / svg.clientHeight);
+            viewBox.x -= dx;
+            viewBox.y -= dy;
+            svg.setAttribute('viewBox', `${viewBox.x} ${viewBox.y} ${viewBox.w} ${viewBox.h}`);
+            startX = e.clientX;
+            startY = e.clientY;
+        });
+
+        window.addEventListener('mouseup', () => isDragging = false);
+
+        svg.addEventListener('wheel', (e) => {
+            e.preventDefault();
+            const scale = e.deltaY > 0 ? 1.1 : 0.9;
+            viewBox.w *= scale;
+            viewBox.h *= scale;
+            svg.setAttribute('viewBox', `${viewBox.x} ${viewBox.y} ${viewBox.w} ${viewBox.h}`);
+        });
+
+        // Micro-interaction for the search pill
+        const searchInput = document.querySelector('input');
+        searchInput.addEventListener('focus', () => {
+            searchInput.parentElement.classList.add('ring-2', 'ring-primary/20');
+        });
+        searchInput.addEventListener('blur', () => {
+            searchInput.parentElement.classList.remove('ring-2', 'ring-primary/20');
+        });
+    </script>
+</body></html>

@@ -1,5 +1,4 @@
 import 'package:archivo/core/database/app_database.dart';
-import 'package:archivo/features/auth/domain/entities/app_user.dart';
 import 'package:archivo/features/notes/data/notes_repository_impl.dart';
 import 'package:archivo/features/notes/domain/usecases/archive_note.dart';
 import 'package:archivo/features/notes/domain/usecases/create_note.dart';
@@ -25,7 +24,7 @@ void main() {
     db = AppDatabase(NativeDatabase.memory());
     repo = NotesRepositoryImpl(
       dao: db.notesDao,
-      auth: FakeAuthRepository(user: const AppUser(uid: 'u1')),
+      userId: 'u1',
       uuid: const Uuid(),
       clock: FixedClock(1000),
     );

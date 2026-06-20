@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Archivo - Secure Lock</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary": "#17137f",
+                    "on-primary": "#ffffff",
+                    "on-surface": "#1b1b21",
+                    "on-error": "#ffffff",
+                    "surface-container-highest": "#e4e1ea",
+                    "error": "#ba1a1a",
+                    "primary-container": "#303094",
+                    "surface-tint": "#5153b6",
+                    "on-primary-fixed": "#08006c",
+                    "on-tertiary-fixed-variant": "#464744",
+                    "on-secondary-fixed": "#261a00",
+                    "tertiary-fixed-dim": "#c7c7c3",
+                    "secondary-fixed-dim": "#e6c278",
+                    "on-secondary": "#ffffff",
+                    "on-primary-fixed-variant": "#39399d",
+                    "surface-container": "#f0ecf6",
+                    "surface": "#fcf8ff",
+                    "tertiary-fixed": "#e3e2df",
+                    "surface-container-low": "#f6f2fb",
+                    "primary-fixed": "#e1dfff",
+                    "inverse-on-surface": "#f3eff8",
+                    "primary-fixed-dim": "#c1c1ff",
+                    "surface-dim": "#dcd9e2",
+                    "outline-variant": "#c7c5d4",
+                    "surface-variant": "#e4e1ea",
+                    "on-secondary-container": "#785d1d",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-container": "#aaaaa7",
+                    "on-surface-variant": "#464652",
+                    "on-secondary-fixed-variant": "#5b4302",
+                    "on-primary-container": "#9fa1ff",
+                    "on-error-container": "#93000a",
+                    "on-background": "#1b1b21",
+                    "error-container": "#ffdad6",
+                    "background": "#fcf8ff",
+                    "tertiary": "#282927",
+                    "surface-bright": "#fcf8ff",
+                    "on-tertiary-fixed": "#1b1c1a",
+                    "inverse-surface": "#303037",
+                    "secondary": "#755a1a",
+                    "outline": "#777683",
+                    "secondary-fixed": "#ffdf9f",
+                    "tertiary-container": "#3e3f3c",
+                    "surface-container-high": "#eae7f0",
+                    "secondary-container": "#fed88b",
+                    "inverse-primary": "#c1c1ff",
+                    "on-tertiary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xs": "4px",
+                    "md": "16px",
+                    "margin-mobile": "20px",
+                    "lg": "24px",
+                    "xl": "32px",
+                    "sm": "8px",
+                    "base": "4px",
+                    "gutter": "16px"
+            },
+            "fontFamily": {
+                    "title-lg": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "label-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "title-lg": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["11px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "label-lg": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparent; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .pin-dot {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .pin-dot.active {
+            background-color: white;
+            transform: scale(1.2);
+        }
+        @keyframes pulse-subtle {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(0.98); }
+        }
+        .animate-pulse-subtle {
+            animation: pulse-subtle 3s infinite ease-in-out;
+        }
+        .glass-key {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .glass-key:active {
+            background: rgba(255, 255, 255, 0.15);
+            transform: scale(0.95);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-primary-container min-h-screen overflow-hidden text-on-primary">
+<!-- Background Atmospheric Effect -->
+<div class="fixed inset-0 pointer-events-none opacity-20">
+
+</div>
+<!-- Main Container -->
+<main class="relative z-10 min-h-screen flex flex-col items-center justify-between py-xl px-margin-mobile">
+<!-- Top Branding Section -->
+<section class="flex flex-col items-center mt-xl animate-pulse-subtle">
+<div class="w-12 h-12 flex items-center justify-center bg-white/10 rounded-2xl mb-md">
+<span class="material-symbols-outlined text-white text-[32px]">security</span>
+</div>
+<h1 class="font-headline-md text-headline-md text-white tracking-tight">Archivo</h1>
+</section>
+<!-- Dynamic Content Area (Switches between Biometric and PIN) -->
+<section class="w-full max-w-sm flex flex-col items-center flex-grow justify-center transition-all duration-500" id="lock-content">
+<!-- Biometric State (Default) -->
+<div class="flex flex-col items-center space-y-lg transition-all duration-500 opacity-100 translate-y-0" id="biometric-view">
+<button class="group relative flex items-center justify-center w-24 h-24 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300" onclick="handleBiometric()">
+<span class="material-symbols-outlined text-white text-[48px] font-light">fingerprint</span>
+<!-- Decorative ripple -->
+<div class="absolute inset-0 rounded-full border border-white/20 animate-ping opacity-20"></div>
+</button>
+<div class="text-center">
+<p class="font-body-lg text-body-lg text-white/90">Touch sensor to unlock</p>
+<button class="mt-md font-label-lg text-label-lg text-white/70 hover:text-white transition-colors" onclick="toggleView('pin')">
+                        Use PIN instead
+                    </button>
+</div>
+</div>
+<!-- PIN Entry State (Hidden by default) -->
+<div class="hidden flex flex-col items-center w-full transition-all duration-500 opacity-0 translate-y-10" id="pin-view">
+<!-- PIN Indicators -->
+<div class="flex space-x-md mb-xl">
+<div class="pin-dot w-3 h-3 rounded-full border-2 border-white/40"></div>
+<div class="pin-dot w-3 h-3 rounded-full border-2 border-white/40"></div>
+<div class="pin-dot w-3 h-3 rounded-full border-2 border-white/40"></div>
+<div class="pin-dot w-3 h-3 rounded-full border-2 border-white/40"></div>
+</div>
+<!-- Numeric Keypad -->
+<div class="grid grid-cols-3 gap-lg w-full">
+<button class="glass-key w-full aspect-square flex items-center justify-center rounded-full font-headline-md text-headline-md text-white" onclick="pressKey(1)">1</button>
+<button class="glass-key w-full aspect-square flex items-center justify-center rounded-full font-headline-md text-headline-md text-white" onclick="pressKey(2)">2</button>
+<button class="glass-key w-full aspect-square flex items-center justify-center rounded-full font-headline-md text-headline-md text-white" onclick="pressKey(3)">3</button>
+<button class="glass-key w-full aspect-square flex items-center justify-center rounded-full font-headline-md text-headline-md text-white" onclick="pressKey(4)">4</button>
+<button class="glass-key w-full aspect-square flex items-center justify-center rounded-full font-headline-md text-headline-md text-white" onclick="pressKey(5)">5</button>
+<button class="glass-key w-full aspect-square flex items-center justify-center rounded-full font-headline-md text-headline-md text-white" onclick="pressKey(6)">6</button>
+<button class="glass-key w-full aspect-square flex items-center justify-center rounded-full font-headline-md text-headline-md text-white" onclick="pressKey(7)">7</button>
+<button class="glass-key w-full aspect-square flex items-center justify-center rounded-full font-headline-md text-headline-md text-white" onclick="pressKey(8)">8</button>
+<button class="glass-key w-full aspect-square flex items-center justify-center rounded-full font-headline-md text-headline-md text-white" onclick="pressKey(9)">9</button>
+<div class="w-full"></div>
+<button class="glass-key w-full aspect-square flex items-center justify-center rounded-full font-headline-md text-headline-md text-white" onclick="pressKey(0)">0</button>
+<button class="w-full aspect-square flex items-center justify-center rounded-full text-white/60 active:text-white transition-colors" onclick="backspace()">
+<span class="material-symbols-outlined text-[28px]">backspace</span>
+</button>
+</div>
+<button class="mt-xl font-label-lg text-label-lg text-white/70 hover:text-white transition-colors" onclick="toggleView('biometric')">
+                    Back to Biometric
+                </button>
+</div>
+</section>
+<!-- Bottom Footer Info -->
+<footer class="mb-md opacity-40">
+<p class="font-label-md text-label-md tracking-widest uppercase">Secured by Archivo Node 256</p>
+</footer>
+</main>
+<script>
+        let pin = "";
+        const maxPinLength = 4;
+
+        function toggleView(view) {
+            const biometricView = document.getElementById('biometric-view');
+            const pinView = document.getElementById('pin-view');
+
+            if (view === 'pin') {
+                biometricView.classList.add('opacity-0', '-translate-y-10');
+                setTimeout(() => {
+                    biometricView.classList.add('hidden');
+                    pinView.classList.remove('hidden');
+                    // Force reflow
+                    pinView.offsetHeight;
+                    pinView.classList.remove('opacity-0', 'translate-y-10');
+                    pinView.classList.add('opacity-100', 'translate-y-0');
+                }, 300);
+            } else {
+                pinView.classList.add('opacity-0', 'translate-y-10');
+                setTimeout(() => {
+                    pinView.classList.add('hidden');
+                    biometricView.classList.remove('hidden');
+                    // Force reflow
+                    biometricView.offsetHeight;
+                    biometricView.classList.remove('opacity-0', '-translate-y-10');
+                    biometricView.classList.add('opacity-100', 'translate-y-0');
+                    resetPin();
+                }, 300);
+            }
+        }
+
+        function pressKey(num) {
+            if (pin.length < maxPinLength) {
+                pin += num;
+                updateDots();
+                
+                // Haptic feedback simulation
+                if (window.navigator && window.navigator.vibrate) {
+                    window.navigator.vibrate(5);
+                }
+
+                if (pin.length === maxPinLength) {
+                    // Logic for "Unlocked" state would go here
+                    setTimeout(() => {
+                        alert("Access Granted: Navigating to Vault...");
+                        resetPin();
+                    }, 300);
+                }
+            }
+        }
+
+        function backspace() {
+            if (pin.length > 0) {
+                pin = pin.slice(0, -1);
+                updateDots();
+            }
+        }
+
+        function updateDots() {
+            const dots = document.querySelectorAll('.pin-dot');
+            dots.forEach((dot, index) => {
+                if (index < pin.length) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+
+        function resetPin() {
+            pin = "";
+            updateDots();
+        }
+
+        function handleBiometric() {
+            // Simulated Success
+            const btn = event.currentTarget;
+            btn.classList.add('scale-110', 'bg-white/20');
+            setTimeout(() => {
+                alert("Identity Verified");
+            }, 500);
+        }
+    </script>
+</body></html>

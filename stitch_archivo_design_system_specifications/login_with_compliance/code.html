@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Archivo - Login</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error-container": "#ffdad6",
+                        "on-surface-variant": "#464652",
+                        "on-background": "#1b1b21",
+                        "tertiary-fixed": "#e3e2df",
+                        "on-secondary-container": "#785d1d",
+                        "on-secondary": "#ffffff",
+                        "outline": "#777683",
+                        "on-tertiary-fixed": "#1b1c1a",
+                        "secondary-container": "#fed88b",
+                        "surface-tint": "#5153b6",
+                        "on-primary": "#ffffff",
+                        "primary-fixed": "#e1dfff",
+                        "primary": "#17137f",
+                        "surface-bright": "#fcf8ff",
+                        "inverse-on-surface": "#f3eff8",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-high": "#eae7f0",
+                        "surface-container": "#f0ecf6",
+                        "on-primary-fixed": "#08006c",
+                        "secondary-fixed-dim": "#e6c278",
+                        "primary-container": "#303094",
+                        "tertiary": "#282927",
+                        "on-tertiary-fixed-variant": "#464744",
+                        "inverse-primary": "#c1c1ff",
+                        "surface-container-highest": "#e4e1ea",
+                        "on-tertiary-container": "#aaaaa7",
+                        "surface-variant": "#e4e1ea",
+                        "secondary-fixed": "#ffdf9f",
+                        "background": "#fcf8ff",
+                        "primary-fixed-dim": "#c1c1ff",
+                        "inverse-surface": "#303037",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed-variant": "#39399d",
+                        "tertiary-fixed-dim": "#c7c7c3",
+                        "surface": "#fcf8ff",
+                        "on-secondary-fixed": "#261a00",
+                        "on-secondary-fixed-variant": "#5b4302",
+                        "error": "#ba1a1a",
+                        "tertiary-container": "#3e3f3c",
+                        "surface-dim": "#dcd9e2",
+                        "on-surface": "#1b1b21",
+                        "on-primary-container": "#9fa1ff",
+                        "on-error": "#ffffff",
+                        "surface-container-low": "#f6f2fb",
+                        "outline-variant": "#c7c5d4",
+                        "on-error-container": "#93000a",
+                        "secondary": "#755a1a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "lg": "24px",
+                        "md": "16px",
+                        "gutter": "16px",
+                        "xs": "4px",
+                        "xl": "32px",
+                        "sm": "8px",
+                        "margin-mobile": "20px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "title-lg": ["Inter"],
+                        "label-lg": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-md": ["11px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "title-lg": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+                        "label-lg": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #F7F6F2;
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        /* Custom micro-interactions */
+        .login-card {
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .login-card:hover {
+            transform: translateY(-2px);
+        }
+        .input-focus-ring:focus-within {
+            box-shadow: 0 0 0 3px rgba(48, 48, 148, 0.2);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between overflow-x-hidden">
+<!-- Hero Header Section -->
+<header class="w-full bg-primary-container pt-xl pb-32 px-gutter flex flex-col items-center relative overflow-hidden">
+<!-- Atmospheric Background Elements -->
+<div class="absolute inset-0 opacity-10 pointer-events-none">
+<div class="absolute top-[-10%] right-[-10%] w-64 h-64 bg-on-primary-container rounded-full blur-3xl"></div>
+<div class="absolute bottom-[-10%] left-[-10%] w-80 h-80 bg-primary rounded-full blur-3xl"></div>
+</div>
+<div class="z-10 flex flex-col items-center">
+<div class="w-24 h-24 mb-md rounded-2xl overflow-hidden shadow-lg border-2 border-on-primary-container/20">
+<img alt="Archivo Icon" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMa6s21BBgGEa6-KgTJgIli96PP3xVjuIW2cRSoBqjUbt226ViS3zxTF9nfo_FZxYgXJeeLJQgQLONh73V937LXtqE_1FpuEhBIKj0E93PxomrVeHe22VTFHDJUVUPjzWWoMbZDUjoyKz2meXyhyvt97phAynsZ2GjKJIp4FEqXOoU19aaybUXhI5rizdWSWss1a4z20irWa3Y5oso9466JVxtOQS_B1JTeQUZ9WGdEgODgam9PRM7m1G_e5X1mWCj2A9iUExF6Ps"/>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-primary-container tracking-tight">Archivo</h1>
+<p class="font-body-md text-body-md text-on-primary-container/80 mt-xs">Your secure knowledge vault.</p>
+</div>
+</header>
+<!-- Content Canvas -->
+<main class="flex-grow flex justify-center px-gutter -mt-20 z-20">
+<div class="w-full max-w-md login-card bg-surface-container-lowest p-xl rounded-[24px] shadow-xl border border-outline-variant/30 h-fit">
+<div class="mb-xl">
+<h2 class="font-headline-md text-headline-md text-on-surface">Welcome Back</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-xs">Please enter your credentials to access your archive.</p>
+</div>
+<!-- Login Form -->
+<form class="space-y-lg" onsubmit="event.preventDefault();">
+<!-- Email Field -->
+<div class="space-y-xs">
+<label class="font-label-lg text-label-lg text-on-surface-variant ml-xs" for="email">Email</label>
+<div class="relative flex items-center input-focus-ring rounded-xl border border-outline bg-surface-container-low focus-within:border-primary transition-all duration-200">
+<span class="material-symbols-outlined absolute left-md text-on-surface-variant">mail</span>
+<input class="w-full bg-transparent border-none rounded-xl py-lg pl-12 pr-md text-body-lg text-on-surface placeholder:text-outline focus:ring-0" id="email" placeholder="name@example.com" type="email"/>
+</div>
+</div>
+<!-- Password Field -->
+<div class="space-y-xs">
+<div class="flex justify-between items-center px-xs">
+<label class="font-label-lg text-label-lg text-on-surface-variant" for="password">Password</label>
+<a class="font-label-lg text-label-lg text-primary hover:underline transition-all" href="#">Forgot?</a>
+</div>
+<div class="relative flex items-center input-focus-ring rounded-xl border border-outline bg-surface-container-low focus-within:border-primary transition-all duration-200">
+<span class="material-symbols-outlined absolute left-md text-on-surface-variant">lock</span>
+<input class="w-full bg-transparent border-none rounded-xl py-lg pl-12 pr-12 text-body-lg text-on-surface placeholder:text-outline focus:ring-0" id="password" placeholder="••••••••" type="password"/>
+<button class="absolute right-md text-on-surface-variant hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</div>
+</div>
+<!-- Primary Action -->
+<button class="w-full bg-primary-container text-on-primary-container font-title-lg text-title-lg py-md rounded-xl shadow-md hover:shadow-lg active:scale-[0.98] transition-all flex items-center justify-center gap-sm" type="submit">
+                    Sign In
+                    <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<!-- Divider -->
+<div class="flex items-center gap-md py-md">
+<div class="h-[1px] flex-grow bg-outline-variant"></div>
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">Or continue with</span>
+<div class="h-[1px] flex-grow bg-outline-variant"></div>
+</div>
+<!-- Social Login -->
+<button class="w-full bg-surface-container-highest text-on-surface font-title-lg text-title-lg py-md rounded-xl border border-outline-variant hover:bg-surface-variant active:scale-[0.98] transition-all flex items-center justify-center gap-sm" type="button">
+<svg class="w-6 h-6" viewbox="0 0 24 24">
+<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
+<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-1 .67-2.28 1.07-3.71 1.07-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path>
+<path d="M5.84 14.11c-.22-.66-.35-1.36-.35-2.11s.13-1.45.35-2.11V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l3.66-2.83z" fill="#FBBC05"></path>
+<path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.83c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"></path>
+</svg>
+                    Google
+                </button>
+<!-- Legal Compliance Line -->
+<p class="text-center font-label-md text-label-md text-on-surface-variant mt-md px-md">
+                    By continuing, you agree to our 
+                    <a class="text-primary hover:underline" href="#">Privacy Policy</a> and 
+                    <a class="text-primary hover:underline" href="#">Terms of Service</a>.
+                </p>
+</form>
+</div>
+</main>
+<!-- Footer Section -->
+<footer class="w-full py-xl flex justify-center items-center">
+<p class="font-body-md text-body-md text-on-surface-variant">
+            Don't have an account? 
+            <a class="text-primary font-bold hover:underline ml-xs" href="#">Sign Up</a>
+</p>
+</footer>
+<!-- Micro-interaction Script -->
+<script>
+        // Simple ripple-like effect on inputs or interactions
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('mousedown', function(e) {
+                this.classList.add('scale-95');
+            });
+            button.addEventListener('mouseup', function(e) {
+                this.classList.remove('scale-95');
+            });
+            button.addEventListener('mouseleave', function(e) {
+                this.classList.remove('scale-95');
+            });
+        });
+
+        // Simple password toggle logic
+        const toggleBtn = document.querySelector('button[type="button"] .material-symbols-outlined');
+        const passwordInput = document.getElementById('password');
+        if (toggleBtn && passwordInput) {
+            toggleBtn.parentElement.addEventListener('click', () => {
+                const isPassword = passwordInput.type === 'password';
+                passwordInput.type = isPassword ? 'text' : 'password';
+                toggleBtn.textContent = isPassword ? 'visibility_off' : 'visibility';
+            });
+        }
+    </script>
+</body></html>

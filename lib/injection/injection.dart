@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
 import 'package:local_auth/local_auth.dart';
@@ -6,11 +5,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:uuid/uuid.dart';
 
 import '../core/database/app_database.dart';
+import '../core/services/local_user_service.dart';
 import '../core/services/vault_lock_service.dart';
 import '../core/utils/clock.dart';
-import '../features/auth/data/firebase_auth_repository.dart';
-import '../features/auth/domain/repositories/auth_repository.dart';
-import '../features/auth/presentation/cubit/auth_cubit.dart';
 import '../features/notes/data/notes_repository_impl.dart';
 import '../features/notes/domain/repositories/notes_repository.dart';
 import '../features/notes/domain/usecases/archive_note.dart';
@@ -34,6 +31,13 @@ Future<void> configureDependencies({required SharedPreferences prefs}) async {
     ..registerLazySingleton<Clock>(() => const SystemClock())
     ..registerLazySingleton<Uuid>(() => const Uuid());
 
+  // Identity — stable device UUID generated on first launch, no account needed.
+  // Google Drive sync (future) will link this ID to the user's Google account
+  // without migrating any stored rows.
+  getIt.registerLazySingleton<LocalUserService>(
+    () => LocalUserService(prefs: getIt(), uuid: getIt()),
+  );
+
   // Vault lock
   getIt.registerLazySingleton<VaultLockService>(
     () => VaultLockService(
@@ -43,20 +47,13 @@ Future<void> configureDependencies({required SharedPreferences prefs}) async {
     ),
   );
 
-  // Auth
-  getIt
-    ..registerLazySingleton<FirebaseAuth>(() => FirebaseAuth.instance)
-    ..registerLazySingleton<AuthRepository>(
-      () => FirebaseAuthRepository(getIt<FirebaseAuth>()),
-    );
-
   // Notes data
   getIt
     ..registerLazySingleton(() => getIt<AppDatabase>().notesDao)
     ..registerLazySingleton<NotesRepository>(
       () => NotesRepositoryImpl(
         dao: getIt(),
-        auth: getIt(),
+        userId: getIt<LocalUserService>().userId,
         uuid: getIt(),
         clock: getIt(),
       ),
@@ -80,7 +77,4 @@ Future<void> configureDependencies({required SharedPreferences prefs}) async {
       archiveNote: getIt(),
     ),
   );
-
-  // Auth presentation — singleton drives the auth gate
-  getIt.registerLazySingleton(() => AuthCubit(getIt()));
 }

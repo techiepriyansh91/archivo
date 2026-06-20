@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Archivo Onboarding</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary": "#17137f",
+                      "on-primary": "#ffffff",
+                      "on-surface": "#1b1b21",
+                      "on-error": "#ffffff",
+                      "surface-container-highest": "#e4e1ea",
+                      "error": "#ba1a1a",
+                      "primary-container": "#303094",
+                      "surface-tint": "#5153b6",
+                      "on-primary-fixed": "#08006c",
+                      "on-tertiary-fixed-variant": "#464744",
+                      "on-secondary-fixed": "#261a00",
+                      "tertiary-fixed-dim": "#c7c7c3",
+                      "secondary-fixed-dim": "#e6c278",
+                      "on-secondary": "#ffffff",
+                      "on-primary-fixed-variant": "#39399d",
+                      "surface-container": "#f0ecf6",
+                      "surface": "#fcf8ff",
+                      "tertiary-fixed": "#e3e2df",
+                      "surface-container-low": "#f6f2fb",
+                      "primary-fixed": "#e1dfff",
+                      "inverse-on-surface": "#f3eff8",
+                      "primary-fixed-dim": "#c1c1ff",
+                      "surface-dim": "#dcd9e2",
+                      "outline-variant": "#c7c5d4",
+                      "surface-variant": "#e4e1ea",
+                      "on-secondary-container": "#785d1d",
+                      "surface-container-lowest": "#ffffff",
+                      "on-tertiary-container": "#aaaaa7",
+                      "on-surface-variant": "#464652",
+                      "on-secondary-fixed-variant": "#5b4302",
+                      "on-primary-container": "#9fa1ff",
+                      "on-error-container": "#93000a",
+                      "on-background": "#1b1b21",
+                      "error-container": "#ffdad6",
+                      "background": "#fcf8ff",
+                      "tertiary": "#282927",
+                      "surface-bright": "#fcf8ff",
+                      "on-tertiary-fixed": "#1b1c1a",
+                      "inverse-surface": "#303037",
+                      "secondary": "#755a1a",
+                      "outline": "#777683",
+                      "secondary-fixed": "#ffdf9f",
+                      "tertiary-container": "#3e3f3c",
+                      "surface-container-high": "#eae7f0",
+                      "secondary-container": "#fed88b",
+                      "inverse-primary": "#c1c1ff",
+                      "on-tertiary": "#ffffff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "xs": "4px",
+                      "md": "16px",
+                      "margin-mobile": "20px",
+                      "lg": "24px",
+                      "xl": "32px",
+                      "sm": "8px",
+                      "base": "4px",
+                      "gutter": "16px"
+              },
+              "fontFamily": {
+                      "title-lg": ["Inter"],
+                      "headline-sm": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "label-md": ["Inter"],
+                      "label-lg": ["Inter"],
+                      "body-md": ["Inter"],
+                      "body-lg": ["Inter"]
+              },
+              "fontSize": {
+                      "title-lg": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                      "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "label-md": ["11px", {"lineHeight": "16px", "fontWeight": "500"}],
+                      "label-lg": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-dot {
+            width: 24px;
+            background-color: #17137f;
+            transition: width 0.3s ease, background-color 0.3s ease;
+        }
+        .inactive-dot {
+            width: 8px;
+            background-color: #c7c5d4;
+            transition: width 0.3s ease, background-color 0.3s ease;
+        }
+        .slide-container {
+            display: flex;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .squircle-fab {
+            clip-path: url(#squircleClip);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md overflow-hidden">
+<!-- Header Actions -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile py-lg">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary font-bold" data-icon="security">security</span>
+<span class="font-headline-sm text-headline-sm font-bold tracking-tight text-primary">Archivo</span>
+</div>
+<button class="text-primary font-label-lg text-label-lg uppercase tracking-widest cursor-pointer active:scale-95 transition-transform">
+            Skip
+        </button>
+</header>
+<!-- Main Content Canvas -->
+<main class="h-screen w-screen relative">
+<div class="slide-container h-full w-[300%]" id="slider">
+<!-- Slide 1: Capture Anything -->
+<section class="w-screen h-full flex flex-col items-center justify-center px-margin-mobile text-center">
+<div class="relative w-64 h-64 mb-xl flex items-center justify-center">
+<!-- Central Box Icon -->
+<div class="z-10 bg-primary w-24 h-24 rounded-[28px] flex items-center justify-center shadow-lg transform transition-all duration-700 animate-bounce">
+<span class="material-symbols-outlined text-on-primary text-4xl" data-icon="inventory_2" style="font-variation-settings: 'FILL' 1;">inventory_2</span>
+</div>
+<!-- Orbiting Icons -->
+<div class="absolute inset-0">
+<span class="material-symbols-outlined absolute top-4 left-4 text-primary opacity-60 text-3xl animate-pulse" data-icon="description">description</span>
+<span class="material-symbols-outlined absolute top-4 right-4 text-secondary opacity-60 text-3xl animate-pulse delay-75" data-icon="link">link</span>
+<span class="material-symbols-outlined absolute bottom-4 left-12 text-primary opacity-60 text-3xl animate-pulse delay-150" data-icon="mic">mic</span>
+<span class="material-symbols-outlined absolute bottom-12 right-4 text-primary opacity-40 text-2xl animate-pulse delay-300" data-icon="image">image</span>
+<span class="material-symbols-outlined absolute top-1/2 -translate-y-1/2 right-0 text-secondary-fixed-dim text-2xl" data-icon="auto_awesome" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+</div>
+<h1 class="font-headline-lg text-headline-lg mb-md text-on-surface">Capture anything.</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xs">
+                    Your notes, voice memos, files, and web links collected in one secure, geometric vault.
+                </p>
+</section>
+<!-- Slide 2: Connect Ideas -->
+<section class="w-screen h-full flex flex-col items-center justify-center px-margin-mobile text-center">
+<div class="relative w-72 h-72 mb-xl">
+<svg class="w-full h-full opacity-20 absolute top-0 left-0" viewbox="0 0 200 200">
+<line stroke="#17137f" stroke-width="2" x1="100" x2="40" y1="100" y2="60"></line>
+<line stroke="#17137f" stroke-width="2" x1="100" x2="160" y1="100" y2="70"></line>
+<line stroke="#755a1a" stroke-width="2" x1="100" x2="140" y1="100" y2="150"></line>
+<line stroke="#17137f" stroke-width="2" x1="100" x2="50" y1="100" y2="140"></line>
+</svg>
+<div class="flex items-center justify-center h-full relative">
+<!-- Primary Node -->
+<div class="w-16 h-16 rounded-full bg-primary flex items-center justify-center z-10 shadow-lg">
+<span class="material-symbols-outlined text-white" data-icon="account_tree">account_tree</span>
+</div>
+<!-- Satellite Nodes -->
+<div class="absolute top-8 left-8 w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center animate-pulse">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="lightbulb">lightbulb</span>
+</div>
+<div class="absolute top-12 right-8 w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center animate-bounce">
+<span class="material-symbols-outlined text-secondary" data-icon="token">token</span>
+</div>
+<div class="absolute bottom-12 right-12 w-10 h-10 rounded-full bg-primary-fixed-dim flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-container text-sm" data-icon="hub">hub</span>
+</div>
+<div class="absolute bottom-8 left-12 w-8 h-8 rounded-full bg-surface-container-highest border border-outline-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant text-xs" data-icon="schema">schema</span>
+</div>
+</div>
+</div>
+<h1 class="font-headline-lg text-headline-lg mb-md text-on-surface">Connect your ideas.</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xs">
+                    Visualize the relationships between your data through an intuitive graph navigation system.
+                </p>
+</section>
+<!-- Slide 3: Private & Offline -->
+<section class="w-screen h-full flex flex-col items-center justify-center px-margin-mobile text-center">
+<div class="w-64 h-64 mb-xl flex items-center justify-center relative">
+<!-- Shield/Vault Aesthetic -->
+<div class="w-48 h-48 rounded-[48px] bg-surface-container-low border-2 border-primary/10 flex items-center justify-center relative overflow-hidden">
+<div class="absolute inset-0 opacity-5 bg-[radial-gradient(#17137f_1px,transparent_1px)] [background-size:16px_16px]"></div>
+<div class="w-24 h-24 bg-primary text-on-primary flex items-center justify-center rounded-[28px] shadow-2xl relative z-10">
+<span class="material-symbols-outlined text-5xl" data-icon="lock" style="font-variation-settings: 'FILL' 1;">lock</span>
+</div>
+</div>
+<!-- Security Indicators -->
+<div class="absolute bottom-4 right-8 bg-secondary-container px-3 py-1 rounded-full flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-xs text-on-secondary-container" data-icon="wifi_off">wifi_off</span>
+<span class="font-label-md text-label-md text-on-secondary-container">OFFLINE</span>
+</div>
+</div>
+<h1 class="font-headline-lg text-headline-lg mb-md text-on-surface">Always private, always offline.</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xs">
+                    Your data never leaves your device. Local encryption ensures your vault is for your eyes only.
+                </p>
+</section>
+</div>
+</main>
+<!-- Navigation Footer -->
+<footer class="fixed bottom-0 left-0 w-full px-margin-mobile pb-safe pt-lg flex flex-col items-center gap-xl bg-gradient-to-t from-background via-background/80 to-transparent">
+<!-- Page Indicators -->
+<div class="flex gap-2" id="indicators">
+<div class="h-2 rounded-full active-dot"></div>
+<div class="h-2 rounded-full inactive-dot"></div>
+<div class="h-2 rounded-full inactive-dot"></div>
+</div>
+<!-- Primary Action -->
+<div class="w-full max-w-md pb-xl">
+<button class="w-full bg-primary text-on-primary h-14 rounded-2xl font-title-lg text-title-lg shadow-lg hover:bg-primary-container transition-all active:scale-95 flex items-center justify-center gap-2 group" id="nextBtn">
+<span id="btnText">Next</span>
+<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</footer>
+<!-- Squircle SVG Clip Definition -->
+<svg height="0" width="0">
+<defs>
+<clippath clippathunits="objectBoundingBox" id="squircleClip">
+<path d="M .5,0 C .1,0 0,.1 0,.5 C 0,.9 .1,1 .5,1 C .9,1 1,.9 1,.5 C 1,.1 .9,0 .5,0"></path>
+</clippath>
+</defs>
+</svg>
+<script>
+        let currentSlide = 0;
+        const totalSlides = 3;
+        const slider = document.getElementById('slider');
+        const nextBtn = document.getElementById('nextBtn');
+        const btnText = document.getElementById('btnText');
+        const indicators = document.querySelectorAll('#indicators > div');
+
+        function updateOnboarding() {
+            // Slide transition
+            slider.style.transform = `translateX(-${currentSlide * (100 / totalSlides)}%)`;
+            
+            // Indicator update
+            indicators.forEach((dot, index) => {
+                if (index === currentSlide) {
+                    dot.className = 'h-2 rounded-full active-dot';
+                } else {
+                    dot.className = 'h-2 rounded-full inactive-dot';
+                }
+            });
+
+            // Button text update
+            if (currentSlide === totalSlides - 1) {
+                btnText.innerText = "Get Started";
+            } else {
+                btnText.innerText = "Next";
+            }
+        }
+
+        nextBtn.addEventListener('click', () => {
+            if (currentSlide < totalSlides - 1) {
+                currentSlide++;
+                updateOnboarding();
+            } else {
+                // Final action - simulate navigation to home/dashboard
+                nextBtn.innerHTML = '<span class="material-symbols-outlined animate-spin" data-icon="progress_activity">progress_activity</span>';
+                setTimeout(() => {
+                    alert("Welcome to your private vault.");
+                    window.location.reload(); // Just reset for demo
+                }, 1000);
+            }
+        });
+
+        // Add swipe support (optional lightweight implementation)
+        let touchstartX = 0;
+        let touchendX = 0;
+
+        slider.addEventListener('touchstart', e => {
+            touchstartX = e.changedTouches[0].screenX;
+        });
+
+        slider.addEventListener('touchend', e => {
+            touchendX = e.changedTouches[0].screenX;
+            handleGesture();
+        });
+
+        function handleGesture() {
+            if (touchendX < touchstartX - 50) { // Swipe Left
+                if (currentSlide < totalSlides - 1) {
+                    currentSlide++;
+                    updateOnboarding();
+                }
+            }
+            if (touchendX > touchstartX + 50) { // Swipe Right
+                if (currentSlide > 0) {
+                    currentSlide--;
+                    updateOnboarding();
+                }
+            }
+        }
+    </script>
+</body></html>

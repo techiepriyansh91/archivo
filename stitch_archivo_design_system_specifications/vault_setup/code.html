@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Archivo - Vault Setup</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary": "#17137f",
+                    "on-primary": "#ffffff",
+                    "on-surface": "#1b1b21",
+                    "on-error": "#ffffff",
+                    "surface-container-highest": "#e4e1ea",
+                    "error": "#ba1a1a",
+                    "primary-container": "#303094",
+                    "surface-tint": "#5153b6",
+                    "on-primary-fixed": "#08006c",
+                    "on-tertiary-fixed-variant": "#464744",
+                    "on-secondary-fixed": "#261a00",
+                    "tertiary-fixed-dim": "#c7c7c3",
+                    "secondary-fixed-dim": "#e6c278",
+                    "on-secondary": "#ffffff",
+                    "on-primary-fixed-variant": "#39399d",
+                    "surface-container": "#f0ecf6",
+                    "surface": "#fcf8ff",
+                    "tertiary-fixed": "#e3e2df",
+                    "surface-container-low": "#f6f2fb",
+                    "primary-fixed": "#e1dfff",
+                    "inverse-on-surface": "#f3eff8",
+                    "primary-fixed-dim": "#c1c1ff",
+                    "surface-dim": "#dcd9e2",
+                    "outline-variant": "#c7c5d4",
+                    "surface-variant": "#e4e1ea",
+                    "on-secondary-container": "#785d1d",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-container": "#aaaaa7",
+                    "on-surface-variant": "#464652",
+                    "on-secondary-fixed-variant": "#5b4302",
+                    "on-primary-container": "#9fa1ff",
+                    "on-error-container": "#93000a",
+                    "on-background": "#1b1b21",
+                    "error-container": "#ffdad6",
+                    "background": "#fcf8ff",
+                    "tertiary": "#282927",
+                    "surface-bright": "#fcf8ff",
+                    "on-tertiary-fixed": "#1b1c1a",
+                    "inverse-surface": "#303037",
+                    "secondary": "#755a1a",
+                    "outline": "#777683",
+                    "secondary-fixed": "#ffdf9f",
+                    "tertiary-container": "#3e3f3c",
+                    "surface-container-high": "#eae7f0",
+                    "secondary-container": "#fed88b",
+                    "inverse-primary": "#c1c1ff",
+                    "on-tertiary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xs": "4px",
+                    "md": "16px",
+                    "margin-mobile": "20px",
+                    "lg": "24px",
+                    "xl": "32px",
+                    "sm": "8px",
+                    "base": "4px",
+                    "gutter": "16px"
+            },
+            "fontFamily": {
+                    "title-lg": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "label-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "title-lg": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["11px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "label-lg": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+
+        .dot-indicator.active {
+            background-color: #17137f;
+            transform: scale(1.2);
+        }
+
+        .numpad-btn:active {
+            background-color: #e4e1ea;
+            transform: scale(0.95);
+        }
+
+        .squircle-fab {
+            border-radius: 28px;
+        }
+        
+        body {
+            background-color: #F7F6F2;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md text-on-surface min-h-screen flex flex-col items-center">
+<!-- Top App Bar (Transactional variant - No nav) -->
+<header class="w-full top-0 sticky bg-transparent flex justify-between items-center px-margin-mobile py-md z-50">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="security">security</span>
+<span class="font-headline-sm text-headline-sm font-bold tracking-tight text-primary">Archivo</span>
+</div>
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center border border-outline-variant">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="help_outline">help_outline</span>
+</div>
+</header>
+<main class="flex-1 w-full max-w-md px-margin-mobile pt-12 pb-xl flex flex-col items-center">
+<!-- Headline Section -->
+<div class="text-center mb-10">
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-md">Protect your vault</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Your data is secured with AES-256 local-only encryption. Your PIN is the only key; we never store it on our servers.</p>
+</div>
+<!-- PIN Entry Visualization -->
+<div class="flex gap-4 mb-xl" id="pin-indicator-container">
+<div class="dot-indicator w-4 h-4 rounded-full border-2 border-primary-container transition-all duration-200"></div>
+<div class="dot-indicator w-4 h-4 rounded-full border-2 border-primary-container transition-all duration-200"></div>
+<div class="dot-indicator w-4 h-4 rounded-full border-2 border-primary-container transition-all duration-200"></div>
+<div class="dot-indicator w-4 h-4 rounded-full border-2 border-primary-container transition-all duration-200"></div>
+<div class="dot-indicator w-4 h-4 rounded-full border-2 border-primary-container transition-all duration-200"></div>
+<div class="dot-indicator w-4 h-4 rounded-full border-2 border-primary-container transition-all duration-200"></div>
+</div>
+<!-- Numpad Grid -->
+<div class="grid grid-cols-3 gap-y-6 gap-x-12 mb-xl w-full max-w-[280px]">
+<button class="numpad-btn w-16 h-16 rounded-full flex items-center justify-center font-headline-md text-headline-md text-primary transition-all duration-150" onclick="handleInput('1')">1</button>
+<button class="numpad-btn w-16 h-16 rounded-full flex items-center justify-center font-headline-md text-headline-md text-primary transition-all duration-150" onclick="handleInput('2')">2</button>
+<button class="numpad-btn w-16 h-16 rounded-full flex items-center justify-center font-headline-md text-headline-md text-primary transition-all duration-150" onclick="handleInput('3')">3</button>
+<button class="numpad-btn w-16 h-16 rounded-full flex items-center justify-center font-headline-md text-headline-md text-primary transition-all duration-150" onclick="handleInput('4')">4</button>
+<button class="numpad-btn w-16 h-16 rounded-full flex items-center justify-center font-headline-md text-headline-md text-primary transition-all duration-150" onclick="handleInput('5')">5</button>
+<button class="numpad-btn w-16 h-16 rounded-full flex items-center justify-center font-headline-md text-headline-md text-primary transition-all duration-150" onclick="handleInput('6')">6</button>
+<button class="numpad-btn w-16 h-16 rounded-full flex items-center justify-center font-headline-md text-headline-md text-primary transition-all duration-150" onclick="handleInput('7')">7</button>
+<button class="numpad-btn w-16 h-16 rounded-full flex items-center justify-center font-headline-md text-headline-md text-primary transition-all duration-150" onclick="handleInput('8')">8</button>
+<button class="numpad-btn w-16 h-16 rounded-full flex items-center justify-center font-headline-md text-headline-md text-primary transition-all duration-150" onclick="handleInput('9')">9</button>
+<div class="w-16 h-16"></div>
+<button class="numpad-btn w-16 h-16 rounded-full flex items-center justify-center font-headline-md text-headline-md text-primary transition-all duration-150" onclick="handleInput('0')">0</button>
+<button class="numpad-btn w-16 h-16 rounded-full flex items-center justify-center font-headline-md text-headline-md text-primary transition-all duration-150" onclick="handleBackspace()">
+<span class="material-symbols-outlined" data-icon="backspace">backspace</span>
+</button>
+</div>
+<!-- Biometric Toggle Card -->
+<div class="w-full bg-surface-container-low border border-outline-variant rounded-xl p-md flex items-center justify-between mb-xl">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-lg bg-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-container" data-icon="fingerprint">fingerprint</span>
+</div>
+<div>
+<p class="font-title-lg text-title-lg text-on-surface">Biometric Unlock</p>
+<p class="font-label-md text-label-md text-on-surface-variant">Enable fingerprint/face unlock</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-secondary"></div>
+</label>
+</div>
+<!-- Primary Action -->
+<button class="w-full py-md bg-primary text-on-primary font-title-lg text-title-lg squircle-fab shadow-lg hover:opacity-90 active:scale-95 transition-all duration-150 flex items-center justify-center gap-2 opacity-50 cursor-not-allowed" disabled="" id="continue-btn">
+            Continue
+            <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</main>
+<!-- Visual Polish: Decorative Pattern -->
+<div class="fixed inset-0 pointer-events-none opacity-[0.03] z-0">
+<svg height="100%" width="100%">
+<pattern height="40" id="grid" patternunits="userSpaceOnUse" width="40">
+<path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" stroke-width="1"></path>
+</pattern>
+<rect fill="url(#grid)" height="100%" width="100%"></rect>
+</svg>
+</div>
+<script>
+        let pin = "";
+        const maxPinLength = 6;
+        const indicators = document.querySelectorAll('.dot-indicator');
+        const continueBtn = document.getElementById('continue-btn');
+
+        function handleInput(num) {
+            if (pin.length < maxPinLength) {
+                pin += num;
+                updateIndicators();
+            }
+        }
+
+        function handleBackspace() {
+            if (pin.length > 0) {
+                pin = pin.slice(0, -1);
+                updateIndicators();
+            }
+        }
+
+        function updateIndicators() {
+            indicators.forEach((dot, index) => {
+                if (index < pin.length) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+
+            if (pin.length === maxPinLength) {
+                continueBtn.disabled = false;
+                continueBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+            } else {
+                continueBtn.disabled = true;
+                continueBtn.classList.add('opacity-50', 'cursor-not-allowed');
+            }
+        }
+
+        // Click handler for continue button to simulate navigation
+        continueBtn.addEventListener('click', () => {
+            if (!continueBtn.disabled) {
+                continueBtn.innerHTML = `
+                    <span class="animate-spin material-symbols-outlined" data-icon="progress_activity">progress_activity</span>
+                    Securing...
+                `;
+                setTimeout(() => {
+                    alert('Vault Secured Successfully');
+                    window.location.reload();
+                }, 1500);
+            }
+        });
+    </script>
+</body></html>

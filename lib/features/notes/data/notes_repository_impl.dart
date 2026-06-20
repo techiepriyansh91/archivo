@@ -5,7 +5,6 @@ import '../../../core/database/app_database.dart';
 import '../../../core/error/failure.dart';
 import '../../../core/sync/sync_status.dart';
 import '../../../core/utils/clock.dart';
-import '../../auth/domain/repositories/auth_repository.dart';
 import '../domain/entities/note.dart';
 import '../domain/repositories/notes_repository.dart';
 import 'mappers/note_mapper.dart';
@@ -14,34 +13,25 @@ import 'notes_dao.dart';
 class NotesRepositoryImpl implements NotesRepository {
   NotesRepositoryImpl({
     required NotesDao dao,
-    required AuthRepository auth,
+    required String userId,
     required Uuid uuid,
     required Clock clock,
   }) : _dao = dao,
-       _auth = auth,
+       _userId = userId,
        _uuid = uuid,
        _clock = clock;
 
   final NotesDao _dao;
-  final AuthRepository _auth;
+  final String _userId;
   final Uuid _uuid;
   final Clock _clock;
 
-  /// Owner of every write. Sourced from the auth boundary, never invented here.
-  String get _uid {
-    final uid = _auth.currentUser?.uid;
-    if (uid == null) throw const AuthFailure('Not signed in.');
-    return uid;
-  }
-
-  /// Marks a row as a local change awaiting push. Slice 2 enqueues a sync op in
-  /// the same transaction; for now this just flags it.
   Value<int> get _pending => Value(SyncStatus.pending.index);
 
   @override
   Stream<List<Note>> watchNotes({bool archived = false}) {
     return _dao
-        .watchNotes(userId: _uid, archived: archived)
+        .watchNotes(userId: _userId, archived: archived)
         .map((rows) => rows.map((row) => row.toEntity()).toList());
   }
 
@@ -52,7 +42,7 @@ class NotesRepositoryImpl implements NotesRepository {
       await _dao.insertNote(
         NotesCompanion.insert(
           id: id,
-          userId: _uid,
+          userId: _userId,
           title: Value(title),
           body: Value(body),
           updatedAt: _clock.nowMs(),
@@ -90,7 +80,6 @@ class NotesRepositoryImpl implements NotesRepository {
   @override
   Future<void> deleteNote(String id) async {
     try {
-      // Soft delete (tombstone) so the deletion can propagate on sync.
       await _dao.updateFields(
         id,
         NotesCompanion(

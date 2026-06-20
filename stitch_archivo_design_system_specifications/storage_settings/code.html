@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Archivo - Storage Settings</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary": "#17137f",
+                    "on-primary": "#ffffff",
+                    "on-surface": "#1b1b21",
+                    "on-error": "#ffffff",
+                    "surface-container-highest": "#e4e1ea",
+                    "error": "#ba1a1a",
+                    "primary-container": "#303094",
+                    "surface-tint": "#5153b6",
+                    "on-primary-fixed": "#08006c",
+                    "on-tertiary-fixed-variant": "#464744",
+                    "on-secondary-fixed": "#261a00",
+                    "tertiary-fixed-dim": "#c7c7c3",
+                    "secondary-fixed-dim": "#e6c278",
+                    "on-secondary": "#ffffff",
+                    "on-primary-fixed-variant": "#39399d",
+                    "surface-container": "#f0ecf6",
+                    "surface": "#fcf8ff",
+                    "tertiary-fixed": "#e3e2df",
+                    "surface-container-low": "#f6f2fb",
+                    "primary-fixed": "#e1dfff",
+                    "inverse-on-surface": "#f3eff8",
+                    "primary-fixed-dim": "#c1c1ff",
+                    "surface-dim": "#dcd9e2",
+                    "outline-variant": "#c7c5d4",
+                    "surface-variant": "#e4e1ea",
+                    "on-secondary-container": "#785d1d",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-container": "#aaaaa7",
+                    "on-surface-variant": "#464652",
+                    "on-secondary-fixed-variant": "#5b4302",
+                    "on-primary-container": "#9fa1ff",
+                    "on-error-container": "#93000a",
+                    "on-background": "#1b1b21",
+                    "error-container": "#ffdad6",
+                    "background": "#fcf8ff",
+                    "tertiary": "#282927",
+                    "surface-bright": "#fcf8ff",
+                    "on-tertiary-fixed": "#1b1c1a",
+                    "inverse-surface": "#303037",
+                    "secondary": "#755a1a",
+                    "outline": "#777683",
+                    "secondary-fixed": "#ffdf9f",
+                    "tertiary-container": "#3e3f3c",
+                    "surface-container-high": "#eae7f0",
+                    "secondary-container": "#fed88b",
+                    "inverse-primary": "#c1c1ff",
+                    "on-tertiary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xs": "4px",
+                    "md": "16px",
+                    "margin-mobile": "20px",
+                    "lg": "24px",
+                    "xl": "32px",
+                    "sm": "8px",
+                    "base": "4px",
+                    "gutter": "16px"
+            },
+            "fontFamily": {
+                    "title-lg": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "label-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "title-lg": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["11px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "label-lg": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #F7F6F2;
+            font-family: 'Inter', sans-serif;
+            color: #1b1b21;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .storage-bar-transition {
+            transition: width 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .type-strip {
+            width: 4px;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            border-radius: 16px 0 0 16px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen flex flex-col pb-32">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-50 bg-surface/80 backdrop-blur-md">
+<div class="flex justify-between items-center px-margin-mobile py-md w-full max-w-full">
+<div class="flex items-center gap-4 cursor-pointer active:scale-95 duration-150">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+<h1 class="font-headline-sm text-headline-sm font-bold tracking-tight text-primary">Storage</h1>
+</div>
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A clean, professional headshot of a user with a friendly expression, set against a soft, neutral studio background that matches the minimalist Archivo UI. The lighting is balanced and modern, emphasizing a sense of personal security and accessibility. The color palette is composed of warm greys and soft whites." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_NjBlDmu3ug0_vjsyJCkFSwbeDk0dECFXVzfECOX4_xnwk3M42Dx75jSWG-OB21krvjtdUuEfMaE7gsqwMAUcY7xLse2D3WpuBjuStRVzubbhMtMuk_DncqLUoc_ZXaLXXlvATinRKcML8_AMsXnEIZXkHCHNSJ4hQXlgf1qRJ44y4_pI2sik1wRuPgJMUwfR-FWwnCIju7Lot8UWADVOBU9RNQA62Xn3N5CHDUJu6sQuy-UFHTQqbys1brO9tTZzMSqpWOjNyqM"/>
+</div>
+</div>
+</header>
+<main class="flex-1 px-margin-mobile pt-lg space-y-lg max-w-2xl mx-auto w-full">
+<!-- Total Storage Card -->
+<section class="glass-card rounded-xl p-lg shadow-sm">
+<div class="flex justify-between items-end mb-sm">
+<div>
+<p class="font-label-lg text-label-lg text-on-surface-variant mb-1 uppercase tracking-widest">Total Usage</p>
+<h2 class="font-headline-lg text-headline-lg text-primary">14.2 <span class="text-headline-sm font-normal">GB</span></h2>
+</div>
+<div class="text-right">
+<p class="font-label-lg text-label-lg text-on-surface-variant">of 50 GB used</p>
+</div>
+</div>
+<!-- Mini Horizontal Bar Chart -->
+<div class="h-4 w-full bg-surface-container-highest rounded-full overflow-hidden flex mb-md">
+<div class="h-full bg-primary storage-bar-transition" id="bar-notes" style="width: 0%"></div>
+<div class="h-full bg-on-primary-container storage-bar-transition" id="bar-files" style="width: 0%"></div>
+<div class="h-full bg-secondary storage-bar-transition" id="bar-voice" style="width: 0%"></div>
+</div>
+<!-- Legend Grid -->
+<div class="grid grid-cols-3 gap-gutter">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<span class="font-label-lg text-label-lg">Notes</span>
+</div>
+<p class="font-body-md text-body-md font-semibold px-4">6.4 GB</p>
+</div>
+<div class="flex flex-col gap-1 border-l border-outline-variant pl-4">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-on-primary-container"></div>
+<span class="font-label-lg text-label-lg">Files</span>
+</div>
+<p class="font-body-md text-body-md font-semibold">4.8 GB</p>
+</div>
+<div class="flex flex-col gap-1 border-l border-outline-variant pl-4">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-secondary"></div>
+<span class="font-label-lg text-label-lg">Voice</span>
+</div>
+<p class="font-body-md text-body-md font-semibold">3.0 GB</p>
+</div>
+</div>
+</section>
+<!-- Storage Breakdown Lists -->
+<div class="space-y-md">
+<h3 class="font-title-lg text-title-lg text-on-surface px-1">Detailed Breakdown</h3>
+<!-- Notes Tile -->
+<div class="relative bg-surface rounded-xl p-md border border-outline-variant hover:bg-surface-container-low transition-colors cursor-pointer group">
+<div class="type-strip bg-primary"></div>
+<div class="flex justify-between items-center pl-4">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-primary-fixed flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">description</span>
+</div>
+<div>
+<p class="font-title-lg text-title-lg">Notes &amp; Documents</p>
+<p class="font-label-md text-label-md text-on-surface-variant">1,240 items • Last synced 2m ago</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">chevron_right</span>
+</div>
+</div>
+<!-- Files Tile -->
+<div class="relative bg-surface rounded-xl p-md border border-outline-variant hover:bg-surface-container-low transition-colors cursor-pointer group">
+<div class="type-strip bg-on-primary-container"></div>
+<div class="flex justify-between items-center pl-4">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest flex items-center justify-center text-on-primary-container">
+<span class="material-symbols-outlined">folder_open</span>
+</div>
+<div>
+<p class="font-title-lg text-title-lg">Media &amp; Files</p>
+<p class="font-label-md text-label-md text-on-surface-variant">856 items • Encrypted vault</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">chevron_right</span>
+</div>
+</div>
+<!-- Voice Tile -->
+<div class="relative bg-surface rounded-xl p-md border border-outline-variant hover:bg-surface-container-low transition-colors cursor-pointer group">
+<div class="type-strip bg-secondary"></div>
+<div class="flex justify-between items-center pl-4">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-secondary-fixed flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">mic</span>
+</div>
+<div>
+<p class="font-title-lg text-title-lg">Voice Memos</p>
+<p class="font-label-md text-label-md text-on-surface-variant">42 recordings • High fidelity</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">chevron_right</span>
+</div>
+</div>
+</div>
+<!-- Management Actions -->
+<section class="mt-xl pt-lg border-t border-outline-variant">
+<h3 class="font-title-lg text-title-lg text-on-surface mb-md px-1">Maintenance</h3>
+<button class="w-full flex items-center justify-between p-md rounded-xl bg-surface border border-outline-variant active:scale-[0.98] transition-all hover:bg-error-container/20 group" id="clear-cache-btn">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-error-container/30 flex items-center justify-center text-error">
+<span class="material-symbols-outlined">delete_sweep</span>
+</div>
+<div class="text-left">
+<p class="font-title-lg text-title-lg text-error">Clear Cache</p>
+<p class="font-label-md text-label-md text-on-surface-variant">Removes temporary data (420 MB)</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-error">auto_delete</span>
+</button>
+<p class="mt-md text-center font-body-md text-body-md text-on-surface-variant px-lg">
+                Clearing your cache will not delete any of your vaulted notes or files. It only removes temporary system data to free up space.
+            </p>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-3 pb-safe bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-md shadow-[0_-4px_12px_rgba(0,0,0,0.08)]">
+<a class="flex flex-col items-center justify-center gap-1 text-on-surface-variant dark:text-outline-variant px-4 py-1.5 active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-lg text-label-lg">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center gap-1 text-on-surface-variant dark:text-outline-variant px-4 py-1.5 active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">folder_open</span>
+<span class="font-label-lg text-label-lg">Folders</span>
+</a>
+<a class="flex flex-col items-center justify-center gap-1 text-on-surface-variant dark:text-outline-variant px-4 py-1.5 active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">account_tree</span>
+<span class="font-label-lg text-label-lg">Graph</span>
+</a>
+<a class="flex flex-col items-center justify-center gap-1 bg-primary-container dark:bg-secondary text-on-primary-container dark:text-on-secondary rounded-xl px-4 py-1.5 active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span class="font-label-lg text-label-lg">Settings</span>
+</a>
+</nav>
+<script>
+        // Animate storage bars on load
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                document.getElementById('bar-notes').style.width = '45%';
+                document.getElementById('bar-files').style.width = '34%';
+                document.getElementById('bar-voice').style.width = '21%';
+            }, 300);
+        });
+
+        // Micro-interaction for clear cache
+        const cacheBtn = document.getElementById('clear-cache-btn');
+        cacheBtn.addEventListener('click', function() {
+            const originalContent = this.innerHTML;
+            this.classList.add('opacity-50', 'pointer-events-none');
+            this.innerHTML = `
+                <div class="flex items-center gap-4 py-2 w-full justify-center">
+                    <svg class="animate-spin h-5 w-5 text-error" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    <span class="font-title-lg text-error">Clearing...</span>
+                </div>
+            `;
+            
+            setTimeout(() => {
+                this.innerHTML = `
+                    <div class="flex items-center gap-4 py-2 w-full justify-center">
+                        <span class="material-symbols-outlined text-success">check_circle</span>
+                        <span class="font-title-lg text-on-surface-variant">Cache Cleared</span>
+                    </div>
+                `;
+                setTimeout(() => {
+                    this.innerHTML = originalContent;
+                    this.classList.remove('opacity-50', 'pointer-events-none');
+                }, 2000);
+            }, 1500);
+        });
+    </script>
+</body></html>

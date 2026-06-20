@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Archivo - Tags</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary": "#17137f",
+                    "on-primary": "#ffffff",
+                    "on-surface": "#1b1b21",
+                    "on-error": "#ffffff",
+                    "surface-container-highest": "#e4e1ea",
+                    "error": "#ba1a1a",
+                    "primary-container": "#303094",
+                    "surface-tint": "#5153b6",
+                    "on-primary-fixed": "#08006c",
+                    "on-tertiary-fixed-variant": "#464744",
+                    "on-secondary-fixed": "#261a00",
+                    "tertiary-fixed-dim": "#c7c7c3",
+                    "secondary-fixed-dim": "#e6c278",
+                    "on-secondary": "#ffffff",
+                    "on-primary-fixed-variant": "#39399d",
+                    "surface-container": "#f0ecf6",
+                    "surface": "#fcf8ff",
+                    "tertiary-fixed": "#e3e2df",
+                    "surface-container-low": "#f6f2fb",
+                    "primary-fixed": "#e1dfff",
+                    "inverse-on-surface": "#f3eff8",
+                    "primary-fixed-dim": "#c1c1ff",
+                    "surface-dim": "#dcd9e2",
+                    "outline-variant": "#c7c5d4",
+                    "surface-variant": "#e4e1ea",
+                    "on-secondary-container": "#785d1d",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-container": "#aaaaa7",
+                    "on-surface-variant": "#464652",
+                    "on-secondary-fixed-variant": "#5b4302",
+                    "on-primary-container": "#9fa1ff",
+                    "on-error-container": "#93000a",
+                    "on-background": "#1b1b21",
+                    "error-container": "#ffdad6",
+                    "background": "#fcf8ff",
+                    "tertiary": "#282927",
+                    "surface-bright": "#fcf8ff",
+                    "on-tertiary-fixed": "#1b1c1a",
+                    "inverse-surface": "#303037",
+                    "secondary": "#755a1a",
+                    "outline": "#777683",
+                    "secondary-fixed": "#ffdf9f",
+                    "tertiary-container": "#3e3f3c",
+                    "surface-container-high": "#eae7f0",
+                    "secondary-container": "#fed88b",
+                    "inverse-primary": "#c1c1ff",
+                    "on-tertiary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xs": "4px",
+                    "md": "16px",
+                    "margin-mobile": "20px",
+                    "lg": "24px",
+                    "xl": "32px",
+                    "sm": "8px",
+                    "base": "4px",
+                    "gutter": "16px"
+            },
+            "fontFamily": {
+                    "title-lg": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "label-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "title-lg": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["11px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "label-lg": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #F7F6F2;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .squircle-fab {
+            border-radius: 28px;
+        }
+        .pill-chip {
+            transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .pill-chip:active {
+            transform: scale(0.92);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="text-on-surface font-body-md antialiased">
+<!-- Top App Bar -->
+<header class="w-full top-0 sticky z-40 bg-surface/90 backdrop-blur-md">
+<div class="flex justify-between items-center px-margin-mobile py-md w-full max-w-full">
+<div class="flex items-center gap-3">
+<button class="material-symbols-outlined text-primary cursor-pointer active:scale-95 duration-150" data-icon="arrow_back">arrow_back</button>
+<h1 class="font-headline-sm text-headline-sm font-bold tracking-tight text-primary">Tags</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface-variant cursor-pointer active:scale-95 duration-150" data-icon="more_vert" id="overflow-btn">more_vert</button>
+</div>
+</div>
+</header>
+<!-- Overflow Menu (Hidden by default) -->
+<div class="hidden absolute right-margin-mobile top-16 z-50 bg-white shadow-xl rounded-xl py-2 min-w-[180px] border border-outline-variant/30" id="overflow-menu">
+<button class="w-full text-left px-4 py-3 font-label-lg text-label-lg hover:bg-surface-container-low flex items-center gap-3">
+<span class="material-symbols-outlined text-[20px]" data-icon="settings_suggest">settings_suggest</span>
+            Manage tags
+        </button>
+<button class="w-full text-left px-4 py-3 font-label-lg text-label-lg hover:bg-surface-container-low flex items-center gap-3">
+<span class="material-symbols-outlined text-[20px]" data-icon="sort">sort</span>
+            Sort alphabetically
+        </button>
+</div>
+<main class="px-margin-mobile pt-lg pb-32">
+<!-- Search & Filter Area -->
+<div class="mb-xl">
+<div class="relative group">
+<div class="absolute inset-y-0 left-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline" data-icon="search">search</span>
+</div>
+<input class="w-full bg-white border-outline-variant rounded-xl pl-12 pr-4 py-3 text-body-md focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none" placeholder="Search tags..." type="text"/>
+</div>
+</div>
+<!-- Tag Bento Grid / Wrap Layout -->
+<div class="flex flex-wrap gap-3">
+<!-- Featured Tags (Bento Style) -->
+<div class="w-full flex gap-3 mb-2">
+<div class="pill-chip flex-1 h-32 bg-secondary-container rounded-2xl p-4 flex flex-col justify-between cursor-pointer shadow-sm" onclick="openDetail('Research')">
+<span class="material-symbols-outlined text-on-secondary-container text-[28px]" data-icon="science">science</span>
+<div>
+<p class="font-title-lg text-title-lg text-on-secondary-container leading-none">#research</p>
+<p class="font-label-md text-label-md text-on-secondary-container/70 mt-1">42 items</p>
+</div>
+</div>
+<div class="pill-chip flex-1 h-32 bg-[#FFEFD2] border border-secondary-fixed rounded-2xl p-4 flex flex-col justify-between cursor-pointer shadow-sm" onclick="openDetail('Finance')">
+<span class="material-symbols-outlined text-secondary text-[28px]" data-icon="payments">payments</span>
+<div>
+<p class="font-title-lg text-title-lg text-secondary leading-none">#finance</p>
+<p class="font-label-md text-label-md text-secondary/70 mt-1">18 items</p>
+</div>
+</div>
+</div>
+<!-- Standard Pill Grid -->
+<button class="pill-chip px-5 py-2.5 bg-secondary-fixed-dim/20 border border-secondary-fixed-dim rounded-full flex items-center gap-2 cursor-pointer hover:bg-secondary-fixed-dim/30" onclick="openDetail('Active')">
+<span class="material-symbols-outlined text-[18px] text-secondary" data-icon="bolt">bolt</span>
+<span class="font-label-lg text-label-lg text-on-secondary-fixed-variant">#active</span>
+</button>
+<button class="pill-chip px-5 py-2.5 bg-secondary-fixed-dim/20 border border-secondary-fixed-dim rounded-full flex items-center gap-2 cursor-pointer hover:bg-secondary-fixed-dim/30" onclick="openDetail('Work')">
+<span class="material-symbols-outlined text-[18px] text-secondary" data-icon="work">work</span>
+<span class="font-label-lg text-label-lg text-on-secondary-fixed-variant">#work</span>
+</button>
+<button class="pill-chip px-5 py-2.5 bg-secondary-fixed-dim/20 border border-secondary-fixed-dim rounded-full flex items-center gap-2 cursor-pointer hover:bg-secondary-fixed-dim/30" onclick="openDetail('Archive')">
+<span class="material-symbols-outlined text-[18px] text-secondary" data-icon="inventory_2">inventory_2</span>
+<span class="font-label-lg text-label-lg text-on-secondary-fixed-variant">#archive</span>
+</button>
+<button class="pill-chip px-5 py-2.5 bg-secondary-fixed-dim/20 border border-secondary-fixed-dim rounded-full flex items-center gap-2 cursor-pointer hover:bg-secondary-fixed-dim/30" onclick="openDetail('Legal')">
+<span class="material-symbols-outlined text-[18px] text-secondary" data-icon="gavel">gavel</span>
+<span class="font-label-lg text-label-lg text-on-secondary-fixed-variant">#legal</span>
+</button>
+<button class="pill-chip px-5 py-2.5 bg-secondary-fixed-dim/20 border border-secondary-fixed-dim rounded-full flex items-center gap-2 cursor-pointer hover:bg-secondary-fixed-dim/30" onclick="openDetail('Personal')">
+<span class="material-symbols-outlined text-[18px] text-secondary" data-icon="person">person</span>
+<span class="font-label-lg text-label-lg text-on-secondary-fixed-variant">#personal</span>
+</button>
+<button class="pill-chip px-5 py-2.5 bg-error-container/30 border border-error/20 rounded-full flex items-center gap-2 cursor-pointer hover:bg-error-container/50" onclick="openDetail('Urgent')">
+<span class="material-symbols-outlined text-[18px] text-error" data-icon="priority_high">priority_high</span>
+<span class="font-label-lg text-label-lg text-on-error-container">#urgent</span>
+</button>
+<button class="pill-chip px-5 py-2.5 bg-secondary-fixed-dim/20 border border-secondary-fixed-dim rounded-full flex items-center gap-2 cursor-pointer hover:bg-secondary-fixed-dim/30" onclick="openDetail('Ideas')">
+<span class="material-symbols-outlined text-[18px] text-secondary" data-icon="lightbulb">lightbulb</span>
+<span class="font-label-lg text-label-lg text-on-secondary-fixed-variant">#ideas</span>
+</button>
+<button class="pill-chip px-5 py-2.5 bg-secondary-fixed-dim/20 border border-secondary-fixed-dim rounded-full flex items-center gap-2 cursor-pointer hover:bg-secondary-fixed-dim/30" onclick="openDetail('Travel')">
+<span class="material-symbols-outlined text-[18px] text-secondary" data-icon="flight">flight</span>
+<span class="font-label-lg text-label-lg text-on-secondary-fixed-variant">#travel</span>
+</button>
+<button class="pill-chip px-5 py-2.5 bg-secondary-fixed-dim/20 border border-secondary-fixed-dim rounded-full flex items-center gap-2 cursor-pointer hover:bg-secondary-fixed-dim/30" onclick="openDetail('Education')">
+<span class="material-symbols-outlined text-[18px] text-secondary" data-icon="school">school</span>
+<span class="font-label-lg text-label-lg text-on-secondary-fixed-variant">#education</span>
+</button>
+<button class="pill-chip px-5 py-2.5 bg-secondary-fixed-dim/20 border border-secondary-fixed-dim rounded-full flex items-center gap-2 cursor-pointer hover:bg-secondary-fixed-dim/30" onclick="openDetail('Health')">
+<span class="material-symbols-outlined text-[18px] text-secondary" data-icon="favorite">favorite</span>
+<span class="font-label-lg text-label-lg text-on-secondary-fixed-variant">#health</span>
+</button>
+<button class="pill-chip px-5 py-2.5 bg-secondary-fixed-dim/20 border border-secondary-fixed-dim rounded-full flex items-center gap-2 cursor-pointer hover:bg-secondary-fixed-dim/30" onclick="openDetail('Projects')">
+<span class="material-symbols-outlined text-[18px] text-secondary" data-icon="account_tree">account_tree</span>
+<span class="font-label-lg text-label-lg text-on-secondary-fixed-variant">#projects</span>
+</button>
+<!-- New Tag Placeholder -->
+<button class="pill-chip px-5 py-2.5 border-2 border-dashed border-outline-variant/50 rounded-full flex items-center gap-2 cursor-pointer hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-[18px] text-outline" data-icon="add">add</span>
+<span class="font-label-lg text-label-lg text-outline">New tag</span>
+</button>
+</div>
+<!-- Recent Items with these tags -->
+<section class="mt-xl">
+<h2 class="font-title-lg text-title-lg text-on-surface mb-4">Recently Tagged</h2>
+<div class="space-y-3">
+<div class="bg-white p-4 rounded-2xl flex items-center gap-4 shadow-sm border border-outline-variant/10">
+<div class="w-12 h-12 rounded-xl bg-primary/5 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="description">description</span>
+</div>
+<div class="flex-1">
+<p class="font-title-lg text-[15px] text-on-surface">Q4 Financial Summary.pdf</p>
+<p class="font-label-md text-label-md text-on-surface-variant">Modified 2h ago</p>
+</div>
+<span class="px-2 py-1 bg-[#FFEFD2] text-secondary text-[10px] font-bold rounded uppercase">#finance</span>
+</div>
+<div class="bg-white p-4 rounded-2xl flex items-center gap-4 shadow-sm border border-outline-variant/10">
+<div class="w-12 h-12 rounded-xl bg-primary/5 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="mic">mic</span>
+</div>
+<div class="flex-1">
+<p class="font-title-lg text-[15px] text-on-surface">Research Interview #12</p>
+<p class="font-label-md text-label-md text-on-surface-variant">Modified Yesterday</p>
+</div>
+<span class="px-2 py-1 bg-secondary-container text-on-secondary-container text-[10px] font-bold rounded uppercase">#research</span>
+</div>
+</div>
+</section>
+</main>
+<!-- Squircle FAB -->
+<button class="fixed right-margin-mobile bottom-24 w-14 h-14 bg-primary text-on-primary flex items-center justify-center shadow-lg active:scale-90 transition-all duration-200 squircle-fab z-50">
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+</button>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-3 pb-safe bg-surface/80 backdrop-blur-md shadow-[0_-4px_12px_rgba(0,0,0,0.08)]">
+<a class="flex flex-col items-center justify-center gap-1 text-on-surface-variant hover:text-primary transition-transform duration-200 active:scale-90 px-4 py-1.5" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-lg text-label-lg">Home</span>
+</a>
+<!-- Folders Active State Context -->
+<a class="flex flex-col items-center justify-center gap-1 bg-primary-container text-on-primary-container rounded-xl px-4 py-1.5 active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="folder_open" style="font-variation-settings: 'FILL' 1;">folder_open</span>
+<span class="font-label-lg text-label-lg">Folders</span>
+</a>
+<a class="flex flex-col items-center justify-center gap-1 text-on-surface-variant hover:text-primary transition-transform duration-200 active:scale-90 px-4 py-1.5" href="#">
+<span class="material-symbols-outlined" data-icon="account_tree">account_tree</span>
+<span class="font-label-lg text-label-lg">Graph</span>
+</a>
+<a class="flex flex-col items-center justify-center gap-1 text-on-surface-variant hover:text-primary transition-transform duration-200 active:scale-90 px-4 py-1.5" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-lg text-label-lg">Settings</span>
+</a>
+</nav>
+<script>
+        // Micro-interactions and UI Logic
+        const overflowBtn = document.getElementById('overflow-btn');
+        const overflowMenu = document.getElementById('overflow-menu');
+
+        overflowBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            overflowMenu.classList.toggle('hidden');
+        });
+
+        document.addEventListener('click', () => {
+            overflowMenu.classList.add('hidden');
+        });
+
+        function openDetail(tagName) {
+            // Simulated navigation
+            const toast = document.createElement('div');
+            toast.className = 'fixed bottom-32 left-1/2 -translate-x-1/2 bg-inverse-surface text-inverse-on-surface px-6 py-3 rounded-full font-label-lg shadow-xl z-[60] animate-bounce';
+            toast.innerText = `Opening detail for ${tagName}...`;
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 2000);
+        }
+
+        // Add subtle parallax to chips on mouse move for desktop feel
+        document.querySelectorAll('.pill-chip').forEach(chip => {
+            chip.addEventListener('mousemove', (e) => {
+                const rect = chip.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                chip.style.setProperty('--x', `${x}px`);
+                chip.style.setProperty('--y', `${y}px`);
+            });
+        });
+    </script>
+</body></html>

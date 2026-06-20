@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../auth/presentation/cubit/auth_cubit.dart';
 import '../../domain/entities/note.dart';
 import '../cubit/notes_cubit.dart';
 import '../cubit/notes_state.dart';
@@ -78,14 +77,7 @@ class _NotesListPageState extends State<NotesListPage> {
           'archivo',
           style: TextStyle(fontWeight: FontWeight.w800, letterSpacing: -0.3),
         ),
-        actions: [
-          IconButton(
-            tooltip: 'Sign out',
-            icon: const Icon(Icons.logout_rounded),
-            onPressed: () => context.read<AuthCubit>().signOut(),
-          ),
-          const SizedBox(width: 4),
-        ],
+        actions: const [],
       ),
       body: Column(
         children: [

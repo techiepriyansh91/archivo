@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Archivo - Settings</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary": "#17137f",
+                    "on-primary": "#ffffff",
+                    "on-surface": "#1b1b21",
+                    "on-error": "#ffffff",
+                    "surface-container-highest": "#e4e1ea",
+                    "error": "#ba1a1a",
+                    "primary-container": "#303094",
+                    "surface-tint": "#5153b6",
+                    "on-primary-fixed": "#08006c",
+                    "on-tertiary-fixed-variant": "#464744",
+                    "on-secondary-fixed": "#261a00",
+                    "tertiary-fixed-dim": "#c7c7c3",
+                    "secondary-fixed-dim": "#e6c278",
+                    "on-secondary": "#ffffff",
+                    "on-primary-fixed-variant": "#39399d",
+                    "surface-container": "#f0ecf6",
+                    "surface": "#fcf8ff",
+                    "tertiary-fixed": "#e3e2df",
+                    "surface-container-low": "#f6f2fb",
+                    "primary-fixed": "#e1dfff",
+                    "inverse-on-surface": "#f3eff8",
+                    "primary-fixed-dim": "#c1c1ff",
+                    "surface-dim": "#dcd9e2",
+                    "outline-variant": "#c7c5d4",
+                    "surface-variant": "#e4e1ea",
+                    "on-secondary-container": "#785d1d",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-container": "#aaaaa7",
+                    "on-surface-variant": "#464652",
+                    "on-secondary-fixed-variant": "#5b4302",
+                    "on-primary-container": "#9fa1ff",
+                    "on-error-container": "#93000a",
+                    "on-background": "#1b1b21",
+                    "error-container": "#ffdad6",
+                    "background": "#fcf8ff",
+                    "tertiary": "#282927",
+                    "surface-bright": "#fcf8ff",
+                    "on-tertiary-fixed": "#1b1c1a",
+                    "inverse-surface": "#303037",
+                    "secondary": "#755a1a",
+                    "outline": "#777683",
+                    "secondary-fixed": "#ffdf9f",
+                    "tertiary-container": "#3e3f3c",
+                    "surface-container-high": "#eae7f0",
+                    "secondary-container": "#fed88b",
+                    "inverse-primary": "#c1c1ff",
+                    "on-tertiary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xs": "4px",
+                    "md": "16px",
+                    "margin-mobile": "20px",
+                    "lg": "24px",
+                    "xl": "32px",
+                    "sm": "8px",
+                    "base": "4px",
+                    "gutter": "16px"
+            },
+            "fontFamily": {
+                    "title-lg": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "label-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "title-lg": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["11px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "label-lg": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #F7F6F2;
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-icon {
+            font-variation-settings: 'FILL' 1;
+        }
+        /* Custom scrollbar for high density look */
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #e4e1ea;
+            border-radius: 10px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="text-on-surface">
+<!-- Top App Bar -->
+<header class="bg-surface dark:bg-surface-dim w-full top-0 sticky z-50 flex justify-between items-center px-margin-mobile py-md w-full max-w-full">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim cursor-pointer active:scale-95 duration-150">security</span>
+<h1 class="font-headline-sm text-headline-sm font-bold tracking-tight text-primary dark:text-primary-fixed-dim">Settings</h1>
+</div>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden border border-outline-variant cursor-pointer active:scale-95 transition-transform">
+<img class="w-full h-full object-cover" data-alt="A professional studio portrait of a young executive with a friendly expression. The lighting is soft and natural, emphasizing a clean and approachable corporate modern aesthetic. The background is a soft, out-of-focus modern office space with subtle indigo and white tones, matching the app's professional vault-like visual identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4qe3-f_3-yKmdh76gy3S8GMCJui7CZ-14suWIZuFHBOPov3TNwspHAetW4tVzKbu6C1KHRyQdigN-Rk6MDdvz4ekgiQHPwy1XRN1oKJBWDZBqY69n__sYZpK5SIE8q_9pd6Xx6zRjuUfu-97KTa-uh5uCVGRXh0TEhZkR5uyfGKRhuCb2p20qPGGY20j_YiMFl8OWwqbQnVsIH8e8p9_tw7uyZx74j0uvTjdEgYKv-3qDqK-5IOEcFF8A-F9inQmdxMd6UBQ594Q"/>
+</div>
+</header>
+<main class="max-w-md mx-auto px-margin-mobile pt-lg pb-32">
+<!-- Profile Section -->
+<section class="mb-xl text-center">
+<div class="relative inline-block mb-md">
+<div class="w-24 h-24 rounded-2xl bg-surface-container-high border-2 border-primary/10 flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A close-up high-resolution image of a sleek, minimalist personal avatar representing a user. The style is modern geometric with soft rounded corners. The background features a subtle gradient of deep indigo and soft warm off-white, reflecting the quiet confidence and warmth of the brand's identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvygl6rvmzM18QV4sKk2joj8xI3ooAVtmTt_lD-n8dYedvdCtPS9-VALmModnS9Oz-Vm-2AbW28x8WJfSd7C16Hq8oA-8eSNFpj8npPhjApfpBuzDVTfa2g-rQ6MAw42tf6tKJqJ3Rry-3OTQn42QmdxpzENWx144beVcxtYv3wiczblY4zr5-tV9XAJnVjZsQEIq7E6miheB__P0zCjSqwXRivqzWc1yJDad7UAh5nHifvrY-rjVjRb_zNBjjlLbvqEgLNr0RpIA"/>
+</div>
+<div class="absolute -bottom-2 -right-2 w-8 h-8 rounded-xl bg-primary text-on-primary flex items-center justify-center shadow-lg cursor-pointer">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</div>
+</div>
+<h2 class="font-title-lg text-title-lg text-on-surface">Alex Thompson</h2>
+<p class="font-label-lg text-label-lg text-on-surface-variant opacity-70">alex.t@archivo.vault</p>
+</section>
+<!-- Grouped List: Security & Core -->
+<section class="bg-surface-container-lowest rounded-[16px] overflow-hidden shadow-sm border border-outline-variant/30 mb-lg">
+<!-- App Lock -->
+<div class="flex items-center gap-md p-md hover:bg-surface-container-low transition-colors cursor-pointer group active:scale-[0.98] duration-150">
+<div class="w-10 h-10 rounded-xl bg-primary-container/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">lock</span>
+</div>
+<div class="flex-1">
+<p class="font-body-lg text-body-lg font-medium">App Lock</p>
+<p class="font-label-md text-label-md text-on-surface-variant opacity-60">Biometric and PIN protection</p>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-colors">chevron_right</span>
+</div>
+<div class="h-[1px] bg-outline-variant/20 mx-md"></div>
+<!-- Backup & Export -->
+<div class="flex items-center gap-md p-md hover:bg-surface-container-low transition-colors cursor-pointer group active:scale-[0.98] duration-150">
+<div class="w-10 h-10 rounded-xl bg-primary-container/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">cloud_upload</span>
+</div>
+<div class="flex-1">
+<p class="font-body-lg text-body-lg font-medium">Backup &amp; Export</p>
+<p class="font-label-md text-label-md text-on-surface-variant opacity-60">Secure cloud sync and local export</p>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-colors">chevron_right</span>
+</div>
+<div class="h-[1px] bg-outline-variant/20 mx-md"></div>
+<!-- Storage -->
+<div class="flex items-center gap-md p-md hover:bg-surface-container-low transition-colors cursor-pointer group active:scale-[0.98] duration-150">
+<div class="w-10 h-10 rounded-xl bg-primary-container/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">database</span>
+</div>
+<div class="flex-1">
+<p class="font-body-lg text-body-lg font-medium">Storage</p>
+<div class="mt-1 w-full h-1 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[45%]"></div>
+</div>
+<p class="font-label-md text-label-md text-on-surface-variant opacity-60 mt-1">1.2 GB of 5 GB used</p>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-colors">chevron_right</span>
+</div>
+</section>
+<!-- Grouped List: Info -->
+<section class="bg-surface-container-lowest rounded-[16px] overflow-hidden shadow-sm border border-outline-variant/30">
+<!-- About -->
+<div class="flex items-center gap-md p-md hover:bg-surface-container-low transition-colors cursor-pointer group active:scale-[0.98] duration-150">
+<div class="w-10 h-10 rounded-xl bg-primary-container/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">info</span>
+</div>
+<div class="flex-1">
+<p class="font-body-lg text-body-lg font-medium">About</p>
+<p class="font-label-md text-label-md text-on-surface-variant opacity-60">Version 2.4.0 (Build 882)</p>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-colors">chevron_right</span>
+</div>
+</section>
+<!-- Decorative Vault Status -->
+<div class="mt-xl p-lg rounded-[24px] bg-primary text-on-primary flex items-center justify-between relative overflow-hidden group">
+<!-- Background pattern placeholder -->
+<div class="absolute inset-0 opacity-10 pointer-events-none">
+
+</div>
+<div class="relative z-10">
+<p class="font-headline-sm text-headline-sm mb-xs">Vault Secure</p>
+<p class="font-body-md text-body-md opacity-80">256-bit AES Encryption active</p>
+</div>
+<span class="material-symbols-outlined text-[48px] opacity-30 relative z-10 group-hover:scale-110 transition-transform duration-500">verified_user</span>
+</div>
+<p class="mt-xl text-center font-label-md text-label-md text-on-surface-variant opacity-40 uppercase tracking-widest">
+            Privacy First Architecture
+        </p>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-3 pb-safe bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-md shadow-[0_-4px_12px_rgba(0,0,0,0.08)]">
+<a class="flex flex-col items-center justify-center gap-1 text-on-surface-variant dark:text-outline-variant px-4 py-1.5 hover:text-primary dark:hover:text-primary-fixed-dim active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-lg text-label-lg">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center gap-1 text-on-surface-variant dark:text-outline-variant px-4 py-1.5 hover:text-primary dark:hover:text-primary-fixed-dim active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">folder_open</span>
+<span class="font-label-lg text-label-lg">Folders</span>
+</a>
+<a class="flex flex-col items-center justify-center gap-1 text-on-surface-variant dark:text-outline-variant px-4 py-1.5 hover:text-primary dark:hover:text-primary-fixed-dim active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">account_tree</span>
+<span class="font-label-lg text-label-lg">Graph</span>
+</a>
+<a class="flex flex-col items-center justify-center gap-1 bg-primary-container dark:bg-secondary text-on-primary-container dark:text-on-secondary rounded-xl px-4 py-1.5 active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined active-icon">settings</span>
+<span class="font-label-lg text-label-lg">Settings</span>
+</a>
+</nav>
+<script>
+        // Simple touch interaction for settings items
+        document.querySelectorAll('.hover\\:bg-surface-container-low').forEach(item => {
+            item.addEventListener('touchstart', function() {
+                this.classList.add('bg-surface-container-low');
+            });
+            item.addEventListener('touchend', function() {
+                this.classList.remove('bg-surface-container-low');
+            });
+        });
+    </script>
+</body></html>

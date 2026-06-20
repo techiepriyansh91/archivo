@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Archivo - Create Vault Account</title>
+<!-- Google Fonts: Inter & Material Symbols -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "error-container": "#ffdad6",
+                      "on-surface-variant": "#464652",
+                      "on-background": "#1b1b21",
+                      "tertiary-fixed": "#e3e2df",
+                      "on-secondary-container": "#785d1d",
+                      "on-secondary": "#ffffff",
+                      "outline": "#777683",
+                      "on-tertiary-fixed": "#1b1c1a",
+                      "secondary-container": "#fed88b",
+                      "surface-tint": "#5153b6",
+                      "on-primary": "#ffffff",
+                      "primary-fixed": "#e1dfff",
+                      "primary": "#17137f",
+                      "surface-bright": "#fcf8ff",
+                      "inverse-on-surface": "#f3eff8",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-container-high": "#eae7f0",
+                      "surface-container": "#f0ecf6",
+                      "on-primary-fixed": "#08006c",
+                      "secondary-fixed-dim": "#e6c278",
+                      "primary-container": "#303094",
+                      "tertiary": "#282927",
+                      "on-tertiary-fixed-variant": "#464744",
+                      "inverse-primary": "#c1c1ff",
+                      "surface-container-highest": "#e4e1ea",
+                      "on-tertiary-container": "#aaaaa7",
+                      "surface-variant": "#e4e1ea",
+                      "secondary-fixed": "#ffdf9f",
+                      "background": "#fcf8ff",
+                      "primary-fixed-dim": "#c1c1ff",
+                      "inverse-surface": "#303037",
+                      "on-tertiary": "#ffffff",
+                      "on-primary-fixed-variant": "#39399d",
+                      "tertiary-fixed-dim": "#c7c7c3",
+                      "surface": "#fcf8ff",
+                      "on-secondary-fixed": "#261a00",
+                      "on-secondary-fixed-variant": "#5b4302",
+                      "error": "#ba1a1a",
+                      "tertiary-container": "#3e3f3c",
+                      "surface-dim": "#dcd9e2",
+                      "on-surface": "#1b1b21",
+                      "on-primary-container": "#9fa1ff",
+                      "on-error": "#ffffff",
+                      "surface-container-low": "#f6f2fb",
+                      "outline-variant": "#c7c5d4",
+                      "on-error-container": "#93000a",
+                      "secondary": "#755a1a"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "lg": "24px",
+                      "md": "16px",
+                      "gutter": "16px",
+                      "xs": "4px",
+                      "xl": "32px",
+                      "sm": "8px",
+                      "margin-mobile": "20px",
+                      "base": "4px"
+              },
+              "fontFamily": {
+                      "headline-md": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "label-md": ["Inter"],
+                      "body-md": ["Inter"],
+                      "title-lg": ["Inter"],
+                      "label-lg": ["Inter"],
+                      "headline-sm": ["Inter"],
+                      "body-lg": ["Inter"]
+              },
+              "fontSize": {
+                      "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "label-md": ["11px", {"lineHeight": "16px", "fontWeight": "500"}],
+                      "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "title-lg": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                      "label-lg": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        body {
+            background-color: #fcf8ff;
+            color: #1b1b21;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .squircle-fab {
+            border-radius: 28px;
+        }
+        .type-strip {
+            width: 4px;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            border-top-left-radius: 16px;
+            border-bottom-left-radius: 16px;
+        }
+        .vault-input:focus-within {
+            border-color: #17137f;
+            box-shadow: 0 0 0 1px #17137f;
+        }
+        .glow-soft {
+            box-shadow: 0 4px 20px -2px rgba(23, 19, 127, 0.08);
+        }
+    </style>
+<style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center p-gutter">
+<!-- Atmospheric Background Glows -->
+<div class="fixed top-[-10%] right-[-10%] w-[500px] h-[500px] bg-primary-container/5 rounded-full blur-[120px] pointer-events-none"></div>
+<div class="fixed bottom-[-10%] left-[-10%] w-[400px] h-[400px] bg-secondary-container/10 rounded-full blur-[100px] pointer-events-none"></div>
+<main class="w-full max-w-[420px] relative z-10">
+<!-- Logo/Brand Header -->
+<div class="flex flex-col items-center mb-xl">
+<div class="w-16 h-16 bg-primary-container rounded-2xl flex items-center justify-center mb-md glow-soft rotate-3 hover:rotate-0 transition-transform duration-500 cursor-pointer">
+<span class="material-symbols-outlined text-on-primary-container text-[32px]" style="font-variation-settings: 'FILL' 1;">folder_managed</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight">Archivo</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-xs">Secure knowledge architecture.</p>
+</div>
+<!-- Auth Card -->
+<div class="bg-surface-container-lowest p-lg rounded-[24px] shadow-sm border border-outline-variant relative overflow-hidden">
+<!-- Branding Detail: Type Strip -->
+<div class="type-strip bg-secondary"></div>
+<div class="mb-lg">
+<h2 class="font-headline-md text-headline-md text-on-surface">Create Vault Account</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Initialize your encrypted environment.</p>
+</div>
+<!-- Sign Up Form -->
+<form class="space-y-md" onsubmit="return false;">
+<div class="space-y-xs">
+<label class="font-label-lg text-label-lg text-on-surface-variant ml-xs">Full Name</label>
+<div class="vault-input flex items-center bg-surface-container-low border border-outline-variant rounded-xl px-md py-3 transition-all duration-200">
+<span class="material-symbols-outlined text-on-surface-variant mr-sm">person</span>
+<input class="bg-transparent border-none focus:ring-0 w-full font-body-lg text-body-lg placeholder:text-on-surface-variant/50" placeholder="Enter your full name" type="text"/>
+</div>
+</div>
+<div class="space-y-xs">
+<label class="font-label-lg text-label-lg text-on-surface-variant ml-xs">Email Address</label>
+<div class="vault-input flex items-center bg-surface-container-low border border-outline-variant rounded-xl px-md py-3 transition-all duration-200">
+<span class="material-symbols-outlined text-on-surface-variant mr-sm">alternate_email</span>
+<input class="bg-transparent border-none focus:ring-0 w-full font-body-lg text-body-lg placeholder:text-on-surface-variant/50" placeholder="name@vault.com" type="email"/>
+</div>
+</div>
+<div class="space-y-xs">
+<label class="font-label-lg text-label-lg text-on-surface-variant ml-xs">Master Password</label>
+<div class="vault-input flex items-center bg-surface-container-low border border-outline-variant rounded-xl px-md py-3 transition-all duration-200">
+<span class="material-symbols-outlined text-on-surface-variant mr-sm">lock</span>
+<input class="bg-transparent border-none focus:ring-0 w-full font-body-lg text-body-lg placeholder:text-on-surface-variant/50" placeholder="••••••••••••" type="password"/>
+<button class="text-on-surface-variant hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</div>
+</div>
+<div class="pt-sm">
+<button class="w-full bg-primary-container text-on-primary-container h-14 rounded-xl font-title-lg text-title-lg flex items-center justify-center gap-sm hover:brightness-110 active:scale-[0.98] transition-all shadow-md">
+<span>Create Account</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</div>
+</form>
+<!-- Divider -->
+<div class="relative my-xl flex items-center">
+<div class="flex-grow border-t border-outline-variant"></div>
+<span class="px-md font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">Authorized via</span>
+<div class="flex-grow border-t border-outline-variant"></div>
+</div>
+<!-- Social Provider -->
+<button class="w-full bg-surface-container-high text-on-surface h-14 rounded-xl font-title-lg text-title-lg flex items-center justify-center gap-md hover:bg-surface-variant active:scale-[0.98] transition-all border border-outline-variant">
+<svg class="w-5 h-5" viewbox="0 0 24 24">
+<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
+<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path>
+<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"></path>
+<path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"></path>
+</svg>
+<span>Continue with Google</span>
+</button>
+<!-- Legal Compliance Line -->
+<p class="mt-lg text-center font-label-md text-label-md text-on-surface-variant/70 leading-relaxed px-sm">
+                By continuing, you agree to our 
+                <a class="underline hover:text-primary transition-colors" href="#">Privacy Policy</a> and 
+                <a class="underline hover:text-primary transition-colors" href="#">Terms of Service</a>.
+            </p>
+</div>
+<!-- Footer Link -->
+<div class="mt-xl text-center">
+<p class="font-body-md text-body-md text-on-surface-variant">
+                Already have an account? 
+                <a class="text-primary font-bold hover:underline underline-offset-4 ml-xs transition-all" href="#">Sign In</a>
+</p>
+</div>
+</main>
+<!-- Branding Decor: Animated Particles (Subtle) -->
+<div class="fixed inset-0 pointer-events-none z-0" id="particles"></div>
+<script>
+        // Simple micro-interaction for password toggle
+        const toggleBtn = document.querySelector('button[type="button"]');
+        if (toggleBtn) {
+            toggleBtn.addEventListener('click', () => {
+                const input = toggleBtn.previousElementSibling;
+                const icon = toggleBtn.querySelector('.material-symbols-outlined');
+                if (input.type === 'password') {
+                    input.type = 'text';
+                    icon.innerText = 'visibility_off';
+                } else {
+                    input.type = 'password';
+                    icon.innerText = 'visibility';
+                }
+            });
+        }
+
+        // Particle background logic
+        const particlesContainer = document.getElementById('particles');
+        const colors = ['#303094', '#E3BF75', '#17137f'];
+        
+        for (let i = 0; i < 12; i++) {
+            const dot = document.createElement('div');
+            dot.className = 'absolute rounded-full opacity-10 animate-pulse';
+            const size = Math.random() * 8 + 4;
+            dot.style.width = `${size}px`;
+            dot.style.height = `${size}px`;
+            dot.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            dot.style.top = `${Math.random() * 100}%`;
+            dot.style.left = `${Math.random() * 100}%`;
+            dot.style.animationDelay = `${Math.random() * 5}s`;
+            dot.style.animationDuration = `${5 + Math.random() * 10}s`;
+            particlesContainer.appendChild(dot);
+        }
+    </script>
+</body></html>

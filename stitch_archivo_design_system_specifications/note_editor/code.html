@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Archivo - Project Synthesis</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary": "#17137f",
+                    "on-primary": "#ffffff",
+                    "on-surface": "#1b1b21",
+                    "on-error": "#ffffff",
+                    "surface-container-highest": "#e4e1ea",
+                    "error": "#ba1a1a",
+                    "primary-container": "#303094",
+                    "surface-tint": "#5153b6",
+                    "on-primary-fixed": "#08006c",
+                    "on-tertiary-fixed-variant": "#464744",
+                    "on-secondary-fixed": "#261a00",
+                    "tertiary-fixed-dim": "#c7c7c3",
+                    "secondary-fixed-dim": "#e6c278",
+                    "on-secondary": "#ffffff",
+                    "on-primary-fixed-variant": "#39399d",
+                    "surface-container": "#f0ecf6",
+                    "surface": "#fcf8ff",
+                    "tertiary-fixed": "#e3e2df",
+                    "surface-container-low": "#f6f2fb",
+                    "primary-fixed": "#e1dfff",
+                    "inverse-on-surface": "#f3eff8",
+                    "primary-fixed-dim": "#c1c1ff",
+                    "surface-dim": "#dcd9e2",
+                    "outline-variant": "#c7c5d4",
+                    "surface-variant": "#e4e1ea",
+                    "on-secondary-container": "#785d1d",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-container": "#aaaaa7",
+                    "on-surface-variant": "#464652",
+                    "on-secondary-fixed-variant": "#5b4302",
+                    "on-primary-container": "#9fa1ff",
+                    "on-error-container": "#93000a",
+                    "on-background": "#1b1b21",
+                    "error-container": "#ffdad6",
+                    "background": "#fcf8ff",
+                    "tertiary": "#282927",
+                    "surface-bright": "#fcf8ff",
+                    "on-tertiary-fixed": "#1b1c1a",
+                    "inverse-surface": "#303037",
+                    "secondary": "#755a1a",
+                    "outline": "#777683",
+                    "secondary-fixed": "#ffdf9f",
+                    "tertiary-container": "#3e3f3c",
+                    "surface-container-high": "#eae7f0",
+                    "secondary-container": "#fed88b",
+                    "inverse-primary": "#c1c1ff",
+                    "on-tertiary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xs": "4px",
+                    "md": "16px",
+                    "margin-mobile": "20px",
+                    "lg": "24px",
+                    "xl": "32px",
+                    "sm": "8px",
+                    "base": "4px",
+                    "gutter": "16px"
+            },
+            "fontFamily": {
+                    "title-lg": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "label-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "title-lg": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["11px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "label-lg": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #F7F6F2;
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .wiki-link {
+            color: #17137f;
+            background-color: rgba(23, 19, 127, 0.08);
+            padding: 0 4px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #e4e1ea;
+            border-radius: 10px;
+        }
+        .toolbar-blur {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        /* Mobile-optimized typography for specific prompt constraints */
+        @media (max-width: 768px) {
+            .text-headline-lg-mobile { font-size: 28px; line-height: 36px; font-weight: 700; letter-spacing: -0.02em; }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen flex flex-col text-on-surface">
+<!-- TopAppBar - Suppressed main nav logic for focused editor view -->
+<header class="bg-white/80 backdrop-blur-md sticky top-0 z-50 flex justify-between items-center px-margin-mobile py-md w-full max-w-full">
+<div class="flex items-center gap-4">
+<button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container transition-colors active:scale-95 duration-150">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<h1 class="font-headline-sm text-headline-sm text-primary">Project Synthesis</h1>
+</div>
+<div class="flex items-center gap-2">
+<button class="flex items-center justify-center w-10 h-10 rounded-full text-primary hover:bg-surface-container transition-colors active:scale-95 duration-150">
+<span class="material-symbols-outlined">share</span>
+</button>
+<button class="flex items-center justify-center w-10 h-10 rounded-full bg-primary text-on-primary shadow-sm active:scale-95 duration-150">
+<span class="material-symbols-outlined">check</span>
+</button>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="flex-1 flex flex-col px-margin-mobile pt-lg pb-xl max-w-4xl mx-auto w-full">
+<!-- Editor Header -->
+<div class="mb-lg space-y-md">
+<input class="w-full bg-transparent border-none p-0 focus:ring-0 font-headline-lg text-headline-lg text-on-surface placeholder:text-outline-variant" placeholder="Title" type="text" value="Project Synthesis"/>
+<!-- Tags (Gold Chips) -->
+<div class="flex flex-wrap gap-2">
+<span class="inline-flex items-center px-3 py-1 bg-secondary-container/30 border border-secondary/20 rounded-full">
+<span class="material-symbols-outlined text-[14px] mr-1 text-on-secondary-container">label</span>
+<span class="font-label-lg text-label-lg text-on-secondary-container">Research</span>
+</span>
+<span class="inline-flex items-center px-3 py-1 bg-secondary-container/30 border border-secondary/20 rounded-full">
+<span class="material-symbols-outlined text-[14px] mr-1 text-on-secondary-container">label</span>
+<span class="font-label-lg text-label-lg text-on-secondary-container">Active</span>
+</span>
+<span class="inline-flex items-center px-3 py-1 bg-secondary-container/30 border border-secondary/20 rounded-full">
+<span class="material-symbols-outlined text-[14px] mr-1 text-on-secondary-container">label</span>
+<span class="font-label-lg text-label-lg text-on-secondary-container">System-Design</span>
+</span>
+<button class="flex items-center justify-center w-6 h-6 rounded-full bg-surface-container-highest/50 text-outline active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-[16px]">add</span>
+</button>
+</div>
+</div>
+<!-- Markdown Content Area -->
+<div class="flex-1 min-h-[442px]">
+<div class="outline-none w-full h-full font-body-lg text-body-lg leading-relaxed text-on-surface-variant space-y-4 custom-scrollbar" contenteditable="true" id="editor">
+<p>Establishing the core framework for <span class="wiki-link">[[Distributed Architecture]]</span> in the next phase of the project.</p>
+<p>The primary goal is to ensure high availability and data persistence across nodes. We need to integrate the <span class="wiki-link">[[Secure-Protocol-V2]]</span> modules by EOD Friday.</p>
+<h3 class="font-title-lg text-title-lg text-on-surface mt-6 mb-2">Key Objectives</h3>
+<ul class="list-disc pl-5 space-y-2">
+<li>Analyze current latency in the <span class="wiki-link">[[Vault-Sync]]</span> process.</li>
+<li>Refine the <span class="wiki-link">[[Encryption-Logic]]</span> to support post-quantum standards.</li>
+<li>Finalize the UI layout for the main dashboard.</li>
+</ul>
+<p>Reference: <span class="wiki-link">[[Internal-Whitepaper-24]]</span> regarding the specific implementation details for geometric node mapping in the graph view.</p>
+<p class="text-outline italic">Start typing your ideas here...</p>
+</div>
+</div>
+</main>
+<!-- Contextual FAB (Suppressing main FAB, but keeping an "Add Media" style secondary action) -->
+<div class="fixed right-6 bottom-24 z-40">
+<button class="w-14 h-14 bg-primary text-on-primary rounded-[28px] shadow-lg flex items-center justify-center active:scale-95 transition-all duration-200">
+<span class="material-symbols-outlined">add_photo_alternate</span>
+</button>
+</div>
+<!-- Bottom Toolbar (Formatting) -->
+<nav class="toolbar-blur bg-white/90 sticky bottom-0 w-full z-50 px-4 py-3 border-t border-surface-container-highest">
+<div class="max-w-xl mx-auto flex justify-between items-center px-4">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors active:scale-90">
+<span class="material-symbols-outlined">format_bold</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors active:scale-90">
+<span class="material-symbols-outlined">format_italic</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors active:scale-90">
+<span class="material-symbols-outlined">format_list_bulleted</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors active:scale-90">
+<span class="material-symbols-outlined">link</span>
+</button>
+<div class="w-[1px] h-6 bg-outline-variant mx-2"></div>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors active:scale-90">
+<span class="material-symbols-outlined">format_h1</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors active:scale-90">
+<span class="material-symbols-outlined">alternate_email</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors active:scale-90">
+<span class="material-symbols-outlined">checklist</span>
+</button>
+</div>
+</nav>
+<!-- Visual Polish: Subtle Background Noise Texture -->
+<div class="fixed inset-0 pointer-events-none opacity-[0.03] z-[100]" style="background-image: url('https://www.transparenttextures.com/patterns/felt.png');"></div>
+<script>
+        // Simple micro-interaction for the editor
+        const editor = document.getElementById('editor');
+        editor.addEventListener('focus', () => {
+            // Placeholder removal logic if needed
+        });
+
+        // Prevent standard scroll behavior during focus on mobile for smoother toolbar docking
+        let visualViewport = window.visualViewport;
+        if (visualViewport) {
+            visualViewport.addEventListener('resize', () => {
+                // Adjust footer position or padding if necessary for virtual keyboard
+            });
+        }
+    </script>
+</body></html>

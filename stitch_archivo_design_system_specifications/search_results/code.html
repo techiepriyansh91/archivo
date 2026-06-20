@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #fcf8ff; /* Fallback to theme surface */
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .type-strip {
+      width: 4px;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      border-top-left-radius: 16px;
+      border-bottom-left-radius: 16px;
+    }
+    .search-highlight {
+      background-color: #fed88b; /* secondary-container for Gold-dark highlight */
+      color: #5b4302; /* on-secondary-fixed-variant */
+      padding: 0 2px;
+      border-radius: 2px;
+    }
+    /* Hide scrollbar for filter row */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "primary": "#17137f",
+            "on-primary": "#ffffff",
+            "on-surface": "#1b1b21",
+            "on-error": "#ffffff",
+            "surface-container-highest": "#e4e1ea",
+            "error": "#ba1a1a",
+            "primary-container": "#303094",
+            "surface-tint": "#5153b6",
+            "on-primary-fixed": "#08006c",
+            "on-tertiary-fixed-variant": "#464744",
+            "on-secondary-fixed": "#261a00",
+            "tertiary-fixed-dim": "#c7c7c3",
+            "secondary-fixed-dim": "#e6c278",
+            "on-secondary": "#ffffff",
+            "on-primary-fixed-variant": "#39399d",
+            "surface-container": "#f0ecf6",
+            "surface": "#fcf8ff",
+            "tertiary-fixed": "#e3e2df",
+            "surface-container-low": "#f6f2fb",
+            "primary-fixed": "#e1dfff",
+            "inverse-on-surface": "#f3eff8",
+            "primary-fixed-dim": "#c1c1ff",
+            "surface-dim": "#dcd9e2",
+            "outline-variant": "#c7c5d4",
+            "surface-variant": "#e4e1ea",
+            "on-secondary-container": "#785d1d",
+            "surface-container-lowest": "#ffffff",
+            "on-tertiary-container": "#aaaaa7",
+            "on-surface-variant": "#464652",
+            "on-secondary-fixed-variant": "#5b4302",
+            "on-primary-container": "#9fa1ff",
+            "on-error-container": "#93000a",
+            "on-background": "#1b1b21",
+            "error-container": "#ffdad6",
+            "background": "#fcf8ff",
+            "tertiary": "#282927",
+            "surface-bright": "#fcf8ff",
+            "on-tertiary-fixed": "#1b1c1a",
+            "inverse-surface": "#303037",
+            "secondary": "#755a1a",
+            "outline": "#777683",
+            "secondary-fixed": "#ffdf9f",
+            "tertiary-container": "#3e3f3c",
+            "surface-container-high": "#eae7f0",
+            "secondary-container": "#fed88b",
+            "inverse-primary": "#c1c1ff",
+            "on-tertiary": "#ffffff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "xs": "4px",
+            "md": "16px",
+            "margin-mobile": "20px",
+            "lg": "24px",
+            "xl": "32px",
+            "sm": "8px",
+            "base": "4px",
+            "gutter": "16px"
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen pb-24">
+<!-- Top Search Bar (Customized TopAppBar) -->
+<header class="sticky top-0 z-50 bg-surface/90 backdrop-blur-md">
+<div class="flex items-center gap-4 px-margin-mobile py-4">
+<button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container transition-colors active:scale-95 duration-150">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<div class="flex-1 relative flex items-center">
+<input class="w-full h-12 bg-surface-container-lowest border-none ring-1 ring-outline-variant rounded-xl pl-12 pr-4 text-body-lg focus:ring-2 focus:ring-primary outline-none transition-shadow shadow-sm" placeholder="Search items..." type="text" value="Project Archive"/>
+<span class="material-symbols-outlined absolute left-4 text-on-surface-variant">search</span>
+<button class="absolute right-4 text-outline hover:text-primary">
+<span class="material-symbols-outlined">cancel</span>
+</button>
+</div>
+</div>
+<!-- Filter Chips Row -->
+<div class="flex gap-3 px-margin-mobile pb-4 overflow-x-auto no-scrollbar">
+<button class="px-5 py-2 rounded-full bg-primary text-on-primary font-label-lg whitespace-nowrap active:scale-95 transition-transform">All</button>
+<button class="px-5 py-2 rounded-full bg-surface-container border border-outline-variant text-on-surface-variant font-label-lg whitespace-nowrap hover:bg-surface-container-high transition-colors">Notes</button>
+<button class="px-5 py-2 rounded-full bg-surface-container border border-outline-variant text-on-surface-variant font-label-lg whitespace-nowrap hover:bg-surface-container-high transition-colors">Files</button>
+<button class="px-5 py-2 rounded-full bg-surface-container border border-outline-variant text-on-surface-variant font-label-lg whitespace-nowrap hover:bg-surface-container-high transition-colors">Links</button>
+<button class="px-5 py-2 rounded-full bg-surface-container border border-outline-variant text-on-surface-variant font-label-lg whitespace-nowrap hover:bg-surface-container-high transition-colors">Voice</button>
+</div>
+</header>
+<main class="px-margin-mobile mt-md">
+<div class="mb-lg">
+<h2 class="font-headline-sm text-on-surface-variant mb-4">Search Results (4)</h2>
+<!-- Results Grid (Bento Style/List Mix) -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Item 1: Note -->
+<div class="relative bg-surface-container-lowest rounded-[16px] p-md border border-outline-variant shadow-sm hover:shadow-md transition-shadow cursor-pointer group">
+<div class="type-strip bg-primary"></div>
+<div class="pl-3">
+<div class="flex justify-between items-start">
+<span class="text-xs font-label-lg uppercase tracking-wider text-primary mb-1">Note</span>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">more_vert</span>
+</div>
+<h3 class="font-title-lg text-on-surface mb-2">Q3 <span class="search-highlight">Project Archive</span> Roadmap</h3>
+<p class="text-body-md text-on-surface-variant line-clamp-2">Detailed strategy for the upcoming vault migration and the integration of the archival nodes...</p>
+<div class="flex items-center mt-4 gap-2">
+<span class="px-2 py-0.5 rounded-full bg-primary/10 text-primary text-[10px] font-bold">INTERNAL</span>
+<span class="text-label-md text-outline">Edited 2h ago</span>
+</div>
+</div>
+</div>
+<!-- Item 2: File -->
+<div class="relative bg-surface-container-lowest rounded-[16px] p-md border border-outline-variant shadow-sm hover:shadow-md transition-shadow cursor-pointer group">
+<div class="type-strip bg-secondary"></div>
+<div class="pl-3">
+<div class="flex justify-between items-start">
+<span class="text-xs font-label-lg uppercase tracking-wider text-secondary mb-1">File</span>
+<span class="material-symbols-outlined text-outline group-hover:text-secondary transition-colors">more_vert</span>
+</div>
+<h3 class="font-title-lg text-on-surface mb-2">Financial <span class="search-highlight">Archive</span>.pdf</h3>
+<div class="flex items-center gap-3 bg-surface-container-low p-2 rounded-lg mt-1">
+<span class="material-symbols-outlined text-secondary">description</span>
+<div class="flex flex-col">
+<span class="text-label-lg text-on-surface">2.4 MB</span>
+<span class="text-[10px] text-outline">PDF Document</span>
+</div>
+</div>
+<div class="flex items-center mt-4 gap-2">
+<span class="text-label-md text-outline">Uploaded Oct 12</span>
+</div>
+</div>
+</div>
+<!-- Item 3: Link -->
+<div class="relative bg-surface-container-lowest rounded-[16px] p-md border border-outline-variant shadow-sm hover:shadow-md transition-shadow cursor-pointer group">
+<div class="type-strip bg-tertiary"></div>
+<div class="pl-3">
+<div class="flex justify-between items-start">
+<span class="text-xs font-label-lg uppercase tracking-wider text-tertiary mb-1">Link</span>
+<span class="material-symbols-outlined text-outline group-hover:text-tertiary transition-colors">more_vert</span>
+</div>
+<h3 class="font-title-lg text-on-surface mb-2"><span class="search-highlight">Project Archive</span> Assets</h3>
+<p class="text-body-md text-primary underline truncate">https://vault.cloud/share/archival-assets-v2</p>
+<div class="flex items-center mt-4 gap-2">
+<span class="text-label-md text-outline">Viewed yesterday</span>
+</div>
+</div>
+</div>
+<!-- Item 4: Voice -->
+<div class="relative bg-surface-container-lowest rounded-[16px] p-md border border-outline-variant shadow-sm hover:shadow-md transition-shadow cursor-pointer group">
+<div class="type-strip bg-error"></div>
+<div class="pl-3">
+<div class="flex justify-between items-start">
+<span class="text-xs font-label-lg uppercase tracking-wider text-error mb-1">Voice</span>
+<span class="material-symbols-outlined text-outline group-hover:text-error transition-colors">more_vert</span>
+</div>
+<h3 class="font-title-lg text-on-surface mb-2">Voice Memo: <span class="search-highlight">Archive</span> Specs</h3>
+<div class="flex items-center gap-2 mt-2">
+<span class="material-symbols-outlined text-error">graphic_eq</span>
+<div class="h-1 flex-1 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-error w-1/3"></div>
+</div>
+<span class="text-label-md text-on-surface-variant">0:45</span>
+</div>
+<div class="flex items-center mt-4 gap-2">
+<span class="text-label-md text-outline">Recorded 3d ago</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Empty State (Hidden by default, shown for demonstration) -->
+<div class="hidden flex flex-col items-center justify-center py-24 text-center" id="empty-state">
+<div class="w-20 h-20 rounded-full bg-surface-container-high flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary text-4xl" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+<h3 class="font-headline-sm text-on-surface mb-2">No results for 'Secret File'</h3>
+<p class="text-body-md text-on-surface-variant max-w-[280px]">Check your spelling or try searching for something more general.</p>
+<button class="mt-8 text-primary font-label-lg flex items-center gap-2 hover:underline">
+        Clear all filters <span class="material-symbols-outlined text-sm">close</span>
+</button>
+</div>
+</main>
+<!-- Bottom Navigation Shell -->
+<nav class="fixed bottom-0 left-0 w-full z-50 bg-surface/80 backdrop-blur-md shadow-[0_-4px_12px_rgba(0,0,0,0.08)] px-4 py-3 pb-6 flex justify-around items-center">
+<div class="flex flex-col items-center justify-center gap-1 text-on-surface-variant hover:text-primary transition-colors cursor-pointer active:scale-90 duration-200 px-4 py-1.5">
+<span class="material-symbols-outlined">home</span>
+<span class="text-label-lg">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center gap-1 bg-primary-container text-on-primary-container rounded-xl px-4 py-1.5 active:scale-90 transition-transform duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">folder_open</span>
+<span class="text-label-lg">Folders</span>
+</div>
+<div class="flex flex-col items-center justify-center gap-1 text-on-surface-variant hover:text-primary transition-colors cursor-pointer active:scale-90 duration-200 px-4 py-1.5">
+<span class="material-symbols-outlined">account_tree</span>
+<span class="text-label-lg">Graph</span>
+</div>
+<div class="flex flex-col items-center justify-center gap-1 text-on-surface-variant hover:text-primary transition-colors cursor-pointer active:scale-90 duration-200 px-4 py-1.5">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-label-lg">Settings</span>
+</div>
+</nav>
+<!-- Floating Action Button (Squircle) -->
+<button class="fixed right-margin-mobile bottom-24 w-14 h-14 bg-primary text-on-primary flex items-center justify-center shadow-lg active:scale-90 transition-transform duration-200" style="border-radius: 24px;">
+<span class="material-symbols-outlined text-2xl">add</span>
+</button>
+<script>
+    // Simple micro-interaction for filter chips
+    const chips = document.querySelectorAll('.flex.gap-3.px-margin-mobile button');
+    chips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        chips.forEach(c => {
+          c.classList.remove('bg-primary', 'text-on-primary');
+          c.classList.add('bg-surface-container', 'border', 'border-outline-variant', 'text-on-surface-variant');
+        });
+        chip.classList.add('bg-primary', 'text-on-primary');
+        chip.classList.remove('bg-surface-container', 'border', 'border-outline-variant', 'text-on-surface-variant');
+      });
+    });
+
+    // Mock search logic to toggle empty state
+    const searchInput = document.querySelector('input');
+    const resultsContainer = document.querySelector('main > div:first-child');
+    const emptyState = document.querySelector('#empty-state');
+    
+    searchInput.addEventListener('input', (e) => {
+      if(e.target.value === "") {
+        resultsContainer.classList.add('hidden');
+        emptyState.classList.remove('hidden');
+        emptyState.querySelector('h3').textContent = "Start typing to search";
+      } else if(e.target.value.toLowerCase() === "nothing") {
+        resultsContainer.classList.add('hidden');
+        emptyState.classList.remove('hidden');
+        emptyState.querySelector('h3').textContent = `No results for '${e.target.value}'`;
+      } else {
+        resultsContainer.classList.remove('hidden');
+        emptyState.classList.add('hidden');
+      }
+    });
+  </script>
+</body></html>

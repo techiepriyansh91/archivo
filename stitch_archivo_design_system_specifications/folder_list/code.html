@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Archivo - Folders</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary": "#17137f",
+                    "on-primary": "#ffffff",
+                    "on-surface": "#1b1b21",
+                    "on-error": "#ffffff",
+                    "surface-container-highest": "#e4e1ea",
+                    "error": "#ba1a1a",
+                    "primary-container": "#303094",
+                    "surface-tint": "#5153b6",
+                    "on-primary-fixed": "#08006c",
+                    "on-tertiary-fixed-variant": "#464744",
+                    "on-secondary-fixed": "#261a00",
+                    "tertiary-fixed-dim": "#c7c7c3",
+                    "secondary-fixed-dim": "#e6c278",
+                    "on-secondary": "#ffffff",
+                    "on-primary-fixed-variant": "#39399d",
+                    "surface-container": "#f0ecf6",
+                    "surface": "#fcf8ff",
+                    "tertiary-fixed": "#e3e2df",
+                    "surface-container-low": "#f6f2fb",
+                    "primary-fixed": "#e1dfff",
+                    "inverse-on-surface": "#f3eff8",
+                    "primary-fixed-dim": "#c1c1ff",
+                    "surface-dim": "#dcd9e2",
+                    "outline-variant": "#c7c5d4",
+                    "surface-variant": "#e4e1ea",
+                    "on-secondary-container": "#785d1d",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-container": "#aaaaa7",
+                    "on-surface-variant": "#464652",
+                    "on-secondary-fixed-variant": "#5b4302",
+                    "on-primary-container": "#9fa1ff",
+                    "on-error-container": "#93000a",
+                    "on-background": "#1b1b21",
+                    "error-container": "#ffdad6",
+                    "background": "#fcf8ff",
+                    "tertiary": "#282927",
+                    "surface-bright": "#fcf8ff",
+                    "on-tertiary-fixed": "#1b1c1a",
+                    "inverse-surface": "#303037",
+                    "secondary": "#755a1a",
+                    "outline": "#777683",
+                    "secondary-fixed": "#ffdf9f",
+                    "tertiary-container": "#3e3f3c",
+                    "surface-container-high": "#eae7f0",
+                    "secondary-container": "#fed88b",
+                    "inverse-primary": "#c1c1ff",
+                    "on-tertiary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xs": "4px",
+                    "md": "16px",
+                    "margin-mobile": "20px",
+                    "lg": "24px",
+                    "xl": "32px",
+                    "sm": "8px",
+                    "base": "4px",
+                    "gutter": "16px"
+            },
+            "fontFamily": {
+                    "title-lg": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "label-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "title-lg": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["11px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "label-lg": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F7F6F2; /* Overriding with prompt specific color while maintaining DS structure */
+            -webkit-tap-highlight-color: transparent;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .safe-bottom {
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+        .folder-list-container {
+            height: calc(100vh - 64px - 84px);
+            overflow-y: auto;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="text-on-surface">
+<!-- Top App Bar -->
+<header class="bg-surface dark:bg-surface-dim w-full top-0 sticky z-50">
+<div class="flex justify-between items-center px-margin-mobile py-md w-full max-w-full">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="security">security</span>
+<h1 class="font-headline-sm text-headline-sm font-bold tracking-tight text-primary dark:text-primary-fixed-dim">Folders</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="cursor-pointer active:scale-95 duration-150 p-2 rounded-full hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="search">search</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold text-xs">
+                    JD
+                </div>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="px-margin-mobile pt-lg pb-32">
+<!-- New Folder Action -->
+<button class="w-full flex items-center justify-center gap-2 py-md px-lg bg-surface-container-lowest rounded-xl border border-outline-variant cursor-pointer active:scale-95 transition-all duration-150 mb-lg shadow-sm">
+<span class="material-symbols-outlined text-primary" data-icon="add">add</span>
+<span class="font-title-lg text-title-lg text-primary">New Folder</span>
+</button>
+<!-- Folder List -->
+<div class="space-y-sm">
+<!-- Folder Item: Personal -->
+<div class="group flex items-center justify-between p-md bg-white rounded-xl cursor-pointer hover:bg-surface-container transition-colors duration-200 border-l-4 border-primary">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 bg-primary/5 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="folder_open" style="font-variation-settings: 'FILL' 1;">folder_open</span>
+</div>
+<div>
+<h3 class="font-title-lg text-title-lg text-on-surface">Personal</h3>
+<p class="font-label-md text-label-md text-on-surface-variant">128 items</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-colors" data-icon="chevron_right">chevron_right</span>
+</div>
+<!-- Folder Item: Work -->
+<div class="group flex items-center justify-between p-md bg-white rounded-xl cursor-pointer hover:bg-surface-container transition-colors duration-200 border-l-4 border-primary">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 bg-primary/5 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="folder_open" style="font-variation-settings: 'FILL' 1;">folder_open</span>
+</div>
+<div>
+<h3 class="font-title-lg text-title-lg text-on-surface">Work</h3>
+<p class="font-label-md text-label-md text-on-surface-variant">45 items</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-colors" data-icon="chevron_right">chevron_right</span>
+</div>
+<!-- Folder Item: Finance -->
+<div class="group flex items-center justify-between p-md bg-white rounded-xl cursor-pointer hover:bg-surface-container transition-colors duration-200 border-l-4 border-primary">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 bg-primary/5 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="folder_open" style="font-variation-settings: 'FILL' 1;">folder_open</span>
+</div>
+<div>
+<h3 class="font-title-lg text-title-lg text-on-surface">Finance</h3>
+<p class="font-label-md text-label-md text-on-surface-variant">12 items</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-colors" data-icon="chevron_right">chevron_right</span>
+</div>
+<!-- Folder Item: Travel -->
+<div class="group flex items-center justify-between p-md bg-white rounded-xl cursor-pointer hover:bg-surface-container transition-colors duration-200 border-l-4 border-primary">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 bg-primary/5 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="folder_open" style="font-variation-settings: 'FILL' 1;">folder_open</span>
+</div>
+<div>
+<h3 class="font-title-lg text-title-lg text-on-surface">Travel</h3>
+<p class="font-label-md text-label-md text-on-surface-variant">8 items</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-colors" data-icon="chevron_right">chevron_right</span>
+</div>
+<!-- Folder Item: Archive -->
+<div class="group flex items-center justify-between p-md bg-white rounded-xl cursor-pointer hover:bg-surface-container transition-colors duration-200 border-l-4 border-primary">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 bg-primary/5 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="folder_open" style="font-variation-settings: 'FILL' 1;">folder_open</span>
+</div>
+<div>
+<h3 class="font-title-lg text-title-lg text-on-surface">Archive</h3>
+<p class="font-label-md text-label-md text-on-surface-variant">2,410 items</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-colors" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+<!-- Atmospheric Bento Visual Section (Non-List Content) -->
+<div class="mt-xl grid grid-cols-2 gap-md">
+<div class="col-span-2 p-lg bg-primary rounded-3xl relative overflow-hidden h-40 flex items-end">
+<div class="z-10">
+<h4 class="text-white font-headline-md text-headline-md">Vault Security</h4>
+<p class="text-primary-fixed-dim font-body-md text-body-md">Your folders are encrypted locally.</p>
+</div>
+<div class="absolute top-[-20px] right-[-20px] opacity-10">
+<span class="material-symbols-outlined text-[120px]" data-icon="lock">lock</span>
+</div>
+</div>
+<div class="p-md bg-secondary-container rounded-3xl h-32 flex flex-col justify-between">
+<span class="material-symbols-outlined text-secondary" data-icon="auto_awesome">auto_awesome</span>
+<span class="font-label-lg text-label-lg text-on-secondary-container">Smart Sort</span>
+</div>
+<div class="p-md bg-surface-container-highest rounded-3xl h-32 flex flex-col justify-between">
+<span class="material-symbols-outlined text-on-surface" data-icon="cloud_sync">cloud_sync</span>
+<span class="font-label-lg text-label-lg text-on-surface-variant">Syncing...</span>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-3 pb-safe bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-md shadow-[0_-4px_12px_rgba(0,0,0,0.08)]">
+<!-- Home -->
+<a class="flex flex-col items-center justify-center gap-1 text-on-surface-variant dark:text-outline-variant px-4 py-1.5 active:scale-90 transition-transform duration-200 hover:text-primary" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-lg text-label-lg">Home</span>
+</a>
+<!-- Folders (Active) -->
+<a class="flex flex-col items-center justify-center gap-1 bg-primary-container dark:bg-secondary text-on-primary-container dark:text-on-secondary rounded-xl px-4 py-1.5 active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="folder_open" style="font-variation-settings: 'FILL' 1;">folder_open</span>
+<span class="font-label-lg text-label-lg">Folders</span>
+</a>
+<!-- Graph -->
+<a class="flex flex-col items-center justify-center gap-1 text-on-surface-variant dark:text-outline-variant px-4 py-1.5 active:scale-90 transition-transform duration-200 hover:text-primary" href="#">
+<span class="material-symbols-outlined" data-icon="account_tree">account_tree</span>
+<span class="font-label-lg text-label-lg">Graph</span>
+</a>
+<!-- Settings -->
+<a class="flex flex-col items-center justify-center gap-1 text-on-surface-variant dark:text-outline-variant px-4 py-1.5 active:scale-90 transition-transform duration-200 hover:text-primary" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-lg text-label-lg">Settings</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction for folder rows
+        document.querySelectorAll('.group').forEach(row => {
+            row.addEventListener('click', () => {
+                row.classList.add('scale-[0.98]');
+                setTimeout(() => {
+                    row.classList.remove('scale-[0.98]');
+                }, 150);
+            });
+        });
+
+        // Search button interaction
+        const searchBtn = document.querySelector('button .material-symbols-outlined[data-icon="search"]').parentElement;
+        searchBtn.addEventListener('click', () => {
+            console.log('Search triggered');
+        });
+    </script>
+</body></html>

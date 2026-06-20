@@ -1,7 +1,5 @@
 import 'package:archivo/core/database/app_database.dart';
-import 'package:archivo/core/error/failure.dart';
 import 'package:archivo/core/sync/sync_status.dart';
-import 'package:archivo/features/auth/domain/entities/app_user.dart';
 import 'package:archivo/features/notes/data/notes_repository_impl.dart';
 import 'package:drift/native.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -12,12 +10,11 @@ import '../../../helpers/test_doubles.dart';
 void main() {
   late AppDatabase db;
   late FixedClock clock;
-  late FakeAuthRepository auth;
   late NotesRepositoryImpl repo;
 
   NotesRepositoryImpl buildRepo() => NotesRepositoryImpl(
     dao: db.notesDao,
-    auth: auth,
+    userId: 'u1',
     uuid: const Uuid(),
     clock: clock,
   );
@@ -25,7 +22,6 @@ void main() {
   setUp(() {
     db = AppDatabase(NativeDatabase.memory());
     clock = FixedClock(1000);
-    auth = FakeAuthRepository(user: const AppUser(uid: 'u1'));
     repo = buildRepo();
   });
 
@@ -42,7 +38,7 @@ void main() {
     expect(row.updatedAt, 1000);
   });
 
-  test('watchNotes emits the user\'s active notes, newest first', () async {
+  test("watchNotes emits the user's active notes, newest first", () async {
     clock.ms = 1000;
     final a = await repo.createNote(title: 'A', body: '');
     clock.ms = 2000;
@@ -53,7 +49,7 @@ void main() {
     expect(notes.map((n) => n.id), [b.id, a.id]);
   });
 
-  test('watchNotes excludes other users\' notes', () async {
+  test("watchNotes excludes other users' notes", () async {
     await repo.createNote(title: 'mine', body: '');
     await db
         .into(db.notes)
@@ -74,7 +70,7 @@ void main() {
 
     expect(await repo.watchNotes().first, isEmpty);
     final row = await db.notesDao.findById(n.id);
-    expect(row!.deletedAt, isNotNull); // soft delete, row still present
+    expect(row!.deletedAt, isNotNull);
   });
 
   test('setArchived moves a note between active and archive lists', () async {
@@ -97,15 +93,5 @@ void main() {
     final notes = await repo.watchNotes().first;
     expect(notes.single.title, 'new');
     expect(notes.single.updatedAt.millisecondsSinceEpoch, 5000);
-  });
-
-  test('throws AuthFailure when no user is signed in', () async {
-    auth = FakeAuthRepository();
-    repo = buildRepo();
-
-    expect(
-      () => repo.createNote(title: 't', body: 'b'),
-      throwsA(isA<AuthFailure>()),
-    );
   });
 }
