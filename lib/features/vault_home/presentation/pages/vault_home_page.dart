@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lucide_icons/lucide_icons.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../../core/theme/app_colors.dart';
+import '../../../../injection/injection.dart';
 import '../../../notes/domain/entities/note.dart';
 import '../../../notes/presentation/cubit/notes_cubit.dart';
 import '../../../notes/presentation/cubit/notes_state.dart';
 import '../../../notes/presentation/pages/note_editor_page.dart';
+import '../../../settings/presentation/pages/backup_settings_page.dart';
 
 class VaultHomePage extends StatefulWidget {
   const VaultHomePage({super.key});
@@ -15,11 +18,23 @@ class VaultHomePage extends StatefulWidget {
   State<VaultHomePage> createState() => _VaultHomePageState();
 }
 
+const _kNudgeThreshold = 5;
+const _kNudgeDismissedKey = 'archivo_drive_nudge_dismissed';
+
 class _VaultHomePageState extends State<VaultHomePage> {
+  final _prefs = getIt<SharedPreferences>();
+  bool _nudgeDismissed = true; // start true to avoid flash before prefs load
+
   @override
   void initState() {
     super.initState();
     context.read<NotesCubit>().watch(archived: false);
+    _nudgeDismissed = _prefs.getBool(_kNudgeDismissedKey) ?? false;
+  }
+
+  void _dismissNudge() {
+    _prefs.setBool(_kNudgeDismissedKey, true);
+    setState(() => _nudgeDismissed = true);
   }
 
   Future<void> _openEditor([Note? note]) {
@@ -126,6 +141,23 @@ class _VaultHomePageState extends State<VaultHomePage> {
                   ),
                 ),
               ),
+
+              // Drive nudge — shown once after 5+ notes are created
+              if (!_nudgeDismissed && notes.length >= _kNudgeThreshold)
+                SliverToBoxAdapter(
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(16, 12, 16, 0),
+                    child: _DriveNudgeBanner(
+                      noteCount: notes.length,
+                      onConnect: () => Navigator.of(context).push(
+                        MaterialPageRoute<void>(
+                          builder: (_) => const BackupSettingsPage(),
+                        ),
+                      ),
+                      onDismiss: _dismissNudge,
+                    ),
+                  ),
+                ),
 
               if (notes.isEmpty)
                 SliverFillRemaining(
@@ -446,6 +478,92 @@ class _ActivityTile extends StatelessWidget {
             const SizedBox(height: 8),
           ],
         ),
+      ),
+    );
+  }
+}
+
+// ---------- Drive nudge banner ----------
+
+class _DriveNudgeBanner extends StatelessWidget {
+  const _DriveNudgeBanner({
+    required this.noteCount,
+    required this.onConnect,
+    required this.onDismiss,
+  });
+
+  final int noteCount;
+  final VoidCallback onConnect;
+  final VoidCallback onDismiss;
+
+  @override
+  Widget build(BuildContext context) {
+    final tt = Theme.of(context).textTheme;
+    return Container(
+      decoration: BoxDecoration(
+        color: AppColors.secondaryContainer,
+        borderRadius: BorderRadius.circular(16),
+      ),
+      padding: const EdgeInsets.fromLTRB(16, 14, 8, 14),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            width: 40,
+            height: 40,
+            decoration: BoxDecoration(
+              color: AppColors.primary.withValues(alpha: 0.15),
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: const Icon(
+              LucideIcons.upload,
+              size: 20,
+              color: AppColors.primary,
+            ),
+          ),
+          const SizedBox(width: 12),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Back up your vault',
+                  style: tt.bodyMedium?.copyWith(
+                    fontWeight: FontWeight.w700,
+                    color: AppColors.secondary,
+                  ),
+                ),
+                const SizedBox(height: 2),
+                Text(
+                  'Your $noteCount notes live only on this device. '
+                  'Connect Google Drive to keep them safe.',
+                  style: tt.labelMedium?.copyWith(
+                    color: AppColors.secondary.withValues(alpha: 0.75),
+                    height: 1.4,
+                  ),
+                ),
+                const SizedBox(height: 10),
+                GestureDetector(
+                  onTap: onConnect,
+                  child: Text(
+                    'Connect Google Drive →',
+                    style: tt.labelMedium?.copyWith(
+                      color: AppColors.primary,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          IconButton(
+            onPressed: onDismiss,
+            icon: const Icon(LucideIcons.x, size: 16),
+            color: AppColors.secondary.withValues(alpha: 0.6),
+            padding: const EdgeInsets.all(4),
+            constraints: const BoxConstraints(),
+          ),
+        ],
       ),
     );
   }

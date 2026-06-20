@@ -6,6 +6,7 @@ import '../../../../core/services/vault_lock_service.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../injection/injection.dart';
 import '../../../notes/presentation/cubit/notes_cubit.dart';
+import '../../../settings/presentation/pages/backup_settings_page.dart';
 import '../../../vault_home/presentation/pages/vault_home_page.dart';
 import '../../../vault_lock/presentation/pages/lock_screen_page.dart';
 
@@ -268,7 +269,11 @@ class _SettingsPlaceholder extends StatelessWidget {
               icon: LucideIcons.upload,
               title: 'Backup & Export',
               subtitle: 'Secure cloud sync and local export',
-              onTap: () {},
+              onTap: () => Navigator.of(context).push(
+                MaterialPageRoute<void>(
+                  builder: (_) => const BackupSettingsPage(),
+                ),
+              ),
             ),
             const Divider(height: 1, indent: 56),
             _SettingsRow(
